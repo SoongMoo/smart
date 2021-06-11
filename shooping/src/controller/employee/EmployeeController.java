@@ -20,7 +20,7 @@ public class EmployeeController extends HttpServlet
 				contextPath.length());
 		if(command.equals("/empList.em")) {
 			EmployeeListPage action = new EmployeeListPage();
-			action.empList();
+			action.empList(request);
 			RequestDispatcher dispatcher =
 					request.getRequestDispatcher(
 							"employee/employeeList.jsp");
