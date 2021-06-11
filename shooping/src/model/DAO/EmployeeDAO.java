@@ -3,6 +3,7 @@ package model.DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.DTO.EmployeeDTO;
@@ -14,6 +15,7 @@ public class EmployeeDAO {
 	String sql;
 	PreparedStatement pstmt;
 	Integer result;
+	ResultSet rs;
 	static {
 		jdbcDriver = "oracle.jdbc.driver.OracleDriver";
 		jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -25,6 +27,19 @@ public class EmployeeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
+	}
+	public int getEmpNo() {
+		getConnect();
+		sql = "select nvl(max(employee_id), 10000) + 1 from employees";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			rs.next();
+			result = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	public void empInsert(EmployeeDTO dto) {
 		sql = "insert into employees (EMPLOYEE_ID,EMP_USERID, EMP_PW, "

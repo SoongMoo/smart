@@ -10,8 +10,8 @@
 <form action="empJoin.em" method="get" name="frm">
 <table border = 1 align="center">
 	<tr><td>사원번호</td>
-		<td>
-			<input type="text" name="employeeId" />
+		<td>                               				
+			<input type="text" name="employeeId" value="${empNo }"/>
 		</td></tr>
 	<tr><td>사원아이디</td>
 		<td>
