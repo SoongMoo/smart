@@ -33,9 +33,30 @@ public class EmployeeController extends HttpServlet
 							"employee/employeeForm.jsp");
 			dispatcher.forward(request, response);
 		}else if(command.equals("/empJoin.em")) {
-			EmployeeJoinPage action =
-					new EmployeeJoinPage();
+			EmployeeJoinPage action = new EmployeeJoinPage();
 			action.empInsert(request);
+			response.sendRedirect("empList.em");
+		}else if(command.equals("/empInfo.em")) {
+			EmployeeInfoPage action = new EmployeeInfoPage();
+			action.empInfo(request);
+			RequestDispatcher dispatcher =
+					request.getRequestDispatcher(""
+							+ "employee/employeeInfo.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/empModify.em")) {
+			EmployeeInfoPage action = new EmployeeInfoPage();
+			action.empInfo(request);
+			RequestDispatcher dispatcher =
+					request.getRequestDispatcher(""
+							+ "employee/employeeModify.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/empModifyOk.em")) {
+			EmployeeModifyPage action = new EmployeeModifyPage();
+			action.empModify(request);
+			response.sendRedirect("empList.em");
+		}else if(command.equals("/empDelete.em")) {
+			EmployeeDeletePage action = new EmployeeDeletePage();
+			action.empDelete(request);
 			response.sendRedirect("empList.em");
 		}
 	}

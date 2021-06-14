@@ -31,4 +31,13 @@
   	<servlet-name>employee</servlet-name>
   	<url-pattern>*.em</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>member</servlet-name>
+  	<servlet-class>controller.member.MemberController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>member</servlet-name>
+  	<url-pattern>*.mem</url-pattern>
+  </servlet-mapping>
 </web-app>

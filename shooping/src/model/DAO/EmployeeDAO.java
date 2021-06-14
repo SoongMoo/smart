@@ -33,7 +33,72 @@ public class EmployeeDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	public void empDelete(String empId) {
+		sql = " delete from employees "
+			+ " where employee_id = ?";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, empId);
+			int i = pstmt.executeUpdate();
+			System.out.println(i + "개가 삭제되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+	}
+	public void empUpdate(EmployeeDTO dto) {
+		sql = " update employees "
+			+ " set JOB_ID = ?, PH_NUMBER=?, OFFICE_NUMBER =?,"
+			+ "     EMAIL = ?, EMP_ADDRESS = ? "
+			+ " where employee_id = ?";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getJobId());
+			pstmt.setString(2, dto.getPhNumber());
+			pstmt.setString(3, dto.getOfficeNumber());
+			pstmt.setString(4, dto.getEmail());
+			pstmt.setString(5, dto.getEmpAddress());
+			pstmt.setString(6, dto.getEmployeeId());
+			int i = pstmt.executeUpdate();
+			System.out.println(i + "개가 수정되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	public EmployeeDTO empInfo(String empId) {
+		EmployeeDTO dto = new EmployeeDTO();
+		sql = "select " + COLUMNS + " from employees "
+			+ " where employee_id = ?";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, empId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setEmployeeId(rs.getString("EMPLOYEE_ID"));
+				dto.setEmpUserid(rs.getString(2));
+				dto.setEmpPw(rs.getString("EMP_PW"));
+				dto.setEmpName(rs.getString(4));
+				dto.setHireDate(rs.getString("HIRE_DATE"));
+				dto.setJobId(rs.getString("JOB_ID"));
+				dto.setPhNumber(rs.getString("PH_NUMBER"));
+				dto.setOfficeNumber(rs.getString("OFFICE_NUMBER"));
+				dto.setEmail(rs.getString("EMAIL"));
+				dto.setEmpAddress(rs.getString("EMP_ADDRESS"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return dto;
+	}
 	
 	
 	public List<EmployeeDTO> getEmpList() {
