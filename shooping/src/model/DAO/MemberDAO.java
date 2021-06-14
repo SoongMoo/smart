@@ -47,7 +47,6 @@ public class MemberDAO {
 			
 			long birth = dto.getMemBirth().getTime();
 			pstmt.setDate(8, new Date(birth));
-			
 			pstmt.setString(9, dto.getMemGender());
 			pstmt.setString(10, dto.getMemAccount());
 			pstmt.setString(11, dto.getMemEmail());
