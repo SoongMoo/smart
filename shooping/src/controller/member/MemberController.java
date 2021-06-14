@@ -26,6 +26,10 @@ public class MemberController extends HttpServlet
 					request.getRequestDispatcher(
 							"member/memberForm.jsp");
 			dispatcher.forward(request, response);
+		}else if(command.equals("/memJoin.mem")) {
+			MemberJoinPage action = new MemberJoinPage();
+			action.memInsert(request);
+			response.sendRedirect("main.sm");
 		}
 	}
 	@Override
