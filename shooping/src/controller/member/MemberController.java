@@ -59,6 +59,10 @@ public class MemberController extends HttpServlet
 			MemberDeletePage action = new MemberDeletePage();
 			action.memDel(request);
 			response.sendRedirect("memList.mem");
+		}else if(command.equals("/myPage.mem")) {
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("member/memMyPage.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 	@Override
