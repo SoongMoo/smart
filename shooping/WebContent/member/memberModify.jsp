@@ -104,9 +104,11 @@
 					<c:if test="${dto.memEmailCk == 'N'}">checked</c:if> 
 				>아니오</td></tr>
 		<tr><td colspan="2" align="center">
-				<input type="submit" value="가입 완료" />
+				<input type="submit" value="수정 완료" />
 				<input type="button"  value="수정 안함" 
 					onclick="javascript:history.back();" />
+				<input type="button"  value="회원 강퇴" 
+	onclick="javascript:location.href='memDel.mem?memId=${dto.memId }'" />
 			</td></tr>
 	</table>
 </form>

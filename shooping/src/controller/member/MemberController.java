@@ -55,6 +55,10 @@ public class MemberController extends HttpServlet
 			MemberModifyPage action = new MemberModifyPage();
 			action.memUpdate(request);
 			response.sendRedirect("memList.mem");
+		}else if(command.equals("/memDel.mem")) {
+			MemberDeletePage action = new MemberDeletePage();
+			action.memDel(request);
+			response.sendRedirect("memList.mem");
 		}
 	}
 	@Override

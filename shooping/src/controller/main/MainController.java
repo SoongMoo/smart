@@ -26,6 +26,10 @@ public class MainController extends HttpServlet
 			RequestDispatcher dispatcher =
 					request.getRequestDispatcher("main/home.jsp");
 			dispatcher.forward(request, response);
+		}else if(command.equals("/login.sm")) {
+			LoginPage action = new LoginPage();
+			action.login(request);
+			response.sendRedirect("main.sm");
 		}
 	}
 	@Override
