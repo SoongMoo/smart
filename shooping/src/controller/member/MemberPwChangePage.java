@@ -16,7 +16,7 @@ public class MemberPwChangePage {
 		if(request.getParameter("memPw").
 				equals(authInfo.getUserPw())) {
 			MemberDAO dao = new MemberDAO();
-			//dao.pwChange(userId,memPw);
+			dao.pwChange(userId,memPw);
 			return 1;
 		}else {
 			request.setAttribute("pwFail1", "비밀번호가 틀립니다.");

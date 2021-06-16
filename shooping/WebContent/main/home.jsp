@@ -35,12 +35,12 @@
 		<a href="myPage.mem">마이페이지</a>
 	</c:if>
 	<c:if test="${authInfo.grade != 1 }">
-	<!-- 직원 -->
-		
-	
-	<!-- 관리자 -->
-	<a href="empList.em">직원 리스트</a>
-	<a href="memList.mem" >회원 리스트</a>
+		<a href="empMyPage.em">마이페이지</a>
+		<!-- 직원 -->
+			
+		<!-- 관리자 -->
+		<a href="empList.em">직원 리스트</a>
+		<a href="memList.mem" >회원 리스트</a>
 	</c:if>
 	<a href="logout.sm">로그아웃</a>
 </c:if>
