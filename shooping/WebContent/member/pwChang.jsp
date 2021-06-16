@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="memDetail.mem" >회원정보</a> | 
-<a href="memPwChange.mem">비밀번호 변경</a> | 
-<a href="memOut.mem">회원탈퇴</a>
+<form action="pwChangeOk.mem" name="frm" method="post">
+	비밀번호 : <input type="password" name="memPw" />
+	<span>${pwFail1 }</span><br />
+	<input type="submit" value="확인" />
+</form>
 </body>
 </html>

@@ -36,7 +36,7 @@
 	</c:if>
 	<c:if test="${authInfo.grade != 1 }">
 	<!-- 직원 -->
-	
+		
 	
 	<!-- 관리자 -->
 	<a href="empList.em">직원 리스트</a>

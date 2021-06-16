@@ -63,6 +63,58 @@ public class MemberController extends HttpServlet
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher("member/memMyPage.jsp");
 			dispatcher.forward(request, response);
+		}else if(command.equals("/memDetail.mem")) {
+			MemberDetailPage action = new MemberDetailPage();
+			action.memberDetail(request);
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("member/memDetail.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/memSujung.mem")) {
+			MemberDetailPage action = new MemberDetailPage();
+			action.memberDetail(request);
+			RequestDispatcher dispatcher =
+					request.getRequestDispatcher("member/memSujung.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/memSujungOk.mem")) {
+			MemberUpdatePage action = new MemberUpdatePage();
+			int i =action.memberUpdate(request);
+			if(i == 1) {
+				response.sendRedirect("memDetail.mem");
+			}else{
+				response.sendRedirect("memSujung.mem");
+			}
+		}else if(command.equals("/memOut.mem")) {
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("member/outPw.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/memOutOk.mem")) {
+			MemberOutPage action = new MemberOutPage();
+			int i = action.memOut(request);
+			if(i == 1) {
+				response.sendRedirect("main.sm");
+			}else {
+				response.sendRedirect("memOut.mem");
+			}
+		}else if(command.equals("/memPwChange.mem")){
+			RequestDispatcher dispatcher =
+				request.getRequestDispatcher("member/pwChang.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/pwChangeOk.mem")) {
+			MemberPwConfirmPage action = new MemberPwConfirmPage();
+			String path = action.pwConfirm(request);
+			RequestDispatcher dispatcher =
+						request.getRequestDispatcher(path);
+			dispatcher.forward(request, response);			
+		}else if(command.equals("/ChangePw.mem")) {
+			MemberPwChangePage action = new MemberPwChangePage();
+			int i = action.pwChange(request);
+			if(i == 1) {
+				response.sendRedirect("main.sm");
+			}else {
+				RequestDispatcher dispatcher = 
+						request.getRequestDispatcher("member/pwChang.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
 	}
 	@Override

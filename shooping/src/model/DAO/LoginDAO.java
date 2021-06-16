@@ -12,7 +12,7 @@ public class LoginDAO extends DataBaseInfo{
 			+ " where mem_id = ? "
 			+ " union "
 			+ " select EMP_USERID, EMP_PW, EMPLOYEE_ID "
-			+ " from employees"
+			+ " from employees "
 			+ " where EMP_USERID = ?";
 		getConnect();
 		try {
