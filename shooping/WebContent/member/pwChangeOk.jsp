@@ -32,12 +32,13 @@ $(function(){
 				return false;
 			}
 		}
+		$("#frm").submit();
 	});
 });
 </script>
 </head>
 <body>
-<form action="ChangePw.mem" name="frm" method="post" >
+<form action="ChangePw.mem" name="frm" method="post" id = "frm">
 현재 비밀번호 : <input type="password" name="memPw" id ="memPw"/><br />
 변경 비밀번호 : <input type="password" name="newPw" id="newPw"/><br />
 변경 비밀번호 확인:<input type="password" name="newPwCon" id="newPwCon"/><br />
