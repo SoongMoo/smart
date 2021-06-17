@@ -23,9 +23,17 @@ public class GoodsController extends HttpServlet
 					request.getRequestDispatcher("goods/goodsList.jsp");
 			dispatcher.forward(request, response);
 		}else if(command.equals("/goodsRegist.gd")) {
+			GoodsNumberPage action = 
+					new GoodsNumberPage();
+			action.goodsNum(request);
+			response.setCharacterEncoding("utf-8");
 			RequestDispatcher dispatcher =
 					request.getRequestDispatcher("goods/goodsJoin.jsp");
 			dispatcher.include(request, response);
+		}else if(command.equals("/goodsJoin.gd")) {
+			GoodsJoinPage action = 	new GoodsJoinPage();
+			action.goodsJoin(request);
+			response.sendRedirect("goodsList.gd");
 		}
 	}
 	@Override
