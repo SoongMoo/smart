@@ -10,7 +10,32 @@ public class GoodsDAO extends DataBaseInfo{
 	final String COLUMNS = "PROD_NUM, PROD_NAME, PROD_PRICE,"
 			+ "PROD_IMAGE, PROD_DETAIL,PROD_CAPACITY,PRUD_SUPPLYER,"
 			+ "PROD_DEL_FEE,RECOMMEND, EMPLOYEE_ID,CTGR ";
-	
+	public void goodsUpdate(ProductDTO dto) {
+		sql = " update products "
+			+ " set PROD_NAME = ? , PROD_PRICE = ?,"
+			+ "     PROD_DETAIL = ?, PROD_CAPACITY= ? , "
+			+ "     PRUD_SUPPLYER = ? , PROD_DEL_FEE = ?,"
+			+ "     RECOMMEND = ?"
+			+ " where PROD_NUM = ? ";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(8, dto.getProdNum());
+			pstmt.setString(1, dto.getProdName());
+			pstmt.setInt(2, dto.getProdPrice());
+			pstmt.setString(3, dto.getProdDetail());
+			pstmt.setString(4, dto.getProdCapacity());
+			pstmt.setString(5, dto.getProdSupplyer());
+			pstmt.setString(6, dto.getProdDelFee());
+			pstmt.setString(7, dto.getRecommend());
+			int i = pstmt.executeUpdate();
+			System.out.println(i + "개가 수정되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
 	public ProductDTO GoodsOne(String prodNum) {
 		ProductDTO dto = null;
 		sql = "select " + COLUMNS +", "

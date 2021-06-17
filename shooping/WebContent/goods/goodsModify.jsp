@@ -8,9 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="goodsModify.gd" method="post" name="frm" 
-								enctype="multipart/form-data">
-<input type="hidden" name="prodNum">
+<form action="goodsModify.gd" method="post" name="frm" >
+<input type="hidden" name="prodNum" value="${dto.prodNum }">
 	<table border = 1 align="center">
 		<tr><th>상품 번호</th>
 			<td>${dto.ctgr }-${dto.prodNum }</td></tr>		
