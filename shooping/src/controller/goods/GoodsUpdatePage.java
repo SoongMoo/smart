@@ -14,7 +14,7 @@ public class GoodsUpdatePage {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		ProductDTO dto = new ProductDTO(); 
+		ProductDTO dto = new ProductDTO();
 		dto.setProdCapacity(request.getParameter("prodCapacity"));
 		dto.setProdDelFee(request.getParameter("prodDelFee"));
 		dto.setProdDetail(request.getParameter("prodDetail"));
