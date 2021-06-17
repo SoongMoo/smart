@@ -18,12 +18,12 @@
 					<option value="car">자동차용품</option>
 				</select>
 				<input type="text" name="goodsNum" 
-						value="${goodsNum }"/>
+						value="${goodsNum }" readonly="readonly"/>
 				</td></tr>		
 		<tr><th>상품명</th>
-			<td><input type="text" name="prodName"/></td></tr>
+			<td><input type="text" name="prodName" /></td></tr>
 		<tr><th>가격</th>
-			<td><input type="text" name="prodPrice"/></td></tr>
+			<td><input type="text" name="prodPrice" /></td></tr>
 		<tr><th>용량</th>
 			<td><input type="text" name="prodCapacity"/></td></tr>
 		<tr><th>공급처</th>
@@ -32,7 +32,7 @@
 			<td><input type="number" name="prodDelFee" min="0" step="1"/></td></tr>
 		<tr><th>추천여부</th>
 			<td>
-				<input type="radio" name="recommend" value="Y"/>추천
+				<input type="radio" name="recommend" value="Y" checked/>추천
 				<input type="radio" name="recommend" value="N"/>비추
 			</td></tr>
 		<tr><th>내용</th>

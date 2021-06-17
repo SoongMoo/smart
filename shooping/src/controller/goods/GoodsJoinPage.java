@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import model.DAO.GoodsDAO;
 import model.DTO.AuthInfo;
 import model.DTO.ProductDTO;
 
@@ -18,7 +19,7 @@ public class GoodsJoinPage {
 								 .getRealPath("goods/upload");
 		System.out.println(realPath);
 		int fileSize = 1024*1024*5;
-		MultipartRequest multi;
+		MultipartRequest multi = null;
 		HttpSession session = request.getSession();
 		AuthInfo authInfo = 
 				(AuthInfo)session.getAttribute("authInfo");
@@ -39,16 +40,19 @@ public class GoodsJoinPage {
 		}
 		ProductDTO dto = new ProductDTO();
 		dto.setEmployeeId(emp_no);
-		dto.setProdCapacity(request.getParameter("prodCapacity"));
-		dto.setProdDelFee(request.getParameter("prodDelFee"));
-		dto.setProdDetail(request.getParameter("prodDetail"));
+		dto.setProdCapacity(multi.getParameter("prodCapacity"));
+		dto.setProdDelFee(multi.getParameter("prodDelFee"));
+		dto.setProdDetail(multi.getParameter("prodDetail"));
 		dto.setProdImage(images);
-		dto.setProdName(request.getParameter("prodName"));
-		dto.setProdNum(request.getParameter("prodNum"));
+		dto.setProdName(multi.getParameter("prodName"));
+		dto.setProdNum(multi.getParameter("goodsNum"));
 		dto.setProdPrice(
-				Integer.parseInt(request.getParameter("prodPrice")));
-		dto.setProdSupplyer(request.getParameter("prodSupplyer"));
-		dto.setRecommend(request.getParameter("recommend"));
-		dto.setCtgr(request.getParameter("ctgr"));
+				Integer.parseInt(multi.getParameter("prodPrice")));
+		dto.setProdSupplyer(multi.getParameter("prodSupplyer"));
+		System.out.println(dto.getProdSupplyer());
+		dto.setRecommend(multi.getParameter("recommend"));
+		dto.setCtgr(multi.getParameter("ctgr"));
+		GoodsDAO dao = new GoodsDAO();
+		dao.prodInsert(dto);
 	}
 }
