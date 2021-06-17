@@ -15,6 +15,15 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
+  	<servlet-name>goods</servlet-name>
+  	<servlet-class>controller.goods.GoodsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>goods</servlet-name>
+  	<url-pattern>*.gd</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>main</servlet-name>
   	<servlet-class>controller.main.MainController</servlet-class>
   </servlet>
