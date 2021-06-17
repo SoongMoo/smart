@@ -19,6 +19,8 @@ public class GoodsController extends HttpServlet
 		String command = RequestURI.substring(
 				contextPath.length());
 		if(command.equals("/goodsList.gd")) {
+			GoodsListPage action = new GoodsListPage();
+			action.goodsList(request);
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher("goods/goodsList.jsp");
 			dispatcher.forward(request, response);
@@ -34,6 +36,12 @@ public class GoodsController extends HttpServlet
 			GoodsJoinPage action = 	new GoodsJoinPage();
 			action.goodsJoin(request);
 			response.sendRedirect("goodsList.gd");
+		}else if(command.equals("/prodDetail.gd")) {
+			GoodsModifyPage action = new GoodsModifyPage();
+			action.goodsModify(request);
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("goods/goodsModify.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 	@Override
