@@ -44,6 +44,8 @@
 			<input type="submit" value="상품 수정" />
 			<input type="button" value="취소" 
 				onclick="javascript:history.back();"/>
+			<input type="button" value="삭제" 
+				onclick="javascript:location.href='prodDel.gd?prodNum=${dto.prodNum }';"/>
 			<input type="button" value="홈으로" 
 				onclick="javascript:location.href='main.sm'"/> 
 			</th></tr>

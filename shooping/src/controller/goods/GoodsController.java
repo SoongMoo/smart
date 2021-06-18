@@ -46,6 +46,10 @@ public class GoodsController extends HttpServlet
 			GoodsUpdatePage action = new GoodsUpdatePage();
 			action.goodsUpdate(request);
 			response.sendRedirect("goodsList.gd");
+		}else if(command.equals("/prodDel.gd")) {
+			GoodsDeletePage action = new GoodsDeletePage();
+			action.prodDelete(request);
+			response.sendRedirect("goodsList.gd");
 		}
 	}
 	@Override

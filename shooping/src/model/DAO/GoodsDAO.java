@@ -10,6 +10,23 @@ public class GoodsDAO extends DataBaseInfo{
 	final String COLUMNS = "PROD_NUM, PROD_NAME, PROD_PRICE,"
 			+ "PROD_IMAGE, PROD_DETAIL,PROD_CAPACITY,PRUD_SUPPLYER,"
 			+ "PROD_DEL_FEE,RECOMMEND, EMPLOYEE_ID,CTGR ";
+	public void prodDel(String prodNum) {
+		sql = " delete from products "
+			+ " where PROD_NUM = ? ";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, prodNum);
+			int i = pstmt.executeUpdate();
+			System.out.println(i + "가 삭제되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+	}
+	
 	public void goodsUpdate(ProductDTO dto) {
 		sql = " update products "
 			+ " set PROD_NAME = ? , PROD_PRICE = ?,"
