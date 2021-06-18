@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.DTO.CartDTO;
 import model.DTO.ProductDTO;
 
 public class GoodsDAO extends DataBaseInfo{
@@ -26,7 +27,27 @@ public class GoodsDAO extends DataBaseInfo{
 		}
 		
 	}
-	
+	public void cartInsert(CartDTO dto) {
+		sql = "insert into cart (MEM_ID,PROD_NUM,CART_QTY,"
+									+ "CART_PRICE) "
+			+ "values(?,?,?,?)";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getMemId());
+			pstmt.setString(2, dto.getProdNum());
+			pstmt.setString(3, dto.getCartQty());
+			pstmt.setInt(4, dto.getCartPrice());
+			int i = pstmt.executeUpdate();
+			System.out.println(i+"개가 저장되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+
+	}
 	public void goodsUpdate(ProductDTO dto) {
 		sql = " update products "
 			+ " set PROD_NAME = ? , PROD_PRICE = ?,"

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script>
-	location.href="main.sm";
-</script>
+카트페이지입다.
 </body>
 </html>

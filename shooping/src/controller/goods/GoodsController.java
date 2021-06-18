@@ -50,6 +50,21 @@ public class GoodsController extends HttpServlet
 			GoodsDeletePage action = new GoodsDeletePage();
 			action.prodDelete(request);
 			response.sendRedirect("goodsList.gd");
+		}else if(command.equals("/prodInfo.gd")) {
+			response.setCharacterEncoding("utf-8");
+			GoodsModifyPage action = new GoodsModifyPage();
+			action.goodsModify(request);
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("goods/goodsDetail.jsp");
+			dispatcher.include(request, response);
+		}else if(command.equals("/goodsCartAdd.gd")) {
+			GoodsCartAddPage action = 
+					new GoodsCartAddPage();
+			action.cartAdd(request);
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher(
+							"goods/goodsCart.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 	@Override
