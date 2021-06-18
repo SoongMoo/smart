@@ -61,6 +61,10 @@ public class GoodsController extends HttpServlet
 			GoodsCartAddPage action = 
 					new GoodsCartAddPage();
 			action.cartAdd(request);
+			response.sendRedirect("goodsCartList.gd");
+		}else if(command.equals("/goodsCartList.gd")) {
+			GoodsCartList cartList = new  GoodsCartList();
+			cartList.cartList(request);
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher(
 							"goods/goodsCart.jsp");

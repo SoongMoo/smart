@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.DTO.CartDTO;
+import model.DTO.ProductCartDTO;
 import model.DTO.ProductDTO;
 
 public class GoodsDAO extends DataBaseInfo{
@@ -27,17 +28,64 @@ public class GoodsDAO extends DataBaseInfo{
 		}
 		
 	}
-	public void cartInsert(CartDTO dto) {
-		sql = "insert into cart (MEM_ID,PROD_NUM,CART_QTY,"
-									+ "CART_PRICE) "
-			+ "values(?,?,?,?)";
+	public List cartList(String memId) {
+		List list = new ArrayList();
+		sql = "select p.PROD_NUM , PRUD_SUPPLYER, PROD_DEL_FEE,"
+			+ "  PROD_IMAGE, PROD_NAME ,PROD_PRICE," 
+			+ "        CART_PRICE, CART_QTY" 
+			+ " from products p, cart c" 
+			+ " where p.PROD_NUM = c.prod_num and c.mem_id = ?";
 		getConnect();
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getMemId());
-			pstmt.setString(2, dto.getProdNum());
+			pstmt.setString(1, memId);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProductCartDTO dto = new ProductCartDTO();
+				dto.setCartDTO(new CartDTO());
+				dto.setProductDTO(new ProductDTO());
+				dto.getCartDTO().setCartPrice(rs.getInt("CART_PRICE"));
+				dto.getCartDTO().setCartQty(rs.getString("cart_Qty"));
+				dto.getProductDTO()
+				   .setProdDelFee(rs.getString("prod_Del_Fee"));
+				dto.getProductDTO()
+					.setProdImage(rs.getString("prod_Image"));
+				dto.getProductDTO()
+				   .setProdName(rs.getString("prod_Name"));
+				dto.getProductDTO()
+				   .setProdPrice(rs.getInt("prod_Price"));
+				dto.getProductDTO()
+				   .setProdSupplyer(rs.getString("prud_Supplyer"));
+				list.add(dto);				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public void cartInsert(CartDTO dto) {
+		sql = " merge into cart c "
+			+ " using (select prod_num "
+			+ "        from products where prod_num = ?) p "
+			+ " on (c.prod_num = p.prod_num and c.mem_id = ? ) "
+			+ " When MATCHED THEN "
+			+ " 	update set CART_QTY = CART_QTY + ? ,"
+			+ "                CART_PRICE = CART_PRICE + ? "
+			+ " When not MATCHED THEN  "
+			+ " insert (c.MEM_ID,c.PROD_NUM,c.CART_QTY,"
+									+ "c.CART_PRICE) "
+			+ " values(?,?,?,?)";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getProdNum());
+			pstmt.setString(2, dto.getMemId());
 			pstmt.setString(3, dto.getCartQty());
 			pstmt.setInt(4, dto.getCartPrice());
+			pstmt.setString(5, dto.getMemId());
+			pstmt.setString(6, dto.getProdNum());
+			pstmt.setString(7, dto.getCartQty());
+			pstmt.setInt(8, dto.getCartPrice());
 			int i = pstmt.executeUpdate();
 			System.out.println(i+"개가 저장되었습니다.");
 		} catch (SQLException e) {
