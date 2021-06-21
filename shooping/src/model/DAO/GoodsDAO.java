@@ -27,6 +27,45 @@ public class GoodsDAO extends DataBaseInfo{
 			close();
 		}
 	}
+	public ProductCartDTO prodCart(String prodNum, String memId) {
+		ProductCartDTO dto = null;
+		sql = "select p.PROD_NUM , PROD_NAME, PROD_PRICE, "
+				+ "	  PRUD_SUPPLYER, PROD_DEL_FEE, prod_image,"
+				+ "       MEM_ID, CART_QTY, CART_PRICE" 
+				+ " from products p, cart c" 
+				+ " where p.PROD_NUM = c.PROD_NUM "
+				+ " and MEM_ID = ? and c.PROD_NUM = ?"; 
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			pstmt.setString(2, prodNum);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto = new ProductCartDTO();
+				dto.setCartDTO(new CartDTO());
+				dto.setProductDTO(new ProductDTO());
+				dto.getProductDTO().setProdNum(rs.getString("prod_num"));
+				dto.getCartDTO().setCartPrice(rs.getInt("CART_PRICE"));
+				dto.getCartDTO().setCartQty(rs.getString("cart_Qty"));
+				dto.getProductDTO()
+				   .setProdDelFee(rs.getString("prod_Del_Fee"));
+				dto.getProductDTO()
+					.setProdImage(rs.getString("prod_Image"));
+				dto.getProductDTO()
+				   .setProdName(rs.getString("prod_Name"));
+				dto.getProductDTO()
+				   .setProdPrice(rs.getInt("prod_Price"));
+				dto.getProductDTO()
+				   .setProdSupplyer(rs.getString("prud_Supplyer"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return dto;
+	}
 	public void cartProdDel(CartDTO dto) {
 		sql = " delete from cart "
 			+ " where MEM_ID = ? and  PROD_NUM = ?";
@@ -65,11 +104,11 @@ public class GoodsDAO extends DataBaseInfo{
 	}
 	public List cartList(String memId) {
 		List list = new ArrayList();
-		sql = "select p.PROD_NUM , PRUD_SUPPLYER, PROD_DEL_FEE,"
+		sql = " select p.PROD_NUM , PRUD_SUPPLYER, PROD_DEL_FEE,"
 			+ "  PROD_IMAGE, PROD_NAME ,PROD_PRICE," 
 			+ "        CART_PRICE, CART_QTY" 
 			+ " from products p, cart c" 
-			+ " where p.PROD_NUM = c.prod_num and c.mem_id = ?";
+			+ " where p.PROD_NUM = c.prod_num and c.mem_id = ? ";
 		getConnect();
 		try {
 			pstmt = conn.prepareStatement(sql);

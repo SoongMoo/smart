@@ -30,7 +30,7 @@
 			}
 		}
 		document.getElementById("totalPrice").innerHTML=prodTot;
-		document.getElementById("prodCnt").innerHTML=cnt;
+		document.getElementById("prodCnt").innerHTML= cnt ;
 	}
 </script>
 </head>
@@ -78,11 +78,13 @@
 <tr><td colspan="4" valign="top">전체 합계</td>
     <td colspan="2" align="left"> 상품 수 :<br />
 		                        총합계 : </td>
-	 <td colspan="2" align="right"><span id="prodCnt">${cnt }개</span><br />
-	 				<span id="totalPrice">${price }원</span></td></tr>
+	 <td colspan="2" align="right"><span id="prodCnt">${cnt }</span>개<br />
+	 				<span id="totalPrice">
+	 				${price }</span>원</td></tr>
 
-<tr><td colspan="8" align="center"><input type="submit" value="구매하기"/> </td> 
-
+<tr><td colspan="8" align="center">
+	<input type="submit" value="구매하기"/>
+	</td></tr> 
 </form>
 </table>
 
