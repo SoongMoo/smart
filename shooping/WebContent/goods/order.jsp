@@ -17,6 +17,7 @@
 			<td>적용금액</td><td>판매자</td><td>배송비</td></tr>
 <c:set var="cartPrice" value="0"/>
 <c:set var="prodDelFee" value="0"/>
+<c:set var="prodNums" value="" />
 <c:forEach items="${list }" var="dto">
 		<tr><td>
 		<img src="goods/upload/${dto.productDTO.prodImage.split(',')[0] }" 
@@ -30,14 +31,16 @@
 			<td>${dto.productDTO.prodDelFee }</td></tr>
 <c:set var="cartPrice" value="${cartPrice + dto.cartDTO.cartPrice }"/>
 <c:set var="prodDelFee" value="${prodDelFee + dto.productDTO.prodDelFee }"/>
+<c:set var="prodNums" value="${prodNums += dto.productDTO.prodNum += ','}" />
 </c:forEach>	
 </table>
 <table width="600">
 	<tr><td>상품금액<br />${cartPrice }</td>
 		<td>+</td><td>배송비<br />${prodDelFee }</td>
 		<td>=</td><td>최종결제금액<br />${cartPrice + prodDelFee }
-			<input type="hidden" name="purchaseTotPrice" 
-				value="" />
+			<input type="text" name="purchaseTotPrice" 
+				value="${cartPrice + prodDelFee }" />
+			<input type="text" name="prodNums" value="${prodNums }" />
 			</td></tr>
 </table>
 <table>
