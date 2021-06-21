@@ -19,6 +19,11 @@ public class GoodsCartAddPage {
 		AuthInfo authInfo =
 				(AuthInfo)session.getAttribute("authInfo");
 		String memId = authInfo.getUserId();
+		System.out.println(prodNum);
+		System.out.println(cartQty);
+		System.out.println(prodPrice);
+		System.out.println(memId);
+		
 		CartDTO dto = new CartDTO();
 		dto.setCartPrice(cartPrice);
 		dto.setCartQty(cartQty);

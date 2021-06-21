@@ -35,6 +35,7 @@
 	<c:if test="${authInfo.grade == 1 }">
 	<!-- 일반 회원 -->
 		<a href="myPage.mem">마이페이지</a>
+		<a href="goodsCartList.gd">장바구니</a>
 	</c:if>
 	<c:if test="${authInfo.grade != 1 }">
 		<a href="empMyPage.em">마이페이지</a>

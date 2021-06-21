@@ -50,7 +50,7 @@ ${dto.ctgr }의 ${dto.prodName } 상품 설명입니다.
 		공급업체 : ${dto.prodSupplyer }<br />
 		${dto.prodDetail }<br />
 		<c:forTokens items="${dto.prodImage }" delims="," var="file">
-			<c:if test="${file != null }">
+			<c:if test="${file != 'null' }">
 			<img width="800" src="goods/upload/${file }" /><br />
 			</c:if>
 		</c:forTokens>

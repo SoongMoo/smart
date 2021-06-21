@@ -22,6 +22,7 @@
 					type="currency" />	</td>
 	    <td>${dto.prodDelFee }</td></tr>
 	</c:forEach>
+	<tr><td colspan="8"></td></tr>
 </table>
 <a href="goodsRegist.gd" >상품등록</a>
 </body>

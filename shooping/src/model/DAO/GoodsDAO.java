@@ -44,6 +44,7 @@ public class GoodsDAO extends DataBaseInfo{
 				ProductCartDTO dto = new ProductCartDTO();
 				dto.setCartDTO(new CartDTO());
 				dto.setProductDTO(new ProductDTO());
+				dto.getProductDTO().setProdNum(rs.getString("prod_num"));
 				dto.getCartDTO().setCartPrice(rs.getInt("CART_PRICE"));
 				dto.getCartDTO().setCartQty(rs.getString("cart_Qty"));
 				dto.getProductDTO()
