@@ -26,7 +26,42 @@ public class GoodsDAO extends DataBaseInfo{
 		}finally {
 			close();
 		}
-		
+	}
+	public void cartProdDel(CartDTO dto) {
+		sql = " delete from cart "
+			+ " where MEM_ID = ? and  PROD_NUM = ?";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getMemId());
+			pstmt.setString(2, dto.getProdNum());
+			int i = pstmt.executeUpdate();
+			System.out.println(i+"개가 삭제되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+	public void cartQtyDown(CartDTO dto) {
+		sql = " update cart "
+			+ " set  CART_QTY = CART_QTY - ?,"
+			+ "      CART_PRICE = CART_PRICE - ? "
+			+ " where MEM_ID = ?  and PROD_NUM = ? ";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			pstmt.setInt(2, dto.getCartPrice());
+			pstmt.setString(3, dto.getMemId());
+			pstmt.setString(4, dto.getProdNum());
+			int i = pstmt.executeUpdate();
+			System.out.println(i+"개가 수정되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}	
 	}
 	public List cartList(String memId) {
 		List list = new ArrayList();
@@ -61,6 +96,8 @@ public class GoodsDAO extends DataBaseInfo{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 		return list;
 	}
@@ -82,7 +119,7 @@ public class GoodsDAO extends DataBaseInfo{
 			pstmt.setString(1, dto.getProdNum());
 			pstmt.setString(2, dto.getMemId());
 			pstmt.setString(3, dto.getCartQty());
-			pstmt.setInt(4, dto.getCartPrice());
+			pstmt.setLong(4, dto.getCartPrice());
 			pstmt.setString(5, dto.getMemId());
 			pstmt.setString(6, dto.getProdNum());
 			pstmt.setString(7, dto.getCartQty());
@@ -94,8 +131,6 @@ public class GoodsDAO extends DataBaseInfo{
 		}finally {
 			close();
 		}
-		
-
 	}
 	public void goodsUpdate(ProductDTO dto) {
 		sql = " update products "

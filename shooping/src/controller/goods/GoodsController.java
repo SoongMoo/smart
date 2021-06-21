@@ -69,10 +69,14 @@ public class GoodsController extends HttpServlet
 					request.getRequestDispatcher(
 							"goods/goodsCart.jsp");
 			dispatcher.forward(request, response);
-		}else if(command.equals("goodsCartQtyDown.gd")) {
+		}else if(command.equals("/goodsCartQtyDown.gd")) {
 			GoodsCartQtyDownPage action =
 					new GoodsCartQtyDownPage();
 			action.cartQtyDown(request);
+			response.sendRedirect("goodsCartList.gd");
+		}else if(command.equals("/cartProdDel.gd")) {
+			GoodsCartProdDel action = new GoodsCartProdDel();
+			action.cartProdDel(request);
 			response.sendRedirect("goodsCartList.gd");
 		}
 	}
