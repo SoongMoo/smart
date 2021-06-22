@@ -90,6 +90,12 @@ public class GoodsController extends HttpServlet
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher("goods/payment.jsp");
 			dispatcher.forward(request, response);
+		}else if(command.equals("/purchaseCon.gd")) {
+			PurchaseListConPage action = new PurchaseListConPage();
+			action.purchaseList(request);
+			RequestDispatcher dispatcher =
+					request.getRequestDispatcher("goods/purchaseCon.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 	@Override

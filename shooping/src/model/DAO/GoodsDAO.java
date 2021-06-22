@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.DTO.CartDTO;
+import model.DTO.OrderList;
 import model.DTO.ProductCartDTO;
 import model.DTO.ProductDTO;
 import model.DTO.PurchaseDTO;
@@ -13,6 +14,34 @@ public class GoodsDAO extends DataBaseInfo{
 	final String COLUMNS = "PROD_NUM, PROD_NAME, PROD_PRICE,"
 			+ "PROD_IMAGE, PROD_DETAIL,PROD_CAPACITY,PRUD_SUPPLYER,"
 			+ "PROD_DEL_FEE,RECOMMEND, EMPLOYEE_ID,CTGR ";
+	public List<OrderList> orderList(String memId){
+		List<OrderList> list = new ArrayList<OrderList>();
+		sql = "select p2.PURCHASE_DATE, p4.PAYMENT_APPR_NUM , p1.prod_num," 
+			+"       p2.PURCHASE_NUM, p1.prod_name, p1.PRUD_SUPPLYER,"  
+			+"       p2.PURCHASE_TOT_PRICE, p1.prod_image " 
+			+" from products p1, purchase p2, purchase_list p3, payment p4 "  
+			+" where p2.PURCHASE_NUM = p3.PURCHASE_NUM "
+			+" and p1.prod_num = p3.prod_num " 
+			+" and p2.PURCHASE_NUM = p4.PURCHASE_NUM(+) "
+			+" and p2.mem_id = ? " 
+			+" order by PURCHASE_NUM desc";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				OrderList dto = new OrderList();
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return list;
+	}
 	
 	public void cartDel(String prodNum,	String memId) {
 		sql = " delete from cart "

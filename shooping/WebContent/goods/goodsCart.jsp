@@ -45,7 +45,6 @@
 	<tr><td colspan="4">
 		<input type="checkbox" value="${dto.productDTO.prodNum}" 
 			name="prodCk" onchange="prodChk();"	checked />
-		
 		<input type="hidden" name="cartPrice" 
 			value="${dto.cartDTO.cartPrice + dto.productDTO.prodDelFee}" />
 		
