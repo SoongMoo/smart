@@ -10,8 +10,9 @@
 <body>
 주문서
 <hr />
+<p>
 1. 주문 상품<br />
-<form action="#" method="post">
+<form action="goodsOrder.gd" method="post">
 <table width="600">
 		<tr><td colspan="2">상품정보</td>
 			<td>적용금액</td><td>판매자</td><td>배송비</td></tr>
@@ -43,6 +44,10 @@
 			<input type="text" name="prodNums" value="${prodNums }" />
 			</td></tr>
 </table>
+</p>
+<hr />
+<p>
+2. 배송지 정보 입력
 <table>
 	<tr><td>이름</td>
 		<td><input type="text" name="receiveName" /></td></tr>
@@ -62,6 +67,7 @@
 </table>
 <table><tr><td><input type="submit" value="결제하기"/></td></tr>
 </table>
+</p>
 </form>
 </body>
 </html>

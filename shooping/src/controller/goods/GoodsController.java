@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import oracle.jdbc.driver.DiagnosabilityMXBean;
-
 public class GoodsController extends HttpServlet 
 		implements Servlet{
 	public void doProcess(HttpServletRequest request, 
@@ -85,6 +83,12 @@ public class GoodsController extends HttpServlet
 			action.goodsBuy(request);
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher("goods/order.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/goodsOrder.gd")) {
+			GoodsOrderPage action = new GoodsOrderPage();
+			action.goodsOrder(request);
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("goods/payment.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
