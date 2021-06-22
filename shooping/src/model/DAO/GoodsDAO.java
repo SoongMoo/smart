@@ -6,6 +6,7 @@ import java.util.List;
 
 import model.DTO.CartDTO;
 import model.DTO.OrderList;
+import model.DTO.PaymentDTO;
 import model.DTO.ProductCartDTO;
 import model.DTO.ProductDTO;
 import model.DTO.PurchaseDTO;
@@ -14,6 +15,35 @@ public class GoodsDAO extends DataBaseInfo{
 	final String COLUMNS = "PROD_NUM, PROD_NAME, PROD_PRICE,"
 			+ "PROD_IMAGE, PROD_DETAIL,PROD_CAPACITY,PRUD_SUPPLYER,"
 			+ "PROD_DEL_FEE,RECOMMEND, EMPLOYEE_ID,CTGR ";
+	public void payment(PaymentDTO dto) {
+		String num = " select to_char(sysdate,'yyyymmdd') || " 
+	               +"       nvl2(max(PAYMENT_APPR_NUM),"
+	               +"      substr(max(PAYMENT_APPR_NUM),-6),100000) + 1 " 
+	               +" from payment " 
+	               +" where substr(PAYMENT_APPR_NUM, 1, 8)"
+	               +" = to_char(sysdate,'yyyymmdd')";
+		
+		sql = " insert into payment (PURCHASE_NUM,MEM_ID,PAYMENT_METHOD,"
+				+ "                  PAYMENT_APPR_PRICE,PAYMENT_APPR_NUM,"
+				+ "					 PAYMENT_APPR_DATE, PAYMENT_NUMBER ) "
+			+ " values (?, ?, ?, ?, ( "+ num +" ), sysdate, ?  )"; 
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getPurchaseNum());
+			pstmt.setString(2, dto.getMemId());
+			pstmt.setString(3, dto.getPaymentMethod());
+			pstmt.setString(4, dto.getPaymentApprPrice());
+			pstmt.setString(5, dto.getPaymentNumber());
+			int i = pstmt.executeUpdate();
+			System.out.println(i + "개가 저장되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+	}
 	public List<OrderList> orderList(String memId){
 		List<OrderList> list = new ArrayList<OrderList>();
 		sql = "select p2.PURCHASE_DATE, p4.PAYMENT_APPR_NUM , p1.prod_num," 
@@ -32,7 +62,14 @@ public class GoodsDAO extends DataBaseInfo{
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				OrderList dto = new OrderList();
-				
+				dto.setPaymentApprNum(rs.getString("payment_Appr_Num"));
+				dto.setProdImage(rs.getString("prod_Image"));
+				dto.setProdName(rs.getString("prod_Name"));
+				dto.setProdNum(rs.getString("prod_Num"));
+				dto.setProdSupplyer(rs.getString("prud_Supplyer"));
+				dto.setPurchaseDate(rs.getString("purchase_Date"));
+				dto.setPurchaseTotPrice(rs.getString("purchase_Tot_Price"));
+				dto.setPurchaseNum(rs.getString("purchase_Num"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {

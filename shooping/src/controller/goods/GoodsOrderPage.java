@@ -12,7 +12,7 @@ import model.DTO.AuthInfo;
 import model.DTO.PurchaseDTO;
 
 public class GoodsOrderPage {
-	public void goodsOrder(HttpServletRequest request) {
+	public String goodsOrder(HttpServletRequest request) {
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {
@@ -45,5 +45,6 @@ public class GoodsOrderPage {
 		for(String prodNum : prodNums) {
 			dao.cartDel(prodNum,memId);
 		}
+		return purchaseNum + "," + dto.getPurchaseTotPrice();
 	}
 }

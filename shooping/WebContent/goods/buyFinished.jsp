@@ -7,7 +7,7 @@
 <title>buyFinished.jsp</title>
 </head>
 <body>
-${authInfo.userId }님 ${10000 } 원이 결제 되었습니다.<br />
-<a href="#" >구매리스트</a>
+${authInfo.userId }님 ${money } 원이 결제 되었습니다.<br />
+<a href="purchaseCon.gd" >구매리스트</a>
 </body>
 </html>
