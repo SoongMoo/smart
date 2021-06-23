@@ -25,8 +25,7 @@
 					   <c:if test="${dto.paymentApprNum != null}">
 					   	      결제완료<br />
 						   <c:if test="${dto.reviewContent == null }">
-						   		<a href="goodsReview.gd?purchaseNum=${dto.purchaseNum }
-						   						  &prodNum=${dto.prodNum }">리뷰작성</a>
+						   		<a href="goodsReview.gd?purchaseNum=${dto.purchaseNum }&prodNum=${dto.prodNum }">리뷰작성</a>
 						   </c:if>		
 						   <c:if test="${dto.reviewContent != null }">
 						   		<a href="goodsReviewUpdate.gd?purchaseNum=${dto.purchaseNum }&prodNum=${dto.prodNum }">리뷰수정</a>

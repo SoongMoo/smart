@@ -109,7 +109,7 @@ public class GoodsController extends HttpServlet
 					request.getRequestDispatcher("goods/buyFinished.jsp");
 			dispatcher.forward(request, response);
 		}else if(command.equals("/goodsReview.gd")) {
-			request.setAttribute("dto.prodNum1", request.getParameter("prodNum"));
+			request.setAttribute("prodNum1", request.getParameter("prodNum"));
 			request.setAttribute("purchaseNum1", request.getParameter("purchaseNum"));
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher("goods/goodsReview.jsp");

@@ -14,7 +14,6 @@ public class GoodsModifyPage {
 		GoodsDAO dao = new GoodsDAO();
 		ProductDTO dto = dao.GoodsOne(prodNum);
 		List<ProdReviewDTO> list = dao.prodReviewSelect(prodNum);
-		System.out.println(list.get(0).getMemId());
 		request.setAttribute("list", list);
 		request.setAttribute("dto", dto);
 	}

@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="reviewWrite.gd" method="post" enctype="multipart/form-data">
-<input type="hidden" name="prodNum" value="${dto.prodNum1 }"/>
+<input type="hidden" name="prodNum" value="${prodNum1 }"/>
 <input type="hidden" name="purchaseNum" value="${purchaseNum1 }" />
 <table >
 	<tr><td>리뷰작성</td>
