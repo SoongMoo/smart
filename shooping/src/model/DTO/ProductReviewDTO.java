@@ -2,7 +2,6 @@ package model.DTO;
 
 public class ProductReviewDTO {
 	String purchaseNum;
-	String memId;
 	String prodNum;
 	String reviewDate;
 	String reviewContent;
@@ -12,12 +11,6 @@ public class ProductReviewDTO {
 	}
 	public void setPurchaseNum(String purchaseNum) {
 		this.purchaseNum = purchaseNum;
-	}
-	public String getMemId() {
-		return memId;
-	}
-	public void setMemId(String memId) {
-		this.memId = memId;
 	}
 	public String getProdNum() {
 		return prodNum;

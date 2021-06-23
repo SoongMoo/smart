@@ -22,9 +22,16 @@
 		<td rowspan="2">${dto.prodSupplyer }</td>
 		<td rowspan="2"><c:if test="${dto.paymentApprNum == null}">
 		<a href="paymentOk.gd?purchaseNum=${dto.purchaseNum }&purchaseTotPrice=${dto.purchaseTotPrice }">결제하기</a></c:if>
-					   <c:if test="${dto.paymentApprNum != null}">결제완료<br />
-					   <a href="goodsReview.gd?purchaseNum=${dto.purchaseNum }
-					   						  &prodNum=${dto.prodNum }">리뷰작성</a></c:if>
+					   <c:if test="${dto.paymentApprNum != null}">
+					   	      결제완료<br />
+						   <c:if test="${dto.reviewContent == null }">
+						   		<a href="goodsReview.gd?purchaseNum=${dto.purchaseNum }
+						   						  &prodNum=${dto.prodNum }">리뷰작성</a>
+						   </c:if>		
+						   <c:if test="${dto.reviewContent != null }">
+						   		<a href="goodsReviewUpdate.gd?purchaseNum=${dto.purchaseNum }&prodNum=${dto.prodNum }">리뷰수정</a>
+						   </c:if>				  
+					   </c:if>
 		</td></tr>
 	<tr><td>결제금액 : ${dto.purchaseTotPrice }</td></tr>
 	<tr><td colspan="4"></td></tr>
