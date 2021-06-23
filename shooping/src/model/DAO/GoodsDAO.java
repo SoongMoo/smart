@@ -7,6 +7,7 @@ import java.util.List;
 import model.DTO.CartDTO;
 import model.DTO.OrderList;
 import model.DTO.PaymentDTO;
+import model.DTO.ProdReviewDTO;
 import model.DTO.ProductCartDTO;
 import model.DTO.ProductDTO;
 import model.DTO.ProductReviewDTO;
@@ -16,6 +17,35 @@ public class GoodsDAO extends DataBaseInfo{
 	final String COLUMNS = "PROD_NUM, PROD_NAME, PROD_PRICE,"
 			+ "PROD_IMAGE, PROD_DETAIL,PROD_CAPACITY,PRUD_SUPPLYER,"
 			+ "PROD_DEL_FEE,RECOMMEND, EMPLOYEE_ID,CTGR ";
+	
+	public List<ProdReviewDTO> prodReviewSelect(String prodNum) {
+		List<ProdReviewDTO> list = new ArrayList<ProdReviewDTO>();
+		sql = " select rpad(substr(m.mem_id,1,3),length(m.mem_id),'*') mem_Id, "
+			+ " review_content, review_img, review_date "
+			+ " from member m, purchase p , review r "
+			+ "	where m.mem_id = p.mem_id and p.purchase_num = r.purchase_num" 
+			+ " and r.prod_num = ?";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, prodNum);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProdReviewDTO dto = new ProdReviewDTO();
+				dto.setMemId(rs.getString(1));
+				dto.setReviewContent(rs.getString(2));
+				dto.setReviewDate(rs.getDate(4));
+				dto.setReviewImg(rs.getString(3));
+				System.out.println(dto.getMemId());
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return list;
+	}
 	
 	public void reviewUpdate(ProductReviewDTO dto) {
 		sql = " update review "
