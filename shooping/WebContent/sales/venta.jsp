@@ -31,7 +31,7 @@
 		<td>${dto.prodName }</td><td>${dto.purchaseQty }</td>
 		<td>${dto.purchaseDate }</td>
 		<td>
-			<a href="createDelivery.vnt?purchaseNum=${dto.purchaseNum }" target="_blank">
+			<a href="createDelivery.vnt?purchaseNum=${dto.purchaseNum }">
 			<c:if test="${dto.deliveryNum == null}">배송등록</c:if> 
 			<c:if test="${dto.deliveryNum != null}">배송수정</c:if>
 			</a>

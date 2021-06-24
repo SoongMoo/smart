@@ -10,8 +10,7 @@ import model.DAO.SalesDAO;
 import model.DTO.DeliveryDTO;
 
 public class DeliveryOkPage {
-	public void execute(HttpServletRequest request,
-			HttpServletResponse response) {
+	public void execute(HttpServletRequest request) {
 		DeliveryDTO dto = new DeliveryDTO();
 		dto.setArrivalExpDate(
 				request.getParameter("ArrivalExpDate"));
@@ -27,15 +26,5 @@ public class DeliveryOkPage {
 				request.getParameter("purchaseNum"));
 		SalesDAO dao = new SalesDAO();
 		dao.deliveryCreate(dto);
-		try {
-			PrintWriter out= response.getWriter();
-			out.println("<script>");
-			out.println("self.close();");
-			out.println("</script>");
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 	}
 }

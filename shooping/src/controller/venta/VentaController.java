@@ -44,7 +44,8 @@ implements Servlet {
 			dispatcher.forward(request, response);				
 		}else if(command.equals("/deliveryOk.vnt")) {
 			DeliveryOkPage action = new DeliveryOkPage();
-			action.execute(request, response);
+			action.execute(request);
+			response.sendRedirect("venta.vnt");
 		}
 	}
 	@Override
