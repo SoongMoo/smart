@@ -36,6 +36,15 @@ implements Servlet {
 			RequestDispatcher dispatcher =
 					request.getRequestDispatcher("sales/customerTotal.jsp");
 			dispatcher.forward(request, response);
+		}else if(command.equals("/createDelivery.vnt")) {
+			CreateDeliveryPage action = new CreateDeliveryPage();
+			action.execute(request);
+			RequestDispatcher dispatcher =
+					request.getRequestDispatcher("sales/deliveryForm.jsp");
+			dispatcher.forward(request, response);				
+		}else if(command.equals("/deliveryOk.vnt")) {
+			DeliveryOkPage action = new DeliveryOkPage();
+			action.execute(request, response);
 		}
 	}
 	@Override

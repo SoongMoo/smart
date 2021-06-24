@@ -15,6 +15,15 @@ public class ClientSaleDTO {
 	String receiverPhone;
 	String purchaseQty;
 	String purchasePrice;
+	
+	String deliveryNum;	
+	public String getDeliveryNum() {
+		return deliveryNum;
+	}
+	public void setDeliveryNum(String deliveryNum) {
+		this.deliveryNum = deliveryNum;
+	}
+	
 	public String getMemId() {
 		return memId;
 	}
