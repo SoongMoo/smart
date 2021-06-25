@@ -115,6 +115,16 @@ public class MemberController extends HttpServlet
 						request.getRequestDispatcher("member/pwChang.jsp");
 				dispatcher.forward(request, response);
 			}
+		}else if(command.equals("/idSearch.mem")) {
+			RequestDispatcher dispatcher =
+					request.getRequestDispatcher("member/idSerch.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/idFind.mem")) {
+			IdSearchPage action = new IdSearchPage();
+			action.idFind(request);
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("member/idFind.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 	@Override

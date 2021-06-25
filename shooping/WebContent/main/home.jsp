@@ -23,7 +23,7 @@
 	<tr><td>비밀번호</td>
 		<td><input type="password" name="userPw"/><span>${pwFail }</span></td></tr>
 	<tr><td colspan="3">
-			<a href="#">아이디</a>/<a href="#">비밀번호 찾기</a> |
+			<a href="idSearch.mem">아이디</a>/<a href="#">비밀번호 찾기</a> |
 			<a href="memAgree.mem">회원가입</a>
 		</td></tr>
 </table>

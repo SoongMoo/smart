@@ -43,6 +43,29 @@ public class MemberDAO {
 		if(conn != null)	try {conn.close();} 
 						catch (SQLException e) {}
 	}
+	public void idFind(MemberDTO dto) {
+		sql = "select mem_Id, mem_name from member "
+			+ " where mem_address = ? and mem_phone = ?"
+			+ "   and mem_email = ? ";
+		System.out.println(sql);
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getMemAddress());
+			pstmt.setString(2, dto.getMemPhone());
+			pstmt.setString(3, dto.getMemEmail());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setMemId(rs.getString(1));
+				dto.setMemName(rs.getString(2));
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+	}
 	public void pwChange(String memId, String memPw) {
 		sql = " update member "
 			+ " set mem_pw = ? "
