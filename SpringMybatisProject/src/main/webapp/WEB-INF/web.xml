@@ -26,6 +26,8 @@
   		<param-value>
   			classpath:spring-context.xml
   			classpath:spring-jdbc.xml
+  			classpath:spring-main.xml
+  			classpath:spring-employee.xml
   		</param-value>
   	</init-param>
   </servlet>
