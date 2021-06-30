@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:mvc="http://www.springframework.org/schema/mvc"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+>
+	<!-- 의존 객체 자동 주입 -->
+	<context:annotation-config />
+	<!-- @Controller -->
+	<mvc:annotation-driven />
+	<!-- root 설정 -->
+	<mvc:default-servlet-handler/>
+	<mvc:view-resolvers>
+		<mvc:jsp prefix="/WEB-INF/view/"/>
+		<mvc:jsp suffix=".jsp"/>
+	</mvc:view-resolvers>
+	<!-- password암호화 -->
+	<bean id = "bcryptPasswordEncoder" 
+	class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<constructor-arg value="10"/>
+	</bean>
+	<!-- 파일 업로드 -->
+	<bean id="multipartResolver" 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		 <property name="maxUploadSize" value="100000000"/>
+		 <property name="maxInMemorySize" value="100000000"/>
+	</bean>
+	<bean class="controller.HelloController"/>
+</beans>

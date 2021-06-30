@@ -80,7 +80,9 @@ a img {
 hr {
 	display: none;
 }
-
+table{
+	margin-bottom:50px ;
+}
 
 /*********************************************************************************/
 /* List Styles                                                                   */
@@ -280,11 +282,10 @@ hr {
 /*********************************************************************************/
 
 	#banner 
-	{
+	{	
 		overflow: hidden;
 		height: 330px;
 		background: url(images/pic01.jpg) no-repeat center;
-		background-size: cover;
 	}
 	
 	#banner .image
@@ -343,7 +344,7 @@ hr {
 {
 	position: relative;
 	overflow: hidden;
-	padding: 6em 0em 5em 0em;
+	padding: 20px 0em 20px 0em;
 }
 
 /** CONTENT */
