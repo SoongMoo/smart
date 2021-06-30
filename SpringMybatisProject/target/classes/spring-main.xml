@@ -6,9 +6,5 @@
 			http://www.springframework.org/schema/beans/spring-beans.xsd
 			"
 >
-	<bean class="controller.employee.EmployeeController" />
-	<bean id = "employeeNumService" 
-		class="service.employee.EmployeeNumService"/>
-	<bean id="employeeRepository" 
-		class="repository.EmployeeRepository"/>
+	<bean class="controller.main.MainController"/>
 </beans>

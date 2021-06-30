@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class EmployeeRepository {
 	@Autowired
 	SqlSession sqlSession;
-	String namespace = "mappers.employeeMapper"; 
+	
+	String namespace = "mappers.employeeMapper";
+	String statement;
 	public String empNo() {
-		return null;
+		statement = namespace + ".empNo";
+		return sqlSession.selectOne(statement);
 	}
 }
