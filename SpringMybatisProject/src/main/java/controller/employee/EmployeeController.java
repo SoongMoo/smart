@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import command.EmployeeCommand;
+import service.employee.EmployeeJoinService;
 import service.employee.EmployeeNumService;
 import validator.EmployeeCommandValidator;
 
@@ -17,14 +19,16 @@ import validator.EmployeeCommandValidator;
 public class EmployeeController {
 	@Autowired
 	EmployeeNumService employeeNumService;
+	@Autowired
+	EmployeeJoinService employeeJoinService;
 	@RequestMapping(value = "empList", method = RequestMethod.GET)
 	public String empList() {
 		return "employee/employeeList";
 	}
 	@RequestMapping(value = "empRegist", method = RequestMethod.GET)
-	public String empRegist(Model model) {
-		employeeNumService.empNo(model);
-		model.addAttribute("employeeCommand", new EmployeeCommand());
+	public String empRegist(Model model , 
+			EmployeeCommand employeeCommand) {
+		employeeNumService.empNo(model, employeeCommand);
 		return "employee/employeeForm";
 	}
 	@RequestMapping(value="empJoin",method = RequestMethod.POST )
@@ -36,6 +40,7 @@ public class EmployeeController {
 		if(errors.hasErrors()) {
 			return "employee/employeeForm";
 		}
+		employeeJoinService.empInsert(employeeCommand);
 		return "redirect:empList";
 	}
 }

@@ -5,4 +5,11 @@
 <select id="empNo" resultType="string">
 	select nvl(max(EMPLOYEE_ID),0) + 1 from employees
 </select>
+<insert id="empInsert" parameterType="Model.EmployeeDTO">
+	insert into employees(EMPLOYEE_ID,EMP_USERID,EMP_PW,EMP_NAME,
+					HIRE_DATE, JOB_ID,PH_NUMBER, OFFICE_NUMBER,
+					EMAIL, EMP_ADDRESS  )
+	values(#{employeeId},#{empUserId},#{empPw},#{empName},#{hireDate},
+	#{jobId},#{phNumber},#{officeNumber},#{email},#{empAddress})
+</insert>
 </mapper>

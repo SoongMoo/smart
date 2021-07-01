@@ -11,4 +11,6 @@
 		class="service.employee.EmployeeNumService"/>
 	<bean id="employeeRepository" 
 		class="repository.EmployeeRepository"/>
+	<bean id="employeeJoinService"
+	    class="service.employee.EmployeeJoinService"/>
 </beans>

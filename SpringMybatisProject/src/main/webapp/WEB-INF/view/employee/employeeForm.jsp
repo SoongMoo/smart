@@ -13,7 +13,7 @@
 <table border = 1 align="center">
 	<tr><td>사원번호</td>
 		<td>                               				
-			<form:input path="employeeId"/>
+			<form:input path="employeeId" value="${empNo }"/>
 			<form:errors path="employeeId"/>
 		</td></tr>
 	<tr><td>사원아이디</td>
