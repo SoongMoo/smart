@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="empJoin.em" method="get" name="frm">
+<form action="empJoin" method="post" name="frm">
 <table border = 1 align="center">
 	<tr><td>사원번호</td>
 		<td>                               				
