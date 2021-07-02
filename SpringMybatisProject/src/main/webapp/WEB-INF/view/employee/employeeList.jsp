@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +14,11 @@
 <table >
 	<tr><td>사원번호</td><td>이름</td><td>직무</td><td>입사일</td><td>사무실번호</td></tr>
 <c:forEach items="${empList }" var="dto">
-	<tr><td><a href="empInfo.em?empId=${dto.employeeId}">
+	<tr><td><a href="empInfo?empId=${dto.employeeId}">
 			${dto.employeeId}</a></td>
 		<td>${dto.empName}</td>
 	<td>${dto.jobId}</td>
-	<td>${dto.hireDate}</td>
+	<td><fmt:formatDate value="${dto.hireDate}" type="date" pattern="yyyy-MM-dd"/> </td>
 	<td>${dto.officeNumber}</td></tr>
 </c:forEach>
 </table>
