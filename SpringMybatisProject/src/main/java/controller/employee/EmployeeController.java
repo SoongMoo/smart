@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Model.AuthInfoDTO;
 import command.EmployeeCommand;
 import service.employee.EmployeeDeleteService;
 import service.employee.EmployeeInfoService;
@@ -16,6 +17,7 @@ import service.employee.EmployeeJoinService;
 import service.employee.EmployeeListService;
 import service.employee.EmployeeNumService;
 import service.employee.EmployeeUpdateService;
+import service.main.LoginService;
 import validator.EmployeeCommandValidator;
 
 @Controller
@@ -68,6 +70,8 @@ public class EmployeeController {
 		employeeNumService.empNo(model, employeeCommand);
 		return "employee/employeeForm";
 	}
+	@Autowired
+	LoginService loginService;
 	@RequestMapping(value="empJoin",method = RequestMethod.POST )
 	public String empJoin(EmployeeCommand employeeCommand,Errors errors,
 			Model model) {
@@ -75,6 +79,12 @@ public class EmployeeController {
 		/// 그러므로 @RequestParam을 사용 안해도 된다.
 		new EmployeeCommandValidator().validate(employeeCommand, errors);
 		if(errors.hasErrors()) {
+			return "employee/employeeForm";
+		}
+		AuthInfoDTO authInfo = loginService.logIn(employeeCommand.getEmpUserid(), 
+				employeeCommand.getEmpPw());
+		if(authInfo != null) {
+			errors.rejectValue("empUserid", "duplicate");
 			return "employee/employeeForm";
 		}
 		employeeJoinService.empInsert(employeeCommand);
