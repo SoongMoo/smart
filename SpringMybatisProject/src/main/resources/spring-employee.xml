@@ -15,8 +15,12 @@
 	    class="service.employee.EmployeeJoinService"/>
 	<bean id="employeeListService" 
 		class="service.employee.EmployeeListService"/>
-		
 	<bean id="employeeInfoService" 
 		class="service.employee.EmployeeInfoService"/>
-
+	<bean id="employeeUpdateService" 
+		class="service.employee.EmployeeUpdateService"/>	
+	
+	<bean id="employeeDeleteService" 
+		class="service.employee.EmployeeDeleteService"/>
+	
 </beans>

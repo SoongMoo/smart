@@ -13,6 +13,17 @@ public class EmployeeRepository {
 	
 	String namespace = "mappers.employeeMapper";
 	String statement;
+	public void empDelete(String empId) {
+		statement = namespace +".empDelete";
+		int i = sqlSession.delete(statement, empId);
+		System.out.println(i + "개가 삭제되었습니다.");
+	}
+	public void empUpdate(EmployeeDTO dto) {
+		statement = namespace +".empUpdate";
+		int i = sqlSession.update(statement,dto);
+		System.out.println(i + "개가 수정되었습니다.");
+	}
+	
 	public EmployeeDTO empInfo(String empId) {
 		statement = namespace + ".empInfo";
 		return sqlSession.selectOne(statement,empId);

@@ -10,6 +10,20 @@
 	EMAIL email, EMP_ADDRESS empAddress
 </sql>
 
+<delete id="empDelete" parameterType="string">
+	delete from employees
+	where EMPLOYEE_ID = #{empId}
+</delete>
+
+
+<update id="empUpdate" parameterType="Model.EmployeeDTO">
+	update employees
+	set JOB_ID = #{jobId} , PH_NUMBER = #{phNumber},
+	    OFFICE_NUMBER = #{officeNumber}, EMAIL = #{email},
+	    EMP_ADDRESS = #{empAddress}
+	where EMPLOYEE_ID = #{employeeId}
+</update>
+
 <select id="empNo" resultType="string">
 	select nvl(max(EMPLOYEE_ID),0) + 1 from employees
 </select>
