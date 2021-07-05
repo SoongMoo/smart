@@ -26,6 +26,6 @@
 			이메일 수신 안함
 		</c:if>
 		<br />
-<a href="memMod.mem?memId=${lists[0].memId }">수정</a>
+<a href="../memMod/${lists.get(0).memId }">수정</a>
 </body>
 </html>

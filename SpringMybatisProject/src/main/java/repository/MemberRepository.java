@@ -13,9 +13,9 @@ public class MemberRepository {
 	
 	String namespace = "mappers.memberMapper";
 	String statement;
-	public List<MemberDTO> memList() {
+	public List<MemberDTO> memList(String memId) {
 		statement = namespace +".memList";
-		return sqlSession.selectList(statement);
+		return sqlSession.selectList(statement,memId);
 	}
 	public void memJoin(MemberDTO dto) {
 		statement = namespace + ".memJoin";

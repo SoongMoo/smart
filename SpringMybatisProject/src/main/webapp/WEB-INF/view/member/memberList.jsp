@@ -14,7 +14,7 @@
 		<td>이메일</td><td>주소</td></tr>
 	<c:forEach items="${lists }" var="dto">
 	<tr><td>
-	<a href="memInfo.mem?memId=${dto.memId }">${dto.memId }</a></td>
+	<a href="memInfo/${dto.memId }">${dto.memId }</a></td>
 		<td>${dto.memName }</td>
 		<td>${dto.memPhone }</td><td>${dto.memEmail }</td>
 		<td>${dto.memAddress } ${dto.detailAdd }</td></tr>
