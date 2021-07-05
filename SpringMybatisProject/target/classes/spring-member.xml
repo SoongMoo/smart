@@ -6,7 +6,8 @@
 			http://www.springframework.org/schema/beans/spring-beans.xsd
 			"
 >
-	<bean class="controller.main.MainController"/>
-	<bean id = "loginService" class="service.main.LoginService"/>
-	<bean id = "logInRepository" class="repository.LogInRepository"/>
+	<bean class="controller.member.MemberController"></bean>
+	<bean id = "memberJoinService" 
+		class="service.member.MemberJoinService" />
+	<bean id = "memberRepository" class="repository.MemberRepository" />
 </beans>

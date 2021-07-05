@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="empModifyOk" method="get" name="frm">
+<form action="empModifyOk" method="post" name="frm">
 <input type="hidden" name="employeeId" 
 							value="${emp.employeeId }"/>
 <table border = 1 align="center">

@@ -9,6 +9,4 @@
 	<bean class="controller.main.MainController"/>
 	<bean id = "loginService" class="service.main.LoginService"/>
 	<bean id = "logInRepository" class="repository.LogInRepository"/>
-	
-	
 </beans>

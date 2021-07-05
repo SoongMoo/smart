@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="register/agree">회원 가입</a>
 <a href="emp/empList">직원 리스트</a>
 </body>
 </html>

@@ -28,6 +28,7 @@
   			classpath:spring-jdbc.xml
   			classpath:spring-main.xml
   			classpath:spring-employee.xml
+  			classpath:spring-member.xml
   		</param-value>
   	</init-param>
   </servlet>
