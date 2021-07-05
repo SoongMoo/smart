@@ -73,8 +73,7 @@ public class EmployeeController {
 	@Autowired
 	LoginService loginService;
 	@RequestMapping(value="empJoin",method = RequestMethod.POST )
-	public String empJoin(EmployeeCommand employeeCommand,Errors errors,
-			Model model) {
+	public String empJoin(EmployeeCommand employeeCommand,Errors errors) {
 		/// cammand 객체는 html로 부터 넘어온 값을 저장한다.
 		/// 그러므로 @RequestParam을 사용 안해도 된다.
 		new EmployeeCommandValidator().validate(employeeCommand, errors);
