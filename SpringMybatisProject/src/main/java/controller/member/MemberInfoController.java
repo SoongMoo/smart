@@ -1,5 +1,12 @@
 package controller.member;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
+import javax.activation.URLDataSource;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +39,13 @@ public class MemberInfoController {
 	@RequestMapping(value="memModifyOk", method = RequestMethod.POST)
 	public String memUpdate(MemberCommand memberCommand) {
 		memberUpdateService.memUpdate(memberCommand);
-		return "redirect:memInfo/"+memberCommand.getMemId();
+		String encodedParam = "";
+		try {
+			encodedParam = URLEncoder.encode(memberCommand.getMemId(), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return "redirect:memInfo/"+encodedParam;
 	}
 	@RequestMapping("memList")
 	public String memList(Model model) {

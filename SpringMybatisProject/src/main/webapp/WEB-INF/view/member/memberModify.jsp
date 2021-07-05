@@ -63,11 +63,7 @@
 </head>
 <body>
 <form action="../memModifyOk" method="post" name="frm"> 
-<input type="hidden" name="memId" value="${lists[0].memId }" />
-<input type="hidden" name="memBirth" 
-value="<fmt:formatDate value='${lists.get(0).memBirth }' type='date' pattern='yyyy-MM-dd'/>" />
-
-
+<input type="text" name="memId" value="${lists[0].memId }" />
 	<table border = 1 align="center">
 		<tr><td>아이디</td>
 			<td> ${lists[0].memId } </td></tr>
@@ -92,8 +88,7 @@ value="<fmt:formatDate value='${lists.get(0).memBirth }' type='date' pattern='yy
 			<td><input type="text" name="memEmail" 
 			value="${lists[0].memEmail }"></td></tr>
 		<tr><td>생년월일</td>
-			<td><input type="text" name="memBirth" 
-			value="${lists[0].memBirth }"></td></tr>
+			<td><fmt:formatDate value='${lists.get(0).memBirth }' type='date' pattern='yyyy-MM-dd'/></td></tr>
 		<tr><td>성별</td>
 			<td><c:if test="${lists[0].memGender == 'M'}">남자</c:if>
 				<c:if test="${lists[0].memGender == 'F'}">여자</c:if>
