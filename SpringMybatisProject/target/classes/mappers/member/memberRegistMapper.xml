@@ -13,4 +13,15 @@
 	,#{memEmail},#{memEmailCk},
 	#{postNumber},#{detailAdd})
 </insert>
+<select id="memList" resultType="Model.MemberDTO">
+	select MEM_ID memId,MEM_PW memPw,MEM_ADDRESS memAddress, MEM_NAME memName,
+	 	   MEM_PHONE memPhone, MEM_BIRTH memBirth, MEM_GENDER memGender, 
+	 	   MEM_ACCOUNT memAccount, MEM_EMAIL memEmail, MEM_EMAIL_CK memEmailCk,
+		   POST_NUMBER postNumber, DETAIL_ADD detailAdd
+	from member
+</select>
 </mapper>
+
+
+
+

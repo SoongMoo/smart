@@ -10,4 +10,6 @@
 	<bean id = "memberJoinService" 
 		class="service.member.MemberJoinService" />
 	<bean id = "memberRepository" class="repository.MemberRepository" />
+	<bean class="controller.member.MemberInfoController" />
+	<bean id = "memberListService" class="service.member.MemberListService" />
 </beans>
