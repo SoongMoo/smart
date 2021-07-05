@@ -12,4 +12,8 @@
 	<bean id = "memberRepository" class="repository.MemberRepository" />
 	<bean class="controller.member.MemberInfoController" />
 	<bean id = "memberListService" class="service.member.MemberListService" />
+	<bean id = "memberUpdateService" class="service.member.MemberUpdateService" />
+	<bean id = "memberDeleteService" 
+				class="service.member.MemberDeleteService" />
+	
 </beans>

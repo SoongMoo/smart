@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,6 +64,10 @@
 <body>
 <form action="../memModifyOk" method="post" name="frm"> 
 <input type="hidden" name="memId" value="${lists[0].memId }" />
+<input type="hidden" name="memBirth" 
+value="<fmt:formatDate value='${lists.get(0).memBirth }' type='date' pattern='yyyy-MM-dd'/>" />
+
+
 	<table border = 1 align="center">
 		<tr><td>아이디</td>
 			<td> ${lists[0].memId } </td></tr>
@@ -108,7 +113,7 @@
 				<input type="button"  value="수정 안함" 
 					onclick="javascript:history.back();" />
 				<input type="button"  value="회원 강퇴" 
-	onclick="javascript:location.href='memDel.mem?memId=${lists[0].memId }'" />
+	onclick="javascript:location.href='../memDel?memId=${lists[0].memId }'" />
 			</td></tr>
 	</table>
 </form>
