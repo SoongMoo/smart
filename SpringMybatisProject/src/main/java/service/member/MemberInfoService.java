@@ -17,6 +17,6 @@ public class MemberInfoService {
 				(AuthInfoDTO)session.getAttribute("authInfo");
 		String memId = authInfo.getUserId();
 		MemberDTO dto = memberRepository.memInfo(memId);
-		model.addAttribute("dto", dto);
+		model.addAttribute("memberCommand", dto);
 	}
 }

@@ -11,16 +11,29 @@
 	from member
 	where MEM_ID = #{memId}
 </select>
+
+<delete id="memDelete" parameterType="string">
+	delete from member
+	where  MEM_ID = #{memId}
+</delete>
+
 <delete id="memDel" parameterType="string">
 	delete from member
 	where mem_id = #{memId}
 </delete>
+<update id="memPwUpdate" parameterType="Model.MemberDTO">
+	update member
+	set MEM_PW = #{memPw}
+	where mem_id = #{memId}
+</update>
 <update id="memUpdate" parameterType="Model.MemberDTO">
 	update member
 	set POST_NUMBER = #{postNumber}, MEM_ADDRESS=#{memAddress} , 
 		DETAIL_ADD = #{detailAdd}, MEM_EMAIL = #{memEmail} , 
 		MEM_EMAIL_CK = #{memEmailCk} , MEM_PHONE = #{memPhone},
-		MEM_ACCOUNT = #{memAccount}
+		
+		MEM_ACCOUNT = <if test="memAccount == null">null</if>
+					  <if test="memAccount != null">#{memAccount}</if>
 	where mem_id = #{memId}
 </update>
 <insert id="memJoin" parameterType="Model.MemberDTO">
