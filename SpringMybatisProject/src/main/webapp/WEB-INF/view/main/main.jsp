@@ -38,7 +38,7 @@
 	<!-- 로그인 되었을 때 -->
 	<c:if test="${authInfo.grade == 1 }">
 	<!-- 일반 사용자 -->
-		<a href="#">마이페이지</a>
+		<a href="edit/myPage">마이페이지</a>
 	</c:if>
 	<c:if test="${authInfo.grade != 1 }">
 	<!-- 관리자 -->

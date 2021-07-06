@@ -15,5 +15,9 @@
 	<bean id = "memberUpdateService" class="service.member.MemberUpdateService" />
 	<bean id = "memberDeleteService" 
 				class="service.member.MemberDeleteService" />
+				
+	<bean class="controller.member.MemberMyPageController" />
+	<bean id = "memberInfoService" 
+				class="service.member.MemberInfoService" />
 	
 </beans>

@@ -13,14 +13,15 @@ import service.main.LoginService;
 import validator.LogInCommandValidator;
 
 @Controller
+@RequestMapping("login")
 public class LogInController {
-	@RequestMapping(value = "login", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public String main() {
 		return "redirect:/";
 	}
 	@Autowired
 	LoginService loginService; 
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public String login(LogInCommand logInCommand, Errors errors,
 			HttpSession session) {
 		new LogInCommandValidator().validate(logInCommand, errors);
@@ -32,5 +33,10 @@ public class LogInController {
 			return "main/main";
 		}
 		return "redirect:/";		
+	}
+	@RequestMapping("logOut")
+	public String logOut(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 }

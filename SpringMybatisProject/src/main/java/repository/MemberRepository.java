@@ -13,7 +13,10 @@ public class MemberRepository {
 	
 	String namespace = "mappers.memberMapper";
 	String statement;
-	
+	public MemberDTO memInfo(String memId) {
+		statement = namespace + ".memInfo";
+		return sqlSession.selectOne(statement, memId);
+	}	
 	public void memDel(String memId) {
 		statement = namespace +".memDel";
 		sqlSession.delete(statement, memId);

@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.memberMapper">
+<select id="memInfo" parameterType="string" 
+		resultType="Model.MemberDTO">
+	select MEM_ID memId,MEM_PW memPw,MEM_ADDRESS memAddress, MEM_NAME memName,
+	 	   MEM_PHONE memPhone, MEM_BIRTH memBirth, MEM_GENDER memGender, 
+	 	   MEM_ACCOUNT memAccount, MEM_EMAIL memEmail, MEM_EMAIL_CK memEmailCk,
+		   POST_NUMBER postNumber, DETAIL_ADD detailAdd
+	from member
+	where MEM_ID = #{memId}
+</select>
 <delete id="memDel" parameterType="string">
 	delete from member
 	where mem_id = #{memId}
