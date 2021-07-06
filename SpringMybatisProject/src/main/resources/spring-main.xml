@@ -7,6 +7,9 @@
 			"
 >
 	<bean class="controller.main.MainController"/>
+	<bean class="controller.main.LogInController" />
 	<bean id = "loginService" class="service.main.LoginService"/>
 	<bean id = "logInRepository" class="repository.LogInRepository"/>
+	
+	
 </beans>
