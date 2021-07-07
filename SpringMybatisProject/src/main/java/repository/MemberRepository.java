@@ -13,6 +13,11 @@ public class MemberRepository {
 	
 	String namespace = "mappers.memberMapper";
 	String statement;
+	
+	public void updateCkOk(MemberDTO dto) {
+		statement = namespace +".updateCkOk";
+		sqlSession.update(statement, dto);
+	}
 	public void memDelete(String memId) {
 		statement = namespace +".memDelete";
 		sqlSession.delete(statement, memId);

@@ -20,6 +20,12 @@ import validator.MemberCommandValidator;
 @Controller
 @RequestMapping("register")
 public class MemberController {
+	@RequestMapping("memberMail")
+	public String memberMail(@RequestParam(value="num")String num,
+			@RequestParam(value="reciver") String reciver) {
+		
+		return null;
+	}
 	@RequestMapping("agree")
 	public String agree() {
 		return "member/agree";

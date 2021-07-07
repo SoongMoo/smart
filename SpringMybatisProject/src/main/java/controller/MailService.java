@@ -9,8 +9,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 public class MailService {
 	@Autowired
 	private JavaMailSender mailSender;
-	public void sendMail(String reciver, String userId, 
-			String content,String subject) throws Exception {
+	public void sendMail(String reciver, String content,String subject) throws Exception {
 		MimeMessage msg = mailSender.createMimeMessage();
 
 		msg.setHeader("content-type", "text/html; charset=UTF-8");
