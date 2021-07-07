@@ -29,6 +29,7 @@
   			classpath:spring-main.xml
   			classpath:spring-employee.xml
   			classpath:spring-member.xml
+  			classpath:spring-mail-config.xml
   		</param-value>
   	</init-param>
   </servlet>

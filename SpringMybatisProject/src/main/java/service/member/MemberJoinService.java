@@ -13,11 +13,11 @@ import repository.MemberRepository;
 
 public class MemberJoinService {
 	@Autowired
+	MailService mailService;
+	@Autowired
 	MemberRepository memberRepository;
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
-	@Autowired
-	MailService mailService;
 	public void memJoin(MemberCommand memberCommand) {
 		MemberDTO dto = new MemberDTO();
 		dto.setDetailAdd(memberCommand.getDetailAdd());

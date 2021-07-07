@@ -9,10 +9,10 @@ import repository.MemberRepository;
 public class MemberEmailCkService {
 	@Autowired
 	MemberRepository memberRepository; 
-	public void emailCk(String email, String ckOk) {
+	public int emailCk(String email, String ckOk) {
 		MemberDTO dto = new MemberDTO();
 		dto.setMemEmail(email);
 		dto.setCkOk(ckOk);
-		memberRepository.updateCkOk(dto);
+		return memberRepository.updateCkOk(dto);
 	}
 }

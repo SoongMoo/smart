@@ -14,9 +14,9 @@ public class MemberRepository {
 	String namespace = "mappers.memberMapper";
 	String statement;
 	
-	public void updateCkOk(MemberDTO dto) {
+	public int updateCkOk(MemberDTO dto) {
 		statement = namespace +".updateCkOk";
-		sqlSession.update(statement, dto);
+		return sqlSession.update(statement, dto);
 	}
 	public void memDelete(String memId) {
 		statement = namespace +".memDelete";

@@ -7,7 +7,7 @@
 <select id="logIn" parameterType="string" resultType="Model.AuthInfoDTO">
 	select MEM_ID userId, MEM_PW userPw , MEM_EMAIL userEmail, 1 grade
 	from member
-	where MEM_ID = #{userId}
+	where MEM_ID = #{userId} and ckok is not null
 	union
 	select EMP_USERID, EMP_PW, EMAIL, EMPLOYEE_ID
 	from employees
