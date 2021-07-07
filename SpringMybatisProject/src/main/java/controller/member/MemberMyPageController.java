@@ -69,8 +69,7 @@ public class MemberMyPageController {
 	public String memPwChange() {
 		return "member/pwChang";
 	}
-	@RequestMapping(value="memSujungOk",
-			method = RequestMethod.POST)
+	@RequestMapping(value="memSujungOk", method = RequestMethod.POST)
 	public String memUpdate(MemberCommand memberCommand,
 			Errors errors, HttpSession session) {
 		memberModifyService.memUpdate(session,memberCommand,errors);
@@ -85,7 +84,7 @@ public class MemberMyPageController {
 		return "member/memMyPage";
 	}
 	@RequestMapping("memDetail")
-	public String memDetail(HttpSession session,Model model) {
+	public String aaaaa(HttpSession session,Model model) {
 		memberInfoService.memInfo(model, session);
 		return "member/memDetail";
 	}
@@ -95,8 +94,4 @@ public class MemberMyPageController {
 		memberInfoService.memInfo(model, session);
 		return "member/memSujung";
 	}
-	
-	
-	
-	
 }

@@ -42,6 +42,7 @@
 	</c:if>
 	<c:if test="${authInfo.grade != 1 }">
 	<!-- 관리자 -->
+	마이페이지
 	<a href="member/memList" >회원리스트</a>
 	<a href="emp/empList">직원 리스트</a>
 	</c:if>

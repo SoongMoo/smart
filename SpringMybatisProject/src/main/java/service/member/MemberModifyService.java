@@ -21,7 +21,6 @@ public class MemberModifyService {
 		AuthInfoDTO authInfo = 
 				(AuthInfoDTO)session.getAttribute("authInfo");
 		String memId = authInfo.getUserId(); 
-		memberRepository.memInfo(memId);
 		if(bcryptPasswordEncoder.matches(
 				memberCommand.getMemPw(), authInfo.getUserPw())) {
 			MemberDTO memberDTO = new MemberDTO();
@@ -32,7 +31,7 @@ public class MemberModifyService {
 			memberDTO.setMemEmailCk(memberCommand.getMemEmailCk());
 			memberDTO.setMemPhone(memberCommand.getMemPhone());
 			memberDTO.setPostNumber(memberCommand.getPostNumber());
-			memberDTO.setMemId(memberCommand.getMemId());
+			memberDTO.setMemId(memId);
 			memberRepository.memUpdate(memberDTO);
 		}else {
 			errors.rejectValue("memPw", "notPw");

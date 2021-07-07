@@ -13,6 +13,7 @@ public class MemberInfoService {
 	@Autowired
 	MemberRepository memberRepository;
 	public void memInfo(Model model, HttpSession session) {
+		// 로그인 했을 때 sesssion에 저장
 		AuthInfoDTO authInfo = 
 				(AuthInfoDTO)session.getAttribute("authInfo");
 		String memId = authInfo.getUserId();
