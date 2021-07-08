@@ -5,6 +5,14 @@
 <select id="goodsNum" resultType="int">
 	select prod_seq.nextval from dual
 </select>
+<select id="goodsList" resultType="gd">
+	select PROD_NUM prodNum, PROD_NAME prodName, PROD_PRICE prodPrice,
+		PROD_IMAGE prodImage, PROD_DETAIL prodDetail, 
+		PROD_CAPACITY prodCapacity, PRUD_SUPPLYER prudSupplyer, 
+		PROD_DEL_FEE prodDelFee, RECOMMEND recommend, 
+		EMPLOYEE_ID employeeId, CTGR ctgr
+	from products
+</select>
 <insert id="goodsWrite" parameterType="gd">
 	insert into products(PROD_NUM, PROD_NAME, PROD_PRICE,PROD_IMAGE,
 	 PROD_DETAIL, PROD_CAPACITY, PRUD_SUPPLYER, PROD_DEL_FEE, 

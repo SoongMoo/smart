@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import command.GoodsCommand;
+import service.goods.GoodsListService;
 import service.goods.GoodsNumberService;
 import service.goods.GoodsWriteService;
 import validator.GoodsCommandValidate;
@@ -31,8 +32,11 @@ public class GoodsController {
 		goodsWriteService.goodsWrite(goodsCommand,session);
 		return "redirect:goodsList";
 	}
+	@Autowired
+	GoodsListService goodsListService;
 	@RequestMapping("goodsList")
-	public String list() {
+	public String list(Model model) {
+		goodsListService.goodsList(model);
 		return "goods/goodsList";
 	}
 	@RequestMapping("goodsRegist")

@@ -10,6 +10,6 @@
 	<bean class="service.goods.GoodsNumberService"/>
 	<bean class="repository.GoodsRepository"/>
 	<bean class="service.goods.GoodsWriteService"/>
-	
+	<bean class="service.goods.GoodsListService" />
 	
 </beans>
