@@ -30,6 +30,7 @@
   			classpath:spring-employee.xml
   			classpath:spring-member.xml
   			classpath:spring-mail-config.xml
+  			classpath:spring-goods.xml
   		</param-value>
   	</init-param>
   </servlet>

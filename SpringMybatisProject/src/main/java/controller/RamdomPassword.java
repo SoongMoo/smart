@@ -18,5 +18,4 @@ public class RamdomPassword {
 		} 
 		return sb1.toString();				
 	}
-
 }
