@@ -12,15 +12,19 @@ public class GoodsRepository {
 	SqlSession sqlSession;
 	String namespace = "mappers.goodsMapper";
 	String statement;
-	public List<GoodsDTO> goodsList() {
+	public GoodsDTO goodsDetail(String prodNum) {
+		statement = namespace + ".goodsDetail";
+		return sqlSession.selectOne(statement, prodNum) ;
+	}
+	public List<GoodsDTO> goodsList(){
 		statement = namespace + ".goodsList";
 		return sqlSession.selectList(statement);
 	}
-	public void goodsWrite(GoodsDTO dto) {
-		statement = namespace + ".goodsWrite";
+	public void goodsInsert(GoodsDTO dto) {
+		statement = namespace + ".goodsInsert";
 		sqlSession.insert(statement, dto);
 	}
-	public int goodsNum() {
+	public String goodsNum() {
 		statement = namespace + ".goodsNum";
 		return sqlSession.selectOne(statement);
 	}

@@ -13,6 +13,6 @@ public class GoodsListService {
 	GoodsRepository goodsRepository;
 	public void goodsList(Model model) {
 		List<GoodsDTO> list = goodsRepository.goodsList();
-		model.addAttribute("lists", list);
+		model.addAttribute("lists",list);
 	}
 }

@@ -1,7 +1,9 @@
 package Model;
 
 import java.util.Date;
-
+/// DTO는 디비에 값을 저장하거나 디비로 부터 값을 받아오기 위해서 사용
+/// 그러므로 DTO의 속성은 디비에 있는 테이블과 같아야 한다. 
+/// DTO에 있는 속성은 데이블의 컬럼과 같아야 한다.
 public class MemberDTO {
 	String memId;
 	String memPw;

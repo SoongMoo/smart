@@ -14,7 +14,7 @@
 	<tr><th>상품번호</th><th>카테고리</th><th>상품명</th><th>가격</th>
 	    <th>배송비</th></tr>
 	<c:forEach items="${lists }" var="dto">
-	<tr><td><a href="prodDetail.gd?prodNum=${dto.prodNum }">${dto.prodNum }</a></td>
+	<tr><td><a href="prodDetail?prodNum=${dto.prodNum }">${dto.prodNum }</a></td>
 	    <td>${dto.ctgr }</td>
 		<td>${dto.prodName }</td>
 		<td>가격</td>

@@ -1,5 +1,5 @@
 package Model;
-
+/// 디비에 값을 전달하거나  디비로 부터 값을 받아오기 위해서 생성
 public class GoodsDTO {
 	Long prodNum;
 	String prodName;
