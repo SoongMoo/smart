@@ -25,6 +25,13 @@ public class GoodsController {
 	GoodsWriteService goodsWriteService;
 	@Autowired
 	GoodsDetailService goodsDetailService;
+	@RequestMapping("prodModify")
+	public String prodModify(
+			@RequestParam(value="prodNum") String prodNum,
+			Model model) {
+		goodsDetailService.goodsDetail(prodNum, model);
+		return "goods/goodsModify";
+	}
 	@RequestMapping("prodDetail")
 	public String prodDetail(
 			@RequestParam(value = "prodNum") String prodNum,
