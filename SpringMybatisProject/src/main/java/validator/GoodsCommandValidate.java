@@ -17,7 +17,6 @@ public class GoodsCommandValidate implements Validator{
 		ValidationUtils.rejectIfEmpty(errors, "prodDelFee", "required");
 		ValidationUtils.rejectIfEmpty(errors, "recommend", "required");
 		ValidationUtils.rejectIfEmpty(errors, "prodDetail", "required");
-		ValidationUtils.rejectIfEmpty(errors, "prodImage1", "required");
 	}
 
 }

@@ -14,12 +14,12 @@ public class GoodsDetailService {
 		// model.addAttribute(속성명,속성값);
 		// 속성명을 jsp페이지에서 받는다
 		model.addAttribute("test", 10);
-		model.addAttribute("dto",dto1);
+		model.addAttribute("goodsCommand",dto1);
 		/*
 		model.addAttribute("dto",10); 경우
-		int dto = 10;
+		int test = 10;
 		model.addAttribute("dto",dto1); 경우
-		GoodsDTO dto = dto1;
+		GoodsDTO goodsCommand = dto1;
 		*/
 	}
 }

@@ -17,7 +17,7 @@
 					<option value="food">음식</option>
 					<option value="car">자동차용품</option>
 				</select>
-				<input type="text" name="goodsNum" 
+				<input type="text" name="prodNum" 
 						value="${goodsNum }" readonly="readonly"/>
 				</td></tr>		
 		<tr><th>상품명</th>

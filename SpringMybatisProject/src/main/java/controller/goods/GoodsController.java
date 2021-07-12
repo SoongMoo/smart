@@ -13,6 +13,7 @@ import command.GoodsCommand;
 import service.goods.GoodsDetailService;
 import service.goods.GoodsListService;
 import service.goods.GoodsNumberService;
+import service.goods.GoodsUpdateService;
 import service.goods.GoodsWriteService;
 import validator.GoodsCommandValidate;
 
@@ -25,6 +26,20 @@ public class GoodsController {
 	GoodsWriteService goodsWriteService;
 	@Autowired
 	GoodsDetailService goodsDetailService;
+	@Autowired
+	GoodsUpdateService goodsUpdateService;
+	@RequestMapping("goodsUpdate")
+	public String goodsUpdate(GoodsCommand goodsCommand, 
+			Errors errors) {
+		new GoodsCommandValidate().validate(goodsCommand, errors);
+		if(errors.hasErrors()) {
+			// 값을 command로 받았으므로 오류 발생하여 값을 보낼때 다시 
+			// command로 전달된다.
+			return "goods/goodsModify";
+		}
+		goodsUpdateService.goodsUpdate(goodsCommand);
+		return "redirect:/goods/goodsList";
+	}
 	@RequestMapping("prodModify")
 	public String prodModify(
 			@RequestParam(value="prodNum") String prodNum,

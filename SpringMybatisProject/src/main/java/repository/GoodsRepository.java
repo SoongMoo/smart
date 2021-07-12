@@ -12,6 +12,10 @@ public class GoodsRepository {
 	SqlSession sqlSession;
 	String namespace = "mappers.goodsMapper";
 	String statement;
+	public void goodsUpdate(GoodsDTO dto) {
+		statement = namespace +".goodsUpdate";
+		sqlSession.update(statement, dto);
+	}
 	public GoodsDTO goodsDetail(String prodNum) {
 		statement = namespace + ".goodsDetail";
 		return sqlSession.selectOne(statement, prodNum) ;
