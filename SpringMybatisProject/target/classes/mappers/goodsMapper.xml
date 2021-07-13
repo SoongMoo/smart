@@ -7,7 +7,7 @@
 	set PROD_PRICE = #{prodPrice}, PROD_DETAIL = #{prodDetail},
 		PROD_CAPACITY = #{prodCapacity},PRUD_SUPPLYER=#{prodSupplyer},
 		PROD_DEL_FEE = #{prodDelFee}, RECOMMEND =#{recommend},
-		CTGR = #{ctgr}
+		CTGR = #{ctgr}, PROD_IMAGE = #{prodImage}
 	where PROD_NUM = #{prodNum}
 </update>
 <select id="goodsNum" resultType="string">

@@ -30,14 +30,14 @@ public class GoodsController {
 	GoodsUpdateService goodsUpdateService;
 	@RequestMapping("goodsUpdate")
 	public String goodsUpdate(GoodsCommand goodsCommand, 
-			Errors errors) {
+			Errors errors, HttpSession session) {
 		new GoodsCommandValidate().validate(goodsCommand, errors);
 		if(errors.hasErrors()) {
 			// 값을 command로 받았으므로 오류 발생하여 값을 보낼때 다시 
 			// command로 전달된다.
 			return "goods/goodsModify";
 		}
-		goodsUpdateService.goodsUpdate(goodsCommand);
+		goodsUpdateService.goodsUpdate(goodsCommand, session);
 		return "redirect:/goods/goodsList";
 	}
 	@RequestMapping("prodModify")

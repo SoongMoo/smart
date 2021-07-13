@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form:form action="goodsUpdate" name="frm" method="get" 
-	modelAttribute="goodsCommand">
+<form:form action="goodsUpdate" name="frm" method="post" 
+	modelAttribute="goodsCommand" enctype="multipart/form-data">
 <input type="hidden" name="prodNum" value="${goodsCommand.prodNum }"/>
 <input type="hidden" name="prodName" value="${goodsCommand.prodName }"/>
 상품번호 : ${goodsCommand.prodNum }<br />
