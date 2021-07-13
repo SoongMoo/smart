@@ -11,6 +11,7 @@ public class GoodsUpdateService {
 	GoodsRepository goodsRepository;
 	public void goodsUpdate(GoodsCommand goodsCommand) {
 		GoodsDTO dto = new GoodsDTO();
+		/// 컨텐츠 수정		
 		dto.setProdNum(goodsCommand.getProdNum());
 		dto.setCtgr(goodsCommand.getCtgr());
 		dto.setProdCapacity(goodsCommand.getProdCapacity());
@@ -19,6 +20,9 @@ public class GoodsUpdateService {
 		dto.setProdPrice(goodsCommand.getProdPrice());
 		dto.setProdSupplyer(goodsCommand.getProdSupplyer());
 		dto.setRecommend(goodsCommand.getRecommend());
+		//파일 수정
+
+		
 		goodsRepository.goodsUpdate(dto);
 	}
 }

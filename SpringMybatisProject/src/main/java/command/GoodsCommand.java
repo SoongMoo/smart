@@ -13,6 +13,15 @@ public class GoodsCommand {
 	String recommend;
 	String prodDetail;
 	MultipartFile [] prodImage;
+	String fileDel1;
+	
+	public String getFileDel1() {
+		return fileDel1;
+	}
+	public void setFileDel1(String fileDel1) {
+		this.fileDel1 = fileDel1;
+	}
+	
 	public String getCtgr() {
 		return ctgr;
 	}
