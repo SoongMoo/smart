@@ -65,7 +65,11 @@ public class GoodsUpdateService {
 			}
 			dto.setProdImage(goodsFileName);
 		}
-		dto.setProdImage(storeFile + dto.getProdImage() );
+		if(dto.getProdImage() != null) {
+			dto.setProdImage(storeFile + dto.getProdImage());
+		}else {
+			dto.setProdImage(storeFile);
+		}
 		goodsRepository.goodsUpdate(dto);
 	}
 }
