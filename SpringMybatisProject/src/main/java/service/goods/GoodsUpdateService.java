@@ -35,6 +35,7 @@ public class GoodsUpdateService {
 						goodsCommand.getProdNum().toString());
 		// 이미 저장되어 있는 이미지 파일명을 먼저 저장
 		dto.setProdImage(dto1.getProdImage());
+		System.out.println(dto.getProdImage());
 		// 파일 추가
 		String realPath = session.getServletContext()
 				.getRealPath("WEB-INF/view/goods/upload");
@@ -50,21 +51,25 @@ public class GoodsUpdateService {
 				File file = new File(realPath + "/" + store);
 				try {mf.transferTo(file);} 
 				catch (Exception e) {e.printStackTrace();} 
-				storeFile += store + ","; 
+				storeFile = storeFile + store + ","; 
 			}
 		}
 		String goodsFileName = dto1.getProdImage();
-		if(fileNames != null) {	
+		System.out.println(goodsFileName);
+		if(fileNames.length > 0) {	
 			// 디비에 있는 이미지 파일명을 제거
 			// 이미지 파일이 변경된 경우 수정된 내용으로 다시 저장	
 			for(String s : fileNames) {
-				goodsFileName = goodsFileName.replace(s+",","");
+				String delfile = s+ ",";
+				goodsFileName = goodsFileName.replace(delfile,"");
 				File file = new File(realPath + "/" + s);
 				if(file.exists()) {file.delete();}
 			}
 			dto.setProdImage(goodsFileName);
 		}
-		dto.setProdImage(storeFile + dto.getProdImage());
+		System.out.println(storeFile);
+		System.out.println(dto.getProdImage());
+		dto.setProdImage(storeFile + dto.getProdImage() );
 		goodsRepository.goodsUpdate(dto);
 	}
 }

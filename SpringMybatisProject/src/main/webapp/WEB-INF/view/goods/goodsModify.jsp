@@ -55,7 +55,7 @@
 <input type="file" name="prodImage" multiple="multiple"/>
 <br />
 
-<input type="hidden" name="fileDel1" id = "fileDel1" />		
+<input type="text" name="fileDel1" id = "fileDel1" />		
 
 <input type="submit" value="수정하기" />
 <input type="button" value="삭제하기" />
