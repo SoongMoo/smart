@@ -42,10 +42,28 @@
 		</select> <br /> 
 상세내용 : <textarea rows="5" cols="50" name="prodDetail">${goodsCommand.prodDetail }</textarea>
 		<form:errors path="prodDetail"/><br />
-이미지<br />
+파일
+<c:forTokens items="${goodsCommand.prodImage }" delims="," 
+	var="prodImage">
+	<p>
+	${prodImage } 
+	<input type="button" id = "btn" value="삭제" />
+	</p>
+</c:forTokens>
+<br />
+
+<input type="text" name="fileDel" id = "fileDel" />		
+
 <input type="submit" value="수정하기" />
 <input type="button" value="삭제하기" />
 <input type="button" value="리스트" />
 </form:form>
+<script type="text/javascript" 
+ 	src="http://code.jquery.com/jquery-latest.js" ></script>
+<script type="text/javascript">
+$(function(){
+			
+});
+</script>
 </body>
 </html>

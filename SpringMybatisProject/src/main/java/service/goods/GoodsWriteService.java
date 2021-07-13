@@ -38,7 +38,7 @@ public class GoodsWriteService {
 		dto.setEmployeeId(employeeId);
 		// 디비에 파일명만 저장하기 위해 OriginalFilename을 가져와서 확장자를 추출 
 		String prodImage= "";
-		for(MultipartFile mf : goodsCommand.getProdImage1()) {
+		for(MultipartFile mf : goodsCommand.getProdImage()) {
 			String original = mf.getOriginalFilename();
 			String originalExt = 
 					original.substring(original.lastIndexOf("."));

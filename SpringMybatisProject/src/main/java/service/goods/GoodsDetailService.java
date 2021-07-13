@@ -17,8 +17,8 @@ public class GoodsDetailService {
 		model.addAttribute("goodsCommand",dto1);
 		/*
 		model.addAttribute("dto",10); 경우
-		int test = 10;
-		model.addAttribute("dto",dto1); 경우
+		int dto = 10;
+		model.addAttribute("goodsCommand",dto1); 경우
 		GoodsDTO goodsCommand = dto1;
 		*/
 	}
