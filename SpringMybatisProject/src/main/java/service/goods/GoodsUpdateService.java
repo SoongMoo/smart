@@ -39,7 +39,7 @@ public class GoodsUpdateService {
 		String realPath = session.getServletContext()
 				.getRealPath("WEB-INF/view/goods/upload");
 		String storeFile = ""; 
-		if(goodsCommand.getProdImage()[0].getOriginalFilename() != "" ) {
+		if(!goodsCommand.getProdImage()[0].getOriginalFilename().equals("") ) {
 			for(MultipartFile mf : goodsCommand.getProdImage()) {
 				String original = mf.getOriginalFilename();
 				String fileNameExt = original.substring(
@@ -59,12 +59,10 @@ public class GoodsUpdateService {
 			// 이미지 파일이 변경된 경우 수정된 내용으로 다시 저장	
 			for(String s : fileNames) {
 				String delfile = s+ ",";
-				System.out.println(delfile);
 				goodsFileName = goodsFileName.replace(delfile,"");
 				File file = new File(realPath + "/" + s);
 				if(file.exists()) {file.delete();}
 			}
-			System.out.println("xvxsdvs" + goodsFileName);
 			dto.setProdImage(goodsFileName);
 		}
 		dto.setProdImage(storeFile + dto.getProdImage() );

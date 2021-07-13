@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,5 +50,25 @@
 	</c:if>
 	<a href="login/logOut">logOut</a>
 </c:if>
+<table>
+<tr>
+<c:forEach items="${lists }" var="dto" varStatus="cnt">
+	<td width="200" height="200" >
+		<c:if test="${dto.prodImage != null }">
+		<img width="200" height="200" 
+			src="goods/upload/${dto.prodImage.split(',')[0] }" /><br />
+		</c:if>
+		<c:if test="${dto.prodImage == null }">
+		
+		</c:if>
+		${dto.prodName }<br />
+	 	<fmt:formatNumber value="${dto.prodPrice }" type="currency"/> 
+	</td>
+	<c:if test="${cnt.count % 3 == 0 }">
+		</tr><tr>
+	</c:if>
+</c:forEach>
+</tr>
+</table>
 </body>
 </html>

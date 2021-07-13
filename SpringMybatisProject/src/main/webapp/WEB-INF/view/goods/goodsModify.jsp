@@ -58,7 +58,8 @@
 <input type="text" name="fileDel1" id = "fileDel1" />		
 
 <input type="submit" value="수정하기" />
-<input type="button" value="삭제하기" />
+<input type="button" value="삭제하기" 
+			onclick = "javascript:location.href='goodsDel?prodNum=${goodsCommand.prodNum }'" />
 <input type="button" value="리스트" />
 </form:form>
 <script type="text/javascript" 

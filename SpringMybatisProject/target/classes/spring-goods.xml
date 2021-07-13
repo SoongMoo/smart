@@ -13,4 +13,7 @@
 	<bean class="service.goods.GoodsListService" />
 	<bean class="service.goods.GoodsDetailService" />
 	<bean class="service.goods.GoodsUpdateService" />
+	<bean class="service.goods.GoodsDeleteService" />
+	
+	
 </beans>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import command.GoodsCommand;
+import service.goods.GoodsDeleteService;
 import service.goods.GoodsDetailService;
 import service.goods.GoodsListService;
 import service.goods.GoodsNumberService;
@@ -28,6 +29,15 @@ public class GoodsController {
 	GoodsDetailService goodsDetailService;
 	@Autowired
 	GoodsUpdateService goodsUpdateService;
+	@Autowired
+	GoodsDeleteService goodsDeleteService;
+	@RequestMapping("goodsDel")
+	public String goodsDel(
+			@RequestParam(value="prodNum")String prodNum,
+			HttpSession session) {
+		goodsDeleteService.goodsDel(prodNum, session);
+		return "redirect:goodsList";
+	}
 	@RequestMapping("goodsUpdate")
 	public String goodsUpdate(GoodsCommand goodsCommand, 
 			Errors errors, HttpSession session) {

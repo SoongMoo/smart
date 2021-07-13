@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.goodsMapper">
+<delete id="goodsDel" parameterType="string">
+	delete from products
+	where prod_num = #{prodNum}
+</delete>
 <update id="goodsUpdate" parameterType="Model.GoodsDTO">
 	update products
 	set PROD_PRICE = #{prodPrice}, PROD_DETAIL = #{prodDetail},
@@ -45,17 +49,19 @@
 	PROD_CAPACITY, PRUD_SUPPLYER, PROD_DEL_FEE, RECOMMEND, 
 	EMPLOYEE_ID, CTGR, PROD_IMAGE)
 	values(#{prodNum},#{prodName},#{prodPrice},#{prodDetail},
-	#{prodCapacity},#{prudSupplyer},#{prodDelFee},#{recommend},
-	#{employeeId},#{ctgr},#{prodImage})
+	#{prodCapacity},#{prodSupplyer},#{prodDelFee},#{recommend},
+	#{employeeId},#{ctgr},
+	<if test="prodImage != null">#{prodImage}</if>
+	<if test="prodImage == null">null</if>
+	)
 </insert>
 <select id="goodsList" resultType="Model.GoodsDTO">
 	select PROD_NUM prodNum, PROD_NAME prodName, PROD_PRICE prodPrice, 
 			PROD_DETAIL prodDetail, PROD_CAPACITY prodCapacity, 
-			PRUD_SUPPLYER prudSupplyer, PROD_DEL_FEE prodDelFee, 
+			PRUD_SUPPLYER prodSupplyer, PROD_DEL_FEE prodDelFee, 
 			RECOMMEND recommend, EMPLOYEE_ID employeeId, CTGR ctgr, 
 			PROD_IMAGE prodImage
 	from products
-
 </select>
 
 
