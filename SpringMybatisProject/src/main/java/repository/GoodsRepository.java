@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import Model.CartDTO;
 import Model.GoodsDTO;
 
 public class GoodsRepository {
@@ -12,6 +13,10 @@ public class GoodsRepository {
 	SqlSession sqlSession;
 	String namespace = "mappers.goodsMapper";
 	String statement;
+	public int cartAdd(CartDTO dto) {
+		statement = namespace + ".cartAdd";
+		return sqlSession.insert(statement, dto);
+	}
 	public void goodsDel(String prodNum) {
 		statement = namespace +".goodsDel";
 		sqlSession.delete(statement, prodNum);
