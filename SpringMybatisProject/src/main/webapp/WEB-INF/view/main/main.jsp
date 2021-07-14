@@ -56,6 +56,7 @@
 <tr>
 <c:forEach items="${lists }" var="dto" varStatus="cnt">
 	<td width="200" height="200" >
+		<a href="prod/goodsView?prodNum=${dto.prodNum }">
 		<c:if test="${dto.prodImage != null }">
 		<img width="200" height="200" 
 			src="goods/upload/${dto.prodImage.split(',')[0] }" /><br />
@@ -64,7 +65,8 @@
 		
 		</c:if>
 		${dto.prodName }<br />
-	 	<fmt:formatNumber value="${dto.prodPrice }" type="currency"/> 
+	 	<fmt:formatNumber value="${dto.prodPrice }" type="currency"/>
+	 	</a> 
 	</td>
 	<c:if test="${cnt.count % 3 == 0 }">
 		</tr><tr>

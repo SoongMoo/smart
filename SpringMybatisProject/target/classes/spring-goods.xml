@@ -6,6 +6,9 @@
 			http://www.springframework.org/schema/beans/spring-beans.xsd
 			"
 >
+
+	
+	<bean class="controller.goods.GoodsViewController"/>
 	<bean class="controller.goods.GoodsController"/>
 	<bean class="repository.GoodsRepository"/>
 	<bean class="service.goods.GoodsNumberService" />
