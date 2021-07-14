@@ -7,12 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import Model.CartDTO;
 import Model.GoodsDTO;
+import Model.ProductCartDTO;
 
 public class GoodsRepository {
 	@Autowired
 	SqlSession sqlSession;
 	String namespace = "mappers.goodsMapper";
 	String statement;
+	public ProductCartDTO cartList(CartDTO dto) {
+		statement = namespace + ".cartList";
+		return sqlSession.selectOne(statement, dto);
+	}
+	public List<String> memProdNum(String memId){
+		statement = namespace + ".memProdNum";
+		return sqlSession.selectList(statement,memId);
+	}
 	public int cartAdd(CartDTO dto) {
 		statement = namespace + ".cartAdd";
 		return sqlSession.insert(statement, dto);

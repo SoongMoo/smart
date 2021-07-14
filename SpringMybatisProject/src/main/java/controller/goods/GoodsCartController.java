@@ -10,12 +10,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import service.goods.GoodsCartAddService;
+import service.goods.GoodsCartListService;
 
 @Controller
 @RequestMapping("cart")
 public class GoodsCartController {
 	@Autowired
 	GoodsCartAddService goodsCartAddService;
+	@Autowired
+	GoodsCartListService goodsCartListService;
+	@RequestMapping("goodsCartList")
+	public String goodsCartList(HttpSession session, Model model) {
+		goodsCartListService.cartList(session, model);
+		return "goods/goodsCart";
+	}
 	@RequestMapping(value = "goodsCartAdd" ,method = RequestMethod.POST)
 	public String goodsCartAdd(
 			@RequestParam(value="cartQty") int cartQty,

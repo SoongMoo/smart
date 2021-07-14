@@ -40,6 +40,7 @@
 	<c:if test="${authInfo.grade == 1 }">
 	<!-- 일반 사용자 -->
 		<a href="edit/myPage">마이페이지</a>
+		<a href="cart/goodsCartList" >장바구니</a>
 	</c:if>
 	<c:if test="${authInfo.grade != 1 }">
 	<!-- 관리자 -->
@@ -49,8 +50,10 @@
 	<a href="goods/goodsList">상품리스트</a>
 	</c:if>
 	<a href="login/logOut">logOut</a>
+<!-- 
 	<a href="ajaxTest">ajax</a>
 	<a href="ajaxTest2">ajaxTest2</a>
+ -->
 </c:if>
 <table>
 <tr>

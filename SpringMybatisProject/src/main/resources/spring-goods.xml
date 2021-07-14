@@ -18,6 +18,8 @@
 	<bean class="service.goods.GoodsUpdateService" />
 	<bean class="service.goods.GoodsDeleteService" />
 	<bean class="service.goods.GoodsCartAddService" />
+	<bean class="service.goods.GoodsCartListService" />
+	
 	
 	
 	
