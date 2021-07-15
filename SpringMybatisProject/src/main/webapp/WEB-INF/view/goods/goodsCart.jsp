@@ -32,13 +32,27 @@
 		document.getElementById("totalPrice").innerHTML=prodTot;
 		document.getElementById("prodCnt").innerHTML= cnt ;
 	}
+	function goodsCheck(){
+		var chk = document.getElementsByName("prodCk");
+		var cnt = 0;
+		for(var i = 0; i < chk.length ; i ++){
+			if(chk[i].checked){
+				cnt++;
+			}
+		}
+		if(cnt <= 0){
+			alert("구매하시려면 적어도 하나 이상 상품을 선택하셔야 합니다.");
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
 카트페이지입니다.
 
 <table border=1 width =600 align="center">
-<form action="goodsBuy.gd" method="post">
+<form action="goodsBuy" method="post" onsubmit="return goodsCheck();">
+	<tr><td colspan="8"><button id = "cartDel">선택항목 삭제</button></td></tr>
 <c:set var="price" value="0"/><!-- 자바변수 생성 -->
 <c:set var="cnt"  value= "0" />
 <c:forEach items="${lists }" var="dto">
