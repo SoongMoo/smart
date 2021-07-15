@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,12 +30,20 @@ public class GoodsCartController {
 	GoodsBuyService goodsBuyService;
 	@Autowired
 	GoodsOrderService goodsOrderService;
-	@RequestMapping
+	@RequestMapping("goodsOrder")
 	public String goodsOrder(GoodsOrderCommand goodsOrderCommand,
 			HttpSession session) {
 		// GoodsOrderCommand가 가지고 있는 값을 구매 테이블에 전달 
-		goodsOrderService.goodsOrder(goodsOrderCommand, session);
-		return null;
+		String purchaseNum = 
+				goodsOrderService.goodsOrder(goodsOrderCommand, session);
+		return "redirect:paymentOk?purchNo="+purchaseNum 
+						+"&payPrice="+goodsOrderCommand.getPurchaseTotPrice();
+	}
+	@RequestMapping("paymentOk")
+	public String paymentOk(
+			@ModelAttribute(value="purchNo") String purchNo,
+			@ModelAttribute(value="payPrice") String payPrice) {
+		return "goods/payment";
 	}
 	@RequestMapping(value = "goodsBuy" , method = RequestMethod.POST)
 	public String goodsBuy(

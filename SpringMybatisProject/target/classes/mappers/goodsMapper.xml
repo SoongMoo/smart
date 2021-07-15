@@ -34,6 +34,27 @@
 	where mem_id = #{memId}
 </select>
 
+<insert id="purchaseInsert" parameterType="Model.PurchaseDTO">
+	insert into purchase(PURCHASE_NUM, MEM_ID, PURCHASE_TOT_PRICE,PURCHASE_ADDR,
+	PURCHASE_METHOD, PURCAHSE_REQUEST, RECEIVER_NAME, RECEIVER_PHONE,
+	PURCHASE_DATE)
+	values(#{purchaseNum},#{memId},#{purchaseTotPrice},#{purchaseAddr},
+	#{purchaseMethod},#{purchaseRequest},#{receiverName},#{receiverPhone},
+	sysdate)
+</insert>
+
+<insert id="purchaseListInsert" parameterType="Model.CartDTO"> 
+	insert into purchase_List(PURCHASE_NUM, PROD_NUM, PURCHASE_QTY, PURCHASE_PRICE)
+	select #{purchaseNum} , PROD_NUM, CART_QTY, CART_PRICE
+	from cart
+	where mem_id = #{memId} and prod_num = #{prodNum}
+</insert>
+
+<delete id="cartDelete"  parameterType="Model.CartDTO">
+	delete from cart
+	where mem_id = #{memId} and prod_num = #{prodNum}
+</delete>
+
 <update id="goodsQtyDown" parameterType="Model.CartDTO">
 	update cart
 	set cart_qty = cart_qty - 1,
