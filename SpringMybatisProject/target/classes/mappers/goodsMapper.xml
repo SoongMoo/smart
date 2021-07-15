@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.goodsMapper">
+<!-- association이 있는 map은 출력 결과를 하나만 반환한다. -->
+<!-- 두 테이블에 있는 값을 1 : 1로 가져올 때  association -->
 <resultMap type="Model.ProductCartDTO" id="productCartMap">
 	<association property="productDTO" javaType="Model.GoodsDTO">
 		<result column="PRUD_SUPPLYER" jdbcType="VARCHAR" property="prodSupplyer"/>
@@ -26,11 +28,18 @@
 	and p.PROD_NUM = #{prodNum}
 </select>
 
+<!-- 사용자가 저장한 cart에 있는 상품번호를 가져 옴 -->
 <select id="memProdNum" parameterType="string" resultType="string">
 	select prod_num from cart
 	where mem_id = #{memId}
 </select>
 
+<update id="goodsQtyDown" parameterType="Model.CartDTO">
+	update cart
+	set cart_qty = cart_qty - 1,
+		cart_price = cart_price - #{cartPrice}
+	where mem_id = #{memId} and prod_num = #{prodNum}
+</update>
 
 <insert id="cartAdd" parameterType="Model.CartDTO">
 	MERGE into cart c1

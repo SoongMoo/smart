@@ -19,7 +19,7 @@
 	<bean class="service.goods.GoodsDeleteService" />
 	<bean class="service.goods.GoodsCartAddService" />
 	<bean class="service.goods.GoodsCartListService" />
-	
+	<bean class="service.goods.GoodsCartQtyDownService" />
 	
 	
 	
