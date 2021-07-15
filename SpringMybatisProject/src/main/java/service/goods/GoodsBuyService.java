@@ -30,8 +30,7 @@ public class GoodsBuyService {
 			ProductCartDTO productCartDTO =	goodsRepository.cartList(dto);
 			list.add(productCartDTO);
 		}
+		System.out.println(list.size());
 		model.addAttribute("lists", list);
-		
-		
 	}
 }

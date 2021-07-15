@@ -19,9 +19,9 @@
 <c:set var="cartPrice" value="0"/>
 <c:set var="prodDelFee" value="0"/>
 <c:set var="prodNums" value="" />
-<c:forEach items="${list }" var="dto">
+<c:forEach items="${lists }" var="dto">
 		<tr><td>
-		<img src="goods/upload/${dto.productDTO.prodImage.split(',')[0] }" 
+		<img src="../goods/upload/${dto.productDTO.prodImage.split(',')[0] }" 
 			width="50"/></td>
 			<td>상품명<br />
 				${dto.productDTO.prodName }&nbsp;&nbsp;&nbsp;

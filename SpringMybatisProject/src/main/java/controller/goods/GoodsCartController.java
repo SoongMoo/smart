@@ -30,7 +30,7 @@ public class GoodsCartController {
 			@RequestParam(value="prodCk") String [] prodNums,
 			HttpSession session, Model model) {
 		goodsBuyService.goodsBuy(prodNums, session, model);
-		return null;
+		return "goods/order";
 	}
 	@RequestMapping(value="goodsCartQtyDown" , method = RequestMethod.GET)
 	public String goodsCartQtyDown(
