@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import command.GoodsOrderCommand;
 import service.goods.GoodsBuyService;
 import service.goods.GoodsCartAddService;
 import service.goods.GoodsCartListService;
 import service.goods.GoodsCartQtyDownService;
+import service.goods.GoodsOrderService;
 
 @Controller
 @RequestMapping("cart")
@@ -25,6 +27,15 @@ public class GoodsCartController {
 	GoodsCartQtyDownService goodsCartQtyDownService;
 	@Autowired
 	GoodsBuyService goodsBuyService;
+	@Autowired
+	GoodsOrderService goodsOrderService;
+	@RequestMapping
+	public String goodsOrder(GoodsOrderCommand goodsOrderCommand,
+			HttpSession session) {
+		// GoodsOrderCommand가 가지고 있는 값을 구매 테이블에 전달 
+		goodsOrderService.goodsOrder(goodsOrderCommand, session);
+		return null;
+	}
 	@RequestMapping(value = "goodsBuy" , method = RequestMethod.POST)
 	public String goodsBuy(
 			@RequestParam(value="prodCk") String [] prodNums,

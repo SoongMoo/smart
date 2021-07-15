@@ -12,7 +12,7 @@
 <hr />
 <p>
 1. 주문 상품<br />
-<form action="goodsOrder.gd" method="post">
+<form action="goodsOrder" method="post">
 <table width="600">
 		<tr><td colspan="2">상품정보</td>
 			<td>적용금액</td><td>판매자</td><td>배송비</td></tr>
@@ -32,7 +32,7 @@
 			<td>${dto.productDTO.prodDelFee }</td></tr>
 <c:set var="cartPrice" value="${cartPrice + dto.cartDTO.cartPrice }"/>
 <c:set var="prodDelFee" value="${prodDelFee + dto.productDTO.prodDelFee }"/>
-<c:set var="prodNums" value="${prodNums += dto.productDTO.prodNum += ','}" />
+<c:set var="prodNums" value="${prodNums += dto.cartDTO.prodNum += ','}" />
 </c:forEach>	
 </table>
 <table width="600">

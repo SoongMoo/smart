@@ -8,12 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import Model.CartDTO;
 import Model.GoodsDTO;
 import Model.ProductCartDTO;
+import Model.PurchaseDTO;
 
 public class GoodsRepository {
 	@Autowired
 	SqlSession sqlSession;
 	String namespace = "mappers.goodsMapper";
 	String statement;
+	public void purchaseInsert(PurchaseDTO dto) {
+		statement = namespace + ".purchaseInsert";
+		sqlSession.insert(statement, dto);
+	}
 	public void goodsQtyDown(CartDTO dto) {
 		statement = namespace + ".goodsQtyDown";
 		sqlSession.update(statement, dto);
