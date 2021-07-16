@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import command.GoodsOrderCommand;
+import command.ReviewCommand;
 import service.goods.DoPaymentService;
 import service.goods.GoodsBuyService;
 import service.goods.GoodsCartAddService;
@@ -18,6 +19,7 @@ import service.goods.GoodsCartListService;
 import service.goods.GoodsCartQtyDownService;
 import service.goods.GoodsOrderService;
 import service.goods.OrderProcessListService;
+import service.goods.ReviewWriteService;
 
 @Controller
 @RequestMapping("cart")
@@ -36,6 +38,20 @@ public class GoodsCartController {
 	OrderProcessListService orderProcessListService;
 	@Autowired
 	DoPaymentService doPaymentService;
+	@Autowired
+	ReviewWriteService reviewWriteService;
+	@RequestMapping(value = "reviewWrite", method = RequestMethod.POST)
+	public String reviewWrite(ReviewCommand reviewCommand,
+			HttpSession session) {
+		reviewWriteService.reviewWrite(reviewCommand,session);
+		return "redirect:OrderProcessList";
+	}
+	@RequestMapping("goodsReview")
+	public String goodsReview(
+			@ModelAttribute(value = "purchaseNum") String purchaseNum,
+			@ModelAttribute(value = "prodNum") String prodNum) {
+		return "goods/goodsReview";
+	}
 	@RequestMapping(value="doPayment",  method = RequestMethod.POST)
 	public String doPayment(
 			@RequestParam(value="purchaseNum") String purchaseNum,

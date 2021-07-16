@@ -11,12 +11,17 @@ import Model.OrderListDTO;
 import Model.PaymentDTO;
 import Model.ProductCartDTO;
 import Model.PurchaseDTO;
+import Model.ReviewDTO;
 
 public class GoodsRepository {
 	@Autowired
 	SqlSession sqlSession;
 	String namespace = "mappers.goodsMapper";
 	String statement;
+	public void reviewWrite(ReviewDTO dto) {
+		statement = namespace + ".reviewWrite";
+		sqlSession.insert(statement, dto);
+	}
 	public void payment(PaymentDTO dto) {
 		statement = namespace + ".payment";
 		sqlSession.insert(statement, dto);
