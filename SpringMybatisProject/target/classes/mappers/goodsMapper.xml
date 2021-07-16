@@ -2,11 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.goodsMapper">
+<resultMap type="Model.GoodsReviewsDTO" id="goodsReviewsMap">
+	<association property="goods" javaType="Model.GoodsDTO">
+		<id column="PROD_NUM" jdbcType="BIGINT" property="prodNum" />
+		<result column="PROD_NAME" jdbcType="VARCHAR" property="prodName" />
+		<result column="PROD_PRICE" jdbcType="BIGINT" property="prodPrice" />
+		<result column="PROD_IMAGE" jdbcType="VARCHAR" property="prodImage" />
+		<result column="PROD_DETAIL" jdbcType="VARCHAR" property="prodDetail" />
+		<result column="PROD_CAPACITY" jdbcType="BIGINT" property="prodCapacity" />
+		<result column="PRUD_SUPPLYER" jdbcType="VARCHAR" property="prodSupplyer" />
+		<result column="prod_Del_Fee" jdbcType="BIGINT" property="prodDelFee" />
+		<result column="RECOMMEND" jdbcType="VARCHAR" property="recommend" />
+		<result column="EMPLOYEE_ID" jdbcType="BIGINT" property="employeeId" />
+		<result column="CTGR" jdbcType="VARCHAR" property="ctgr" />
+	</association>
+	<collection property="reviews" ofType="Model.ReviewDTO">
+		<id column="PURCHASE_NUM" jdbcType="BIGINT" property="purchaseNum"/>
+		<id column="PROD_NUM" jdbcType="BIGINT" property="prodNum"/>
+		<result column="REVIEW_DATE" jdbcType="DATE" property="reviewDate"/>
+		<result column="REVIEW_CONTENT" jdbcType="VARCHAR" property="reviewContent"/>
+		<result column="REVIEW_IMG" jdbcType="VARCHAR" property="reviewImg"/>
+	</collection>
+</resultMap>
+<select id="goodsReviews" parameterType="string" resultMap="goodsReviewsMap">
+select P.PROD_NUM, PROD_NAME, PROD_PRICE, PROD_IMAGE, PROD_DETAIL, PROD_CAPACITY,
+			PRUD_SUPPLYER,prod_Del_Fee, RECOMMEND , EMPLOYEE_ID, CTGR, 
+			PURCHASE_NUM , REVIEW_DATE, REVIEW_CONTENT, REVIEW_IMG
+from products P , review R
+WHERE P.PROD_NUM = R.PROD_NUM(+) AND P.PROD_NUM = #{prodNum}
+</select>
+<update id="reviewUpdate" parameterType="Model.ReviewDTO">
+	update review
+	set review_content = #{reviewContent}
+	where PURCHASE_NUM = #{purchaseNum} and PROD_NUM = #{prodNum}
+</update>
+
+
+<select id="reviewInfo" parameterType="Model.ReviewDTO" 
+							resultType="Model.ReviewDTO">
+	select PURCHASE_NUM purchaseNum, PROD_NUM prodNum, 
+			REVIEW_DATE reviewDate, REVIEW_CONTENT reviewContent,
+			REVIEW_IMG reviewImg
+	from review
+	where PURCHASE_NUM = #{purchaseNum} and PROD_NUM = #{prodNum}
+</select>
+
 
 <insert id="reviewWrite" parameterType="Model.ReviewDTO">
 	insert into review (PURCHASE_NUM,PROD_NUM,REVIEW_DATE,REVIEW_CONTENT,
 						REVIEW_IMG)
-	values(#{purchaseNum},#{prodNum},sysdate,#{reviewContent},null)
+	values(#{purchaseNum},#{prodNum},sysdate,#{reviewContent},
+	<if test="reviewImg != null">#{reviewImg}</if>
+	<if test="reviewImg == null">null</if>)
 </insert>
 
 <sql id="PAYMENTAPPRNUM">

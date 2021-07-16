@@ -25,6 +25,6 @@
 	<bean class="service.goods.OrderProcessListService" />
 	<bean class="service.goods.DoPaymentService" />
 	<bean class="service.goods.ReviewWriteService" />
-	
-	
+	<bean class="service.goods.GoodsReviewUpdateService" />
+	<bean class="service.goods.GoodsReviewsService" />
 </beans>

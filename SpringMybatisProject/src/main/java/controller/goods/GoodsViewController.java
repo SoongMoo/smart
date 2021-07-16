@@ -6,18 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import service.goods.GoodsDetailService;
+import service.goods.GoodsReviewsService;
 
 @Controller
 @RequestMapping("prod")
 public class GoodsViewController {
 	@Autowired
-	GoodsDetailService goodsDetailService;
+	GoodsReviewsService goodsReviewsService;
 	@RequestMapping("goodsView")
 	public String goodsView(
 			@RequestParam(value="prodNum") String prodNum,
 			Model model) {
-		goodsDetailService.goodsDetail(prodNum, model);
+		goodsReviewsService.goodsReviews(prodNum, model);
 		return "goods/goodsView";
 	}
 }

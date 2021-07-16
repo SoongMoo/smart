@@ -18,6 +18,7 @@ import service.goods.GoodsCartAddService;
 import service.goods.GoodsCartListService;
 import service.goods.GoodsCartQtyDownService;
 import service.goods.GoodsOrderService;
+import service.goods.GoodsReviewUpdateService;
 import service.goods.OrderProcessListService;
 import service.goods.ReviewWriteService;
 
@@ -40,6 +41,23 @@ public class GoodsCartController {
 	DoPaymentService doPaymentService;
 	@Autowired
 	ReviewWriteService reviewWriteService;
+	@Autowired
+	GoodsReviewUpdateService goodsReviewUpdateService;
+	@RequestMapping("reviewUpdate")
+	public String reviewUpdate(ReviewCommand reviewCommand) {
+		goodsReviewUpdateService.reviewUpdate(reviewCommand);
+		return "redirect:OrderProcessList";
+	}
+	@RequestMapping("goodsReviewUpdate")
+	public String reviewUpdate(
+			@RequestParam(value="purchaseNum") String purchaseNum,
+			@RequestParam(value="prodNum") String prodNum,
+			HttpSession session, Model  model) {
+		goodsReviewUpdateService.reviewInfo(purchaseNum, prodNum, 
+				session , model);	
+		return "goods/goodsReviewModify";
+	}
+	
 	@RequestMapping(value = "reviewWrite", method = RequestMethod.POST)
 	public String reviewWrite(ReviewCommand reviewCommand,
 			HttpSession session) {
