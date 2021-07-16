@@ -22,5 +22,6 @@
 	<bean class="service.goods.GoodsCartQtyDownService" />
 	<bean class="service.goods.GoodsBuyService" />
 	<bean class="service.goods.GoodsOrderService" />
-	
+	<bean class="service.goods.OrderProcessListService" />
+	<bean class="service.goods.DoPaymentService" />
 </beans>

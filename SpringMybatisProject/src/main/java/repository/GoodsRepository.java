@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import Model.CartDTO;
 import Model.GoodsDTO;
+import Model.OrderListDTO;
+import Model.PaymentDTO;
 import Model.ProductCartDTO;
 import Model.PurchaseDTO;
 
@@ -15,6 +17,14 @@ public class GoodsRepository {
 	SqlSession sqlSession;
 	String namespace = "mappers.goodsMapper";
 	String statement;
+	public void payment(PaymentDTO dto) {
+		statement = namespace + ".payment";
+		sqlSession.insert(statement, dto);
+	}
+	public List<OrderListDTO> baseOrderList(String memId){
+		statement = namespace + ".baseOrderList";
+		return sqlSession.selectList(statement, memId);
+	}
 	public int purchaseListInsert(CartDTO dto) {
 		statement = namespace + ".purchaseListInsert";
 		return sqlSession.insert(statement, dto);

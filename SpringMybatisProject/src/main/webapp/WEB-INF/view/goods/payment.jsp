@@ -8,7 +8,7 @@
 </head>
 <body>
 결제 페이지입니다.
-<form action="doPayment.gd" method="post" >
+<form action="doPayment" method="post" >
 <input type="hidden" name="purchaseNum" value="${purchNo }" />
 <input type="hidden" name="paymentApprPrice" value="${payPrice }" />
 <table >

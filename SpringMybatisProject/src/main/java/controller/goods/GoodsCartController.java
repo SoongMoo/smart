@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import command.GoodsOrderCommand;
+import service.goods.DoPaymentService;
 import service.goods.GoodsBuyService;
 import service.goods.GoodsCartAddService;
 import service.goods.GoodsCartListService;
 import service.goods.GoodsCartQtyDownService;
 import service.goods.GoodsOrderService;
+import service.goods.OrderProcessListService;
 
 @Controller
 @RequestMapping("cart")
@@ -30,6 +32,27 @@ public class GoodsCartController {
 	GoodsBuyService goodsBuyService;
 	@Autowired
 	GoodsOrderService goodsOrderService;
+	@Autowired
+	OrderProcessListService orderProcessListService;
+	@Autowired
+	DoPaymentService doPaymentService;
+	@RequestMapping(value="doPayment",  method = RequestMethod.POST)
+	public String doPayment(
+			@RequestParam(value="purchaseNum") String purchaseNum,
+			@RequestParam(value = "paymentApprPrice") String paymentApprPrice,
+			@RequestParam(value = "paymentNumber") String paymentNumber,
+			HttpSession session,Model model) {
+		doPaymentService.payment(purchaseNum,paymentApprPrice,
+				paymentNumber, session, model);
+		return "goods/buyfinished";
+	}
+	
+	
+	@RequestMapping("OrderProcessList")
+	public String purchaseCon(HttpSession session, Model model) {
+		orderProcessListService.orderList(session, model);
+		return "goods/purchaseCon";
+	}
 	@RequestMapping("goodsOrder")
 	public String goodsOrder(GoodsOrderCommand goodsOrderCommand,
 			HttpSession session) {

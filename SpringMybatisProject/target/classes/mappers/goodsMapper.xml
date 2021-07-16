@@ -4,6 +4,37 @@
 <mapper namespace="mappers.goodsMapper">
 <!-- association이 있는 map은 출력 결과를 하나만 반환한다. -->
 <!-- 두 테이블에 있는 값을 1 : 1로 가져올 때  association -->
+<sql id="PAYMENTAPPRNUM">
+select to_char(sysdate,'yyyymmdd') || 
+       nvl2(max(PAYMENT_APPR_NUM),substr(max(PAYMENT_APPR_NUM),-6),100000) + 1  
+from payment 
+where substr(PAYMENT_APPR_NUM, 1, 8) = to_char(sysdate,'yyyymmdd')
+</sql>
+<insert id="payment" parameterType="Model.PaymentDTO">
+insert into payment (PURCHASE_NUM,MEM_ID,PAYMENT_METHOD, PAYMENT_APPR_PRICE,
+					PAYMENT_APPR_NUM,PAYMENT_APPR_DATE, PAYMENT_NUMBER )
+values ( #{purchaseNum},#{memId},#{paymentMethod},#{paymentApprPrice},
+		(<include refid="PAYMENTAPPRNUM" />), sysdate, #{paymentNumber})
+</insert>
+
+<select id="baseOrderList" parameterType="string" resultType="Model.OrderListDTO">
+select  p1.prod_num prodNum , PRUD_SUPPLYER prodSupplyer, prod_name prodName, 
+		prod_image prodImage, 
+ 		PURCHASE_DATE purchaseDate, p2.PURCHASE_NUM purchaseNum, 
+ 		PURCHASE_TOT_PRICE purchaseTotPrice,
+ 		review_content reviewContent, 
+ 		PAYMENT_APPR_NUM paymentApprNum
+from products p1,  purchase_list p2, purchase p3, payment p4, review r
+where p1.prod_num = p2.prod_num
+and   p2.PURCHASE_NUM = p3.PURCHASE_NUM
+and   p2.PURCHASE_NUM = p4.PURCHASE_NUM(+)
+and   p2.PURCHASE_NUM = r.PURCHASE_NUM(+)
+and   p2.prod_num = r.prod_num(+)
+and   p3.mem_id = #{memId}
+order by purchaseNum desc
+</select>
+
+
 <resultMap type="Model.ProductCartDTO" id="productCartMap">
 	<association property="productDTO" javaType="Model.GoodsDTO">
 		<result column="PRUD_SUPPLYER" jdbcType="VARCHAR" property="prodSupplyer"/>
