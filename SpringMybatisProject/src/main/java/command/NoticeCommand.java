@@ -4,6 +4,17 @@ public class NoticeCommand {
 	String noticeSub;
 	String noticeCon;
 	String noticeKind;
+	
+	String noticeNo;
+	public String getNoticeNo() {
+		return noticeNo;
+	}
+	public void setNoticeNo(String noticeNo) {
+		this.noticeNo = noticeNo;
+	}
+	
+	
+	
 	public String getNoticeSub() {
 		return noticeSub;
 	}
