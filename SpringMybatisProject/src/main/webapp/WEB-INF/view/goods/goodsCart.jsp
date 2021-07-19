@@ -32,6 +32,16 @@
 		document.getElementById("totalPrice").innerHTML=prodTot;
 		document.getElementById("prodCnt").innerHTML= cnt ;
 	}
+	function selectedDel(){
+		var chk = document.getElementsByName("prodCk");
+		var prodNums = '';
+		for(var i = 0; i < chk.length ; i++){
+			if(chk[i].checked){
+				prodNums += chk[i].value + ",";
+			}
+		}
+		location.href="goodsCartRemove?prodNums="+prodNums;
+	}
 	function goodsCheck(){
 		var chk = document.getElementsByName("prodCk");
 		var cnt = 0;
@@ -52,7 +62,9 @@
 
 <table border=1 width =600 align="center">
 <form action="goodsBuy" method="post" onsubmit="return goodsCheck();">
-	<tr><td colspan="8"><button id = "cartDel">선택항목 삭제</button></td></tr>
+	<tr><td colspan="8">
+		<button type="button" id = "cartDel" onclick="selectedDel()">선택항목 삭제</button></td>
+	</tr>	
 <c:set var="price" value="0"/><!-- 자바변수 생성 -->
 <c:set var="cnt"  value= "0" />
 <c:forEach items="${lists }" var="dto">
@@ -64,8 +76,8 @@
 		
 		${dto.productDTO.prodSupplyer }</td>
 		<td>적용금액</td><td>배송비</td><td>총 적용금액</td>
-		<td rowspan="2"><input type="button" value="삭제" 
-		onclick="javascript:location.href='cartProdDel.gd?prodNum=${dto.cartDTO.prodNum }';"/></td>
+		<td rowspan="2"><input type="button"  value="삭제"
+			onclick="javascript:location.href='cartProdDel?prodNum=${dto.cartDTO.prodNum }'" /></td>
 		</tr>
 	<tr><td>
 		<img src="goods/upload/${dto.productDTO.prodImage.split(',')[0] }" 

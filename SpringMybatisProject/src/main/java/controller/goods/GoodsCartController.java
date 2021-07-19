@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import command.GoodsOrderCommand;
 import command.ReviewCommand;
+import service.goods.CartProdDeleteService;
 import service.goods.DoPaymentService;
 import service.goods.GoodsBuyService;
 import service.goods.GoodsCartAddService;
 import service.goods.GoodsCartListService;
 import service.goods.GoodsCartQtyDownService;
+import service.goods.GoodsCartRemoveService;
 import service.goods.GoodsOrderService;
 import service.goods.GoodsReviewUpdateService;
 import service.goods.OrderProcessListService;
@@ -43,6 +45,23 @@ public class GoodsCartController {
 	ReviewWriteService reviewWriteService;
 	@Autowired
 	GoodsReviewUpdateService goodsReviewUpdateService;
+	@Autowired
+	CartProdDeleteService cartProdDeleteService;
+	@Autowired
+	GoodsCartRemoveService goodsCartRemoveService;
+	@RequestMapping("goodsCartRemove")
+	public String goodsCartRemove(@RequestParam(value ="prodNums") String prodNums,
+			HttpSession session) {
+		goodsCartRemoveService.cartRemove(prodNums, session);
+		return "redirect:goodsCartList";
+	}
+	
+	@RequestMapping("cartProdDel")
+	public String cartProdDel(@RequestParam(value = "prodNum") String prodNum,
+			HttpSession session) {
+		cartProdDeleteService.cartProdDel(prodNum,session);
+		return "redirect:goodsCartList";
+	}
 	@RequestMapping("reviewUpdate")
 	public String reviewUpdate(ReviewCommand reviewCommand) {
 		goodsReviewUpdateService.reviewUpdate(reviewCommand);

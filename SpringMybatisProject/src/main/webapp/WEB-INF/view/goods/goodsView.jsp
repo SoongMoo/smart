@@ -39,7 +39,7 @@
 <table>
 	<tr><td rowspan="5">
 	<img src= "../goods/upload/${goodsReviews.goods.prodImage.split(',')[0] }" /></td>
-									<td>${goodsReviews.goods.prodName }</td></tr>
+									<td>${goodsReviews.getGoods().getProdName() }</td></tr>
 	<tr>					        <td>${goodsReviews.goods.prodPrice }</td></tr>
 	<tr>				            <td>${goodsReviews.goods.prodDelFee }</td></tr>
 	<tr>				            <td>수량 
