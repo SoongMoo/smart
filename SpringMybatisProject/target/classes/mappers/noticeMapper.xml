@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.noticeMapper">
+	<sql id="noticeNum">
+		select nvl(max(NOTICE_NO),0) + 1 from notice
+	</sql>
+	<insert id="noticeWrite">
+		insert into notice(NOTICE_NO, NOTICE_SUB,NOTICE_CON,
+		NOTICE_DATE, NOTICE_KIND, NOTICE_FILE, NOTICE_COUNT,
+		EMPLOYEE_ID)
+		values((<include refid="noticeNum"/>),#{noticeSub},
+		#{noticeCon},sysdate,#{noticeKind}, null, 0 ,#{employeeId})
+	</insert>
+</mapper>

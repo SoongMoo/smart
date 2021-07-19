@@ -31,6 +31,7 @@
   			classpath:spring-member.xml
   			classpath:spring-mail-config.xml
   			classpath:spring-goods.xml
+  			classpath:spring-notice.xml
   		</param-value>
   	</init-param>
   </servlet>
@@ -38,11 +39,17 @@
   	<servlet-name>dispatcher</servlet-name>
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
-  
+
+ 
   <error-page>
   	<error-code>400</error-code>
   	<location>/error/400.jsp</location>
   </error-page>
+  
+  
+  
+  
+  
   <error-page>
   	<error-code>404</error-code>
   	<location>/error/400.jsp</location>

@@ -61,6 +61,10 @@
 			<mvc:mapping path="/goods/**"/>
 			<bean class="interceptor.AuthCheckInterceptor"/>
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/**"/>
+			<bean class="interceptor.AuthCheckInterceptor"/>
+		</mvc:interceptor>
 	</mvc:interceptors>
 	
 	
