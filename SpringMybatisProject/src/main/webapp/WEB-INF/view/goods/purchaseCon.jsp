@@ -21,7 +21,7 @@
 		${dto.prodName } / ${dto.purchaseNum }</td>
 		<td rowspan="2">${dto.prodSupplyer }</td>
 		<td rowspan="2"><c:if test="${dto.paymentApprNum == null}">
-		<a href="paymentOk.gd?purchNo=${dto.purchaseNum }&payPrice=${dto.purchaseTotPrice }">결제하기</a></c:if>
+		<a href="paymentOk?purchNo=${dto.purchaseNum }&payPrice=${dto.purchaseTotPrice }">결제하기</a></c:if>
 					   <c:if test="${dto.paymentApprNum != null}">
 					   	      결제완료<br />
 						   <c:if test="${dto.reviewContent == null }">
