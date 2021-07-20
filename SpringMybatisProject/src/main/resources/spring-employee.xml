@@ -27,11 +27,5 @@
 	<bean class="service.employee.EmployeeDetailService" />
 	<bean class="service.employee.EmployeeInfoUpdateService" />
 	<bean class="service.employee.EmployeePwUpdateService" />
-	
-	
-	
-	
-	
-	
-	
+	<bean class="service.employee.EmployeePwModifyService" />
 </beans>

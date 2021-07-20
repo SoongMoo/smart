@@ -3,6 +3,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.employeeMapper">
 
+<update id="pwUpdate" parameterType="Model.EmployeeDTO">
+	update employees
+	set EMP_PW = #{empPw}
+	where EMP_USERID = #{empUserId}
+</update>
+
 <update id="empModify" parameterType="Model.EmployeeDTO">
 	update employees
 	set PH_NUMBER = #{phNumber}, OFFICE_NUMBER=#{officeNumber},

@@ -13,6 +13,10 @@ public class EmployeeRepository {
 	
 	String namespace = "mappers.employeeMapper";
 	String statement;
+	public void pwUpdate(EmployeeDTO dto) {
+		statement = namespace + ".pwUpdate";
+		sqlSession.update(statement, dto);
+	}
 	public void empModify(EmployeeDTO dto) {
 		statement = namespace + ".empModify";
 		sqlSession.update(statement, dto);

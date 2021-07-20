@@ -17,6 +17,16 @@ public class EmployeeCommand {
 	String officeNumber;
 	String email;
 	String empAddress;
+	
+	String oldPw;	
+	public String getOldPw() {
+		return oldPw;
+	}
+	public void setOldPw(String oldPw) {
+		this.oldPw = oldPw;
+	}
+	
+	
 	public boolean isEmpPwEqualsEmpPwCon() {
 		return empPw.equals(empPwCon);
 	}
