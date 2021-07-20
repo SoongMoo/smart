@@ -25,7 +25,8 @@ public class EmployeePwModifyService {
 			errors.rejectValue("oldPw", "notPw");
 		}else {
 			if(employeeCommand.isEmpPwEqualsEmpPwCon()) {
-				dto.setEmpPw(employeeCommand.getEmpPw());
+				dto.setEmpPw(
+						bcryptPasswordEncoder.encode(employeeCommand.getEmpPw()));
 				dto.setEmpUserId(authInfo.getUserId());
 				employeeRepository.pwUpdate(dto);
 			}else {
