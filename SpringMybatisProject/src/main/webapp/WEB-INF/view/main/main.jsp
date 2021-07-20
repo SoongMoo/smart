@@ -28,7 +28,8 @@
 			<form:errors path="userPw"  />
 		</td></tr>
 	<tr><td colspan="3">
-		아이디/비밀번호 찾기 | 
+		<a href="search/idFind">아이디</a>/
+		<a href="search/findPassword" >비밀번호 찾기</a> | 
 		<a href="register/agree">회원 가입</a>
 		</td></tr>
 </table>

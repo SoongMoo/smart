@@ -3,7 +3,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.LogInMapper">
 
-
 <select id="logIn" parameterType="string" resultType="Model.AuthInfoDTO">
 	select MEM_ID userId, MEM_PW userPw , MEM_EMAIL userEmail, 1 grade
 	from member
@@ -13,6 +12,4 @@
 	from employees
 	where EMP_USERID = #{userId}	
 </select>
-
-
 </mapper>

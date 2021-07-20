@@ -12,6 +12,9 @@
 	<bean id = "logInRepository" class="repository.LogInRepository"/>
 	
 	<bean class="controller.ajax.AjaxController"/>
+	<bean class="service.main.IdFindFinishService" />
+	<bean class="service.main.FindPasswordService" />
 	
 	
 </beans>
+

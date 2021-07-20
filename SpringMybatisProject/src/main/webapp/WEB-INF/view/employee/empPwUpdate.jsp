@@ -11,9 +11,9 @@
 	<form:form action="empPwUpdateOk" method="post" 
 									modelAttribute="EmployeeCommand">
 		현재 비밀번호 : <input type="text" name="oldPw" />
-					<form:errors path = "oldPw"/><br />
+					<form:errors path="oldPw"/><br />
 		바꿀 비밀번호 : <input type="text" name="empPw" />
-					<form:errors path="empPw"/><br />
+					<form:errors path="empPw" /><br />
 		바꿀 비밀번호 확인 : <input type="text" name="empPwCon" /> 
 					<form:errors path="empPwCon"/><br />
 		<input type="submit" value="비밀번호 변경" />
