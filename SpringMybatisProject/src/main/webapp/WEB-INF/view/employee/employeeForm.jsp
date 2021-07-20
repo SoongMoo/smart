@@ -18,8 +18,8 @@
 		</td></tr>
 	<tr><td>사원아이디</td>
 		<td>
-			<form:input path="empUserid"/>
-			<form:errors path="empUserid"/>
+			<form:input path="empUserId"/>
+			<form:errors path="empUserId"/>
 		</td></tr>
 	<tr><td>비밀번호</td>
 		<td>

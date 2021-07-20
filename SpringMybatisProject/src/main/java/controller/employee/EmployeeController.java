@@ -80,7 +80,7 @@ public class EmployeeController {
 		if(errors.hasErrors()) {
 			return "employee/employeeForm";
 		}
-		AuthInfoDTO authInfo = loginService.logIn(employeeCommand.getEmpUserid(), 
+		AuthInfoDTO authInfo = loginService.logIn(employeeCommand.getEmpUserId(), 
 				employeeCommand.getEmpPw());
 		if(authInfo != null) {
 			errors.rejectValue("empUserid", "duplicate");
