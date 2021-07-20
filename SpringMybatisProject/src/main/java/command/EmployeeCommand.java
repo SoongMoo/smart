@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class EmployeeCommand {
 	String employeeId;
-	String empUserid;
+	String empUserId;
 	String empPw;
 	String empPwCon;
 	String empName;
@@ -26,11 +26,11 @@ public class EmployeeCommand {
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
-	public String getEmpUserid() {
-		return empUserid;
+	public String getEmpUserId() {
+		return empUserId;
 	}
-	public void setEmpUserid(String empUserid) {
-		this.empUserid = empUserid;
+	public void setEmpUserId(String empUserId) {
+		this.empUserId = empUserId;
 	}
 	public String getEmpPw() {
 		return empPw;

@@ -13,6 +13,14 @@ public class EmployeeRepository {
 	
 	String namespace = "mappers.employeeMapper";
 	String statement;
+	public void empModify(EmployeeDTO dto) {
+		statement = namespace + ".empModify";
+		sqlSession.update(statement, dto);
+	}
+	public EmployeeDTO empDetail(String empId) {
+		statement = namespace + ".empDetail";
+		return sqlSession.selectOne(statement, empId);
+	}
 	public void empDelete(String empId) {
 		statement = namespace +".empDelete";
 		int i = sqlSession.delete(statement, empId);

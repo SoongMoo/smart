@@ -6,6 +6,7 @@
 			http://www.springframework.org/schema/beans/spring-beans.xsd
 			"
 >
+	<bean class="controller.employee.EmployeeMypageController" />
 	<bean class="controller.employee.EmployeeController" />
 	<bean id = "employeeNumService" 
 		class="service.employee.EmployeeNumService"/>
@@ -22,5 +23,15 @@
 	
 	<bean id="employeeDeleteService" 
 		class="service.employee.EmployeeDeleteService"/>
+	
+	<bean class="service.employee.EmployeeDetailService" />
+	<bean class="service.employee.EmployeeInfoUpdateService" />
+	<bean class="service.employee.EmployeePwUpdateService" />
+	
+	
+	
+	
+	
+	
 	
 </beans>

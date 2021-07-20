@@ -3,12 +3,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.employeeMapper">
 
+<update id="empModify" parameterType="Model.EmployeeDTO">
+	update employees
+	set PH_NUMBER = #{phNumber}, OFFICE_NUMBER=#{officeNumber},
+		EMAIL = #{email}, EMP_ADDRESS = #{empAddress}
+	where EMP_USERID = #{empUserId}
+</update>
+
 <sql id="baseColumn" >
 	EMPLOYEE_ID employeeId ,EMP_USERID empUserId,
 	EMP_PW empPw ,EMP_NAME empName,	HIRE_DATE hireDate, 
 	JOB_ID jobId ,PH_NUMBER phNumber, OFFICE_NUMBER officeNumber,
 	EMAIL email, EMP_ADDRESS empAddress
 </sql>
+
+<select id="empDetail" parameterType="string" 
+				resultType="Model.EmployeeDTO">
+select <include refid="baseColumn" />
+from employees
+where emp_userid = #{empId}
+</select>
+
 
 <delete id="empDelete" parameterType="string">
 	delete from employees
