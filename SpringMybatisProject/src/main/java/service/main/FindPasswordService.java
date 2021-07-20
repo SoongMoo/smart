@@ -33,7 +33,8 @@ public class FindPasswordService {
 				try {
 				mailService.sendMail(dto.getMemEmail(), content, subject);
 				}catch(Exception e) {e.printStackTrace();}
-				return "member/passView";
+				model.addAttribute("email", dto.getMemEmail());
+				return "main/passView";
 			}else {
 				model.addAttribute("errEmail","이메일이 틀립니다.");
 				return "main/findPassword";
