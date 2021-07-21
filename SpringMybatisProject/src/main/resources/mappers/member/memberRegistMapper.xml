@@ -74,7 +74,7 @@ from(
 )
 	<trim prefix="where" prefixOverrides="AND | OR">
 		<if test="memId != null">
-			MEM_ID = #{memId}
+			memId = #{memId}
 		</if>
 		<if test="startEndPageDTO != null">
 			and rn between #{startEndPageDTO.startRow} 
