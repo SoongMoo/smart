@@ -18,23 +18,19 @@ public class MemberListService {
 		int limit = 5;
 		int limitPage = 10;
 		//                      2  - 1
-		if(page != null) {
-			Long startRow = ((long)page -1 ) * limit +1;
-			Long endRow = startRow + limit -1;
-			StartEndPageDTO sep = new StartEndPageDTO();
-			sep.setStartRow(startRow);
-			sep.setEndRow(endRow);
-			dto.setStartEndPageDTO(sep);
-		}
+		Long startRow = ((long)page -1 ) * limit +1;
+		Long endRow = startRow + limit -1;
+		StartEndPageDTO sep = new StartEndPageDTO();
+		sep.setStartRow(startRow);
+		sep.setEndRow(endRow);
+		dto.setStartEndPageDTO(sep);
 		dto.setMemId(memId);
 		List<MemberDTO> list = memberRepository.memList(dto);
 		Integer count = memberRepository.getMemberCount();
 		model.addAttribute("lists", list);
 		model.addAttribute("count", count);
-		if(page != null) {
-			PageAction pageAction = new PageAction();
-			pageAction.page(count, limit, page, limitPage, model, 
+		PageAction pageAction = new PageAction();
+		pageAction.page(count, limit, page, limitPage, model, 
 					"memList");
-		}
 	}
 }

@@ -14,7 +14,7 @@
 	<bean class="controller.ajax.AjaxController"/>
 	<bean class="service.main.IdFindFinishService" />
 	<bean class="service.main.FindPasswordService" />
-	
+	<bean class="service.main.CookieService" />
 	
 </beans>
 

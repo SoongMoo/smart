@@ -58,13 +58,13 @@ public class MemberInfoController {
 	public String memInfo(
 			@PathVariable(value = "memId") String memId,
 			Model model) {
-		memberListService.memList(model,memId, null);
+		memberListService.memList(model,memId, 1);
 		return "member/memberInfo";
 	}
 	@RequestMapping("memMod/{memId}")
 	public String memMod(@PathVariable(value = "memId") String memId,
 			Model model) {
-		memberListService.memList(model,memId, null);
+		memberListService.memList(model,memId, 1);
 		return "member/memberModify";
 	}
 }
