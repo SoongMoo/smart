@@ -48,21 +48,23 @@ public class MemberInfoController {
 		return "redirect:memInfo/"+encodedParam;
 	}
 	@RequestMapping("memList")
-	public String memList(Model model) {
-		memberListService.memList(model,null);
+	public String memList(
+			@RequestParam(value="page" ,defaultValue = "1") Integer page, 
+			Model model) {
+		memberListService.memList(model,null,page);
 		return "member/memberList";
 	}
 	@RequestMapping("memInfo/{memId}")
 	public String memInfo(
 			@PathVariable(value = "memId") String memId,
 			Model model) {
-		memberListService.memList(model,memId);
+		memberListService.memList(model,memId, null);
 		return "member/memberInfo";
 	}
 	@RequestMapping("memMod/{memId}")
 	public String memMod(@PathVariable(value = "memId") String memId,
 			Model model) {
-		memberListService.memList(model,memId);
+		memberListService.memList(model,memId, null);
 		return "member/memberModify";
 	}
 }

@@ -13,7 +13,7 @@
 		<property name="host" value="smtp.gmail.com" />
 		<property name="protocol" value="smtps" />
 		<property name="defaultEncoding" value="utf-8" />
-		<property name="username" value="hiland00" />
+		<property name="username" value="" />
 		<property name="password" value="" />
 		<property name="javaMailProperties" >
 			<props>

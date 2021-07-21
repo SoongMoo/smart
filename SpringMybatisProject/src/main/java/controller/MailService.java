@@ -15,7 +15,8 @@ public class MailService {
 		msg.setHeader("content-type", "text/html; charset=UTF-8");
 		msg.setContent(content, "text/html; charset=UTF-8");
 		msg.setSubject(subject);
-		msg.setRecipient(MimeMessage.RecipientType.TO , new InternetAddress(reciver));
+		msg.setRecipient(MimeMessage.RecipientType.TO , 
+				new InternetAddress(reciver));
 		mailSender.send(msg);
 	}
 }

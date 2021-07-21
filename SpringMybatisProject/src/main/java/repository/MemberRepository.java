@@ -41,9 +41,13 @@ public class MemberRepository {
 		statement = namespace + ".memUpdate";
 		sqlSession.update(statement, dto);
 	}
-	public List<MemberDTO> memList(String memId) {
+	public Integer getMemberCount() {
+		statement = namespace +".getMemberCount";
+		return sqlSession.selectOne(statement);
+	}
+	public List<MemberDTO> memList(MemberDTO dto) {
 		statement = namespace +".memList";
-		return sqlSession.selectList(statement,memId);
+		return sqlSession.selectList(statement,dto);
 	}
 	public void memJoin(MemberDTO dto) {
 		statement = namespace + ".memJoin";
