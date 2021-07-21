@@ -54,7 +54,13 @@
 	<a href="emp/empList">직원 리스트</a>
 	<a href="goods/goodsList">상품리스트</a>
 	<a href="admin/noticeList">공지사항</a>
+	<a href="admin/noticeList1">공지사항1</a>
+	<a href="admin/noticeList2">공지사항2</a>
+	<a href="admin/noticeList3">공지사항3</a>
+	<a href="admin/noticeList4">공지사항4</a>
+	<a href="admin/noticeList5">공지사항5</a>
 	</c:if>
+	<a href ="chatting" >chatting</a>
 	<a href="login/logOut">logOut</a>
 <!-- 
 	<a href="ajaxTest">ajax</a>
