@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 
 import Model.MemberDTO;
 import Model.StartEndPageDTO;
+import controller.PageAction;
 import repository.MemberRepository;
 
 public class MemberListService {
@@ -32,23 +33,8 @@ public class MemberListService {
 		model.addAttribute("lists", list);
 		model.addAttribute("count", count);
 		
-		int maxPage = (int)((double) count / limit + 0.99);
-				//        1    /  10  = 0.1 + 0.9
-		        //        2    / 10   = 0.2 + 0.9 = 1
-		        //        11   / 10 = 1.1 + 0.9 = 2
-		int startPage = (int)((double) page / limitPage + 0.99); 
-		int endPage = startPage + limitPage - 1;
-		if(endPage > maxPage)endPage = maxPage;
-		model.addAttribute("maxPage", maxPage);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
-		model.addAttribute("page", page);
-		
-		/* 총페이지 수 */
-		
-		
-		
-		
-		
+		PageAction pageAction = new PageAction();
+		pageAction.page(count, limit, page, limitPage, model, 
+				"memList");
 	}
 }

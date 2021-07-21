@@ -18,6 +18,15 @@ public class EmployeeDTO {
 	String email;
 	String empAddress;
 
+	StartEndPageDTO startEndPageDTO;	
+	public StartEndPageDTO getStartEndPageDTO() {
+		return startEndPageDTO;
+	}
+	public void setStartEndPageDTO(StartEndPageDTO startEndPageDTO) {
+		this.startEndPageDTO = startEndPageDTO;
+	}
+	
+	
 	public String getEmployeeId() {
 		return employeeId;
 	}

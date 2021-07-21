@@ -62,7 +62,7 @@ and mem_name = #{memName}
 	,#{memEmail},#{memEmailCk},
 	#{postNumber},#{detailAdd})
 </insert>
-<select id="memList" resultType="Model.MemberDTO" parameterType="string">
+<select id="memList" resultType="Model.MemberDTO" parameterType="Model.MemberDTO">
 select rn, memId, memPw, memAddress, memName, memPhone, memBirth, memGender,
         memAccount, memEmail, memEmailCk, postNumber, detailAdd
 from(

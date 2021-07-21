@@ -55,11 +55,18 @@ where emp_userid = #{empId}
 	where EMPLOYEE_ID = #{empId}
 </select>
 
-<select id="empList" resultType="Model.EmployeeDTO">
-	select  <include refid="baseColumn" />
-	from employees
+<select id="empList" resultType="Model.EmployeeDTO" 
+	parameterType="Model.EmployeeDTO">
+select 	rn, employeeId , empUserId, empPw ,empName,	hireDate, 
+		jobId, phNumber, officeNumber, email, empAddress
+from (select rownum rn, <include refid="baseColumn" />
+	from employees)
+where rn between #{startEndPageDTO.startRow}
+		and #{startEndPageDTO.endRow}
 </select>
-
+<select id = "count" resultType="int">
+	select count(*) from employees
+</select>
 <insert id="empInsert" parameterType="Model.EmployeeDTO">
 	insert into employees(EMPLOYEE_ID,EMP_USERID,EMP_PW,EMP_NAME,
 					HIRE_DATE, JOB_ID,PH_NUMBER, OFFICE_NUMBER,

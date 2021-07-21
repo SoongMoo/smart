@@ -21,6 +21,9 @@
 	<td><fmt:formatDate value="${dto.hireDate}" type="date" pattern="yyyy-MM-dd"/> </td>
 	<td>${dto.officeNumber}</td></tr>
 </c:forEach>
+	<tr><td colspan="5">
+		<%@ include file="../include/includePage.jsp" %>
+	</td></tr>
 </table>
 </c:if>
 <c:if test="${empty empList }">

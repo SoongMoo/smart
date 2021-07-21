@@ -45,7 +45,7 @@ public class MainController {
 	public String aaa(
 			@ModelAttribute LogInCommand logInCommand,
 			Model model) {
-		goodsListService.goodsList(model);
+		goodsListService.goodsList(model,null);
 		return "main/main";
 	}
 }
