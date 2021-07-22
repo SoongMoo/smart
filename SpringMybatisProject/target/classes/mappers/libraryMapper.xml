@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.libraryMapper">
+<select id="libraryInfo" parameterType="string" 
+				resultType="Model.LibraryDTO">
+	select NOTICE_NO noticeNo, NOTICE_SUB noticeSub, 
+		NOTICE_CON noticeCon,NOTICE_DATE noticeDate,
+		NOTICE_KIND noticeKind, NOTICE_FILE noticeFile, 
+		NOTICE_COUNT noticeCount, EMPLOYEE_ID employeeId
+	from notice
+	where NOTICE_KIND = '자료실' and notice_no = #{noticeNo}
+</select>
+
+<update id="libCount" parameterType="string">
+	update notice
+	set NOTICE_COUNT = NOTICE_COUNT + 1
+	where NOTICE_NO = #{noticeNo} 
+	and  NOTICE_KIND = '자료실'
+</update>
+
+<select id="libSelect"  resultType="Model.LibraryDTO">
+	select NOTICE_NO noticeNo, NOTICE_SUB noticeSub, 
+		NOTICE_CON noticeCon,NOTICE_DATE noticeDate,
+		NOTICE_KIND noticeKind, NOTICE_FILE noticeFile, 
+		NOTICE_COUNT noticeCount, EMPLOYEE_ID employeeId
+	from notice
+	where NOTICE_KIND = '자료실'
+</select>
+<insert id="libWrite" parameterType="Model.LibraryDTO" >
+	insert into notice(NOTICE_NO, NOTICE_SUB, NOTICE_CON,NOTICE_DATE,
+	NOTICE_KIND, NOTICE_FILE, NOTICE_COUNT, EMPLOYEE_ID )
+	values(PROD_SEQ.nextval,#{noticeSub},#{noticeCon},sysdate,
+	#{noticeKind},null,0,#{employeeId})
+</insert>
+</mapper>

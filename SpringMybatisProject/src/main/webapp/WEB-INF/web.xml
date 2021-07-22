@@ -33,6 +33,7 @@
   			classpath:spring-goods.xml
   			classpath:spring-notice.xml
   			classpath:spring-chatting.xml
+  			classpath:spring-library.xml
   		</param-value>
   	</init-param>
   </servlet>
