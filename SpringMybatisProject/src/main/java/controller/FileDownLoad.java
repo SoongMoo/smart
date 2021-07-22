@@ -26,6 +26,7 @@ public class FileDownLoad {
 		response.setHeader("Content-Disposition", "attachment;filename=\"" + originalFileName + "\";");
 		response.setHeader("Content-Transfer-Encoding", "binary");
 		// 다운로드하기 위한 저장된 파일명을 적어준다.
+		
 		File file = new File(RealPath + "/" + store);
 		// 파일이 웹브라우저에서 다운로드 되도록하기 위한 객체
 		ServletOutputStream out1 = null;
@@ -39,6 +40,7 @@ public class FileDownLoad {
 			out1.flush();
 			out1.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			if (fis != null) {
 				try {fis.close();} catch (Exception e) {}

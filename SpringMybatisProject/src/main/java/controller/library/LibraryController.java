@@ -37,7 +37,7 @@ public class LibraryController {
 			HttpServletRequest request, 
 			HttpServletResponse response 
 			) {
-		String path = "WEB_INF/view/library/upload";
+		String path = "WEB-INF/view/library/upload";
 		FileDownLoad fileDownLoad = new FileDownLoad();
 		fileDownLoad.fileDownLoad(path,store,original,request,response);
 	}
