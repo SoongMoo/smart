@@ -28,7 +28,7 @@ public class LibraryService {
 		String originalTotal = "";
 		String storeTotal = "";
 		String fileSizeTotal ="";
-		if(libraryCommand.getNoticeFile()[0].getOriginalFilename()!=null) {
+		if(libraryCommand.getNoticeFile()[0].getOriginalFilename()!= "") {
 			for(MultipartFile mf : libraryCommand.getNoticeFile()) {
 				String original = mf.getOriginalFilename();
 				String originalExt =
