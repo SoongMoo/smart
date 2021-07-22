@@ -17,7 +17,8 @@
 	파일 :<br /> 
 	<c:forTokens items="${dto.noticeOrgFile }" delims="," var="fileName" 
 			varStatus="idx">
-		<a href="../library/upload/${dto.noticeFile.split(',')[idx.index]}" >${fileName }</a><br />
+		<a href="fileDown?str=${dto.noticeFile.split(',')[idx.index]}&org=${fileName}" >
+		${fileName }</a> / ${dto.noticeFileSize.split(',')[idx.index]}바이트<br />
 	</c:forTokens>
 	<a href="libDetail?noticeNo=${dto.noticeNo }" >수정</a>
 </body>

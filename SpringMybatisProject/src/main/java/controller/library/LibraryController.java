@@ -1,5 +1,7 @@
 package controller.library;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import command.LibraryCommand;
+import controller.FileDownLoad;
 import service.library.LibraryDeleteService;
 import service.library.LibraryInfoService;
 import service.library.LibraryListService;
@@ -27,6 +30,17 @@ public class LibraryController {
 	LibraryModifyService libraryModifyService;
 	@Autowired
 	LibraryDeleteService libraryDeleteService;
+	@RequestMapping("fileDown")
+	public void fileDown(
+			@RequestParam(value="str") String store,
+			@RequestParam(value="org") String original,
+			HttpServletRequest request, 
+			HttpServletResponse response 
+			) {
+		String path = "WEB_INF/view/library/upload";
+		FileDownLoad fileDownLoad = new FileDownLoad();
+		fileDownLoad.fileDownLoad(path,store,original,request,response);
+	}
 	@RequestMapping("libDel")
 	public String libDel(
 			@RequestParam(value="noticeNo") String noticeNo) {
