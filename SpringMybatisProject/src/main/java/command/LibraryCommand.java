@@ -1,9 +1,21 @@
 package command;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class LibraryCommand {
 	String noticeNo;
 	String noticeSub;
 	String noticeCon;
+	
+	MultipartFile [] noticeFile;	
+	public MultipartFile[] getNoticeFile() {
+		return noticeFile;
+	}
+	public void setNoticeFile(MultipartFile[] noticeFile) {
+		this.noticeFile = noticeFile;
+	}
+	
+	
 	public String getNoticeNo() {
 		return noticeNo;
 	}

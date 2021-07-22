@@ -9,6 +9,24 @@ public class LibraryDTO {
 	String noticeFile;
 	String noticeCount;
 	String employeeId;
+	
+	String noticeOrgFile;
+	String noticeFileSize;
+	public String getNoticeOrgFile() {
+		return noticeOrgFile;
+	}
+	public void setNoticeOrgFile(String noticeOrgFile) {
+		this.noticeOrgFile = noticeOrgFile;
+	}
+	public String getNoticeFileSize() {
+		return noticeFileSize;
+	}
+	public void setNoticeFileSize(String noticeFileSize) {
+		this.noticeFileSize = noticeFileSize;
+	}
+
+	
+	
 	public String getNoticeNo() {
 		return noticeNo;
 	}

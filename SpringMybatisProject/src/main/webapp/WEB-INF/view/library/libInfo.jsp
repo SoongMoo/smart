@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>\
+<%@ include file="../include/includeTags.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,11 @@
 	등록일 : ${dto.noticeDate }<br />
 	조회수 : ${dto.noticeCount }<br />
 	등록자 : ${dto.employeeId }<br />
+	파일 :<br /> 
+	<c:forTokens items="${dto.noticeOrgFile }" delims="," var="fileName" 
+			varStatus="idx">
+		<a href="../library/upload/${dto.noticeFile.split(',')[idx.index]}" >${fileName }</a><br />
+	</c:forTokens>
 	<a href="libDetail?noticeNo=${dto.noticeNo }" >수정</a>
 </body>
 </html>

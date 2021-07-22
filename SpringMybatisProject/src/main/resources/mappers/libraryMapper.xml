@@ -7,7 +7,9 @@
 	select NOTICE_NO noticeNo, NOTICE_SUB noticeSub, 
 		NOTICE_CON noticeCon,NOTICE_DATE noticeDate,
 		NOTICE_KIND noticeKind, NOTICE_FILE noticeFile, 
-		NOTICE_COUNT noticeCount, EMPLOYEE_ID employeeId
+		NOTICE_COUNT noticeCount, EMPLOYEE_ID employeeId,
+		notice_org_file noticeOrgFile, 
+		notice_file_size noticeFileSize
 	from notice
 	where NOTICE_KIND = '자료실' and notice_no = #{noticeNo}
 </select>
@@ -39,8 +41,14 @@
 </select>
 <insert id="libWrite" parameterType="Model.LibraryDTO" >
 	insert into notice(NOTICE_NO, NOTICE_SUB, NOTICE_CON,NOTICE_DATE,
-	NOTICE_KIND, NOTICE_FILE, NOTICE_COUNT, EMPLOYEE_ID )
+	NOTICE_KIND, NOTICE_COUNT, EMPLOYEE_ID 
+	, NOTICE_FILE , notice_org_file, notice_file_size)
 	values(PROD_SEQ.nextval,#{noticeSub},#{noticeCon},sysdate,
-	#{noticeKind},null,0,#{employeeId})
+	#{noticeKind},0,#{employeeId},
+	<if test="noticeFile == null">null,null,null</if>
+	<if test="noticeFile != null">
+		#{noticeFile},#{noticeOrgFile},#{noticeFileSize}
+	</if>
+	)
 </insert>
 </mapper>

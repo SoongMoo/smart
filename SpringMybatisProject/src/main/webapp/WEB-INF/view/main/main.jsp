@@ -55,6 +55,7 @@
 	<a href="goods/goodsList">상품리스트</a>
 	<a href="admin/noticeList">공지사항</a>
 	<a href="lib/libBoard" >자료실</a>
+	<a href="board/boardList" >게시판</a>
 	</c:if>
 	<a href ="chatting" >chatting</a>
 	<a href="login/logOut">logOut</a>
