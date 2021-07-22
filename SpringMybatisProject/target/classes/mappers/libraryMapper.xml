@@ -19,6 +19,13 @@
 	and  NOTICE_KIND = '자료실'
 </update>
 
+<update id="libModify" parameterType="Model.LibraryDTO">
+	update notice
+	set NOTICE_SUB = #{noticeSub}, NOTICE_CON = #{noticeCon}
+	where NOTICE_NO = #{noticeNo} and  NOTICE_KIND = '자료실'
+
+</update>
+
 <select id="libSelect"  resultType="Model.LibraryDTO">
 	select NOTICE_NO noticeNo, NOTICE_SUB noticeSub, 
 		NOTICE_CON noticeCon,NOTICE_DATE noticeDate,

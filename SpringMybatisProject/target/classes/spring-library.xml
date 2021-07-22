@@ -11,4 +11,7 @@
 	<bean class="repository.LibraryRepository" />
 	<bean class="service.library.LibraryListService" />
 	<bean class="service.library.LibraryInfoService" />
+	<bean class="service.library.LibraryModifyService" />
+	
+	
 </beans>

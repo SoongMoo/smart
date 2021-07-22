@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import command.LibraryCommand;
 import service.library.LibraryInfoService;
 import service.library.LibraryListService;
+import service.library.LibraryModifyService;
 import service.library.LibraryService;
 
 @Controller
@@ -21,9 +22,11 @@ public class LibraryController {
 	LibraryListService libraryListService;
 	@Autowired
 	LibraryInfoService libraryInfoService;
+	@Autowired
+	LibraryModifyService libraryModifyService;
 	@RequestMapping(value = "libModify", method = RequestMethod.POST)
 	public String libModify(LibraryCommand libraryCommand) {
-		
+		libraryModifyService.libModify(libraryCommand);
 		return "redirect:libraryInfo?noticeNo="
 				+libraryCommand.getNoticeNo();
 	}
