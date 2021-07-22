@@ -12,6 +12,6 @@
 	<bean class="service.library.LibraryListService" />
 	<bean class="service.library.LibraryInfoService" />
 	<bean class="service.library.LibraryModifyService" />
-	
+	<bean class="service.library.LibraryDeleteService" />
 	
 </beans>

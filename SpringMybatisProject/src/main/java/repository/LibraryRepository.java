@@ -12,11 +12,14 @@ public class LibraryRepository {
 	SqlSession sqlSession;
 	String namespace = "mappers.libraryMapper";
 	String statement;
+	public void libDel(String noticeNo) {
+		statement = namespace + ".libDel";
+		sqlSession.delete(statement, noticeNo);
+	}
 	public void libModify(LibraryDTO libraryDTO) {
 		statement = namespace + ".libModify";
 		sqlSession.update(statement, libraryDTO);
 	}
-	
 	public void libCount(String noticeNo) {
 		statement = namespace + ".libCount";
 		sqlSession.update(statement, noticeNo);

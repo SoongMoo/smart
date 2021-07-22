@@ -25,7 +25,10 @@
 	where NOTICE_NO = #{noticeNo} and  NOTICE_KIND = '자료실'
 
 </update>
-
+<delete id="libDel" parameterType="string">
+	delete from notice
+	where NOTICE_NO = #{noticeNo}  and NOTICE_KIND = '자료실'
+</delete>
 <select id="libSelect"  resultType="Model.LibraryDTO">
 	select NOTICE_NO noticeNo, NOTICE_SUB noticeSub, 
 		NOTICE_CON noticeCon,NOTICE_DATE noticeDate,

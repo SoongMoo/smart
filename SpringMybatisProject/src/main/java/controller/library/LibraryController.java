@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import command.LibraryCommand;
+import service.library.LibraryDeleteService;
 import service.library.LibraryInfoService;
 import service.library.LibraryListService;
 import service.library.LibraryModifyService;
@@ -24,6 +25,14 @@ public class LibraryController {
 	LibraryInfoService libraryInfoService;
 	@Autowired
 	LibraryModifyService libraryModifyService;
+	@Autowired
+	LibraryDeleteService libraryDeleteService;
+	@RequestMapping("libDel")
+	public String libDel(
+			@RequestParam(value="noticeNo") String noticeNo) {
+		libraryDeleteService.libDel(noticeNo);
+		return "redirect:libBoard";
+	}
 	@RequestMapping(value = "libModify", method = RequestMethod.POST)
 	public String libModify(LibraryCommand libraryCommand) {
 		libraryModifyService.libModify(libraryCommand);

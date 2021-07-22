@@ -18,6 +18,8 @@
 	조회수 : ${dto.noticeCount }<br />
 	등록자 : ${dto.employeeId }<br />
 	<input type="submit" value="게시글 수정" />
-	</form>
+	<input type="button" value="삭제" 
+		onclick="javascript:location.href='libDel?noticeNo=${dto.noticeNo }'"/>
+ 	</form>
 </body>
 </html>
