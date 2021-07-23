@@ -14,9 +14,11 @@ public class GoodsWishService {
 	GoodsRepository goodsRepository;
 	public void goodsWishAdd(String prodNum, 
 			HttpSession session, Model model) {
+		System.out.println("svnsbvsbvsbvSbv");
 		AuthInfoDTO authInfo = 
 				(AuthInfoDTO)session.getAttribute("authInfo");
 		String memId = authInfo.getUserId();
+		System.out.println("nvsdvsvs : " + memId);
 		WishDTO dto = new WishDTO();
 		dto.setMemId(memId);
 		dto.setProdNum(prodNum);

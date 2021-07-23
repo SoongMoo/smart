@@ -43,9 +43,11 @@
 					if(result.trim() == "1"){
 						$("#wishBtn").attr("src","../images/right_arrow.png");
 						alert("관심상품에 등록되었습니다.")
-					}else{
+					}else if(result.trim() == "0"){
 						$("#wishBtn").attr("src","../images/left_arrow.png");
 						alert("관심상품이 해지되었습니다.")
+					}else{
+						alert("로그인 하세요.");
 					}
 				},
 				error: function(){
