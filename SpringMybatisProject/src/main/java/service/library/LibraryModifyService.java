@@ -26,9 +26,9 @@ public class LibraryModifyService {
 		LibraryDTO fdto = 
 				libraryRepository.libraryInfo(libraryCommand.getNoticeNo());
 		
-		String original = fdto.getNoticeOrgFile().replace("null", "");
-		String store = fdto.getNoticeFile().replace("null", "");
-		String fileSize = fdto.getNoticeFileSize().replace("null", "");
+		String original = fdto.getNoticeOrgFile();
+		String store = fdto.getNoticeFile();
+		String fileSize = fdto.getNoticeFileSize();
 		String realPath = 
 				session.getServletContext()
 				       .getRealPath("WEB-INF/view/library/upload");
@@ -77,6 +77,8 @@ public class LibraryModifyService {
 				File file = new File(realPath + "/" + store);
 				try {mf.transferTo(file);}catch(Exception e) {}
 			}
+		}
+		if(fdto.getNoticeOrgFile() != null) {	
 			dto.setNoticeOrgFile(original+originalTotal);
 			dto.setNoticeFile(store+storeTotal);
 			dto.setNoticeFileSize(fileSize+fileSizeTotal);
@@ -84,7 +86,7 @@ public class LibraryModifyService {
 			dto.setNoticeOrgFile(original);
 			dto.setNoticeFile(store);
 			dto.setNoticeFileSize(fileSize);
-		}		
+		}
 		libraryRepository.libModify(dto);
 	}
 }
