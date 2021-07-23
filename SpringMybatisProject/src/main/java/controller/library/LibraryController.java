@@ -43,8 +43,9 @@ public class LibraryController {
 	}
 	@RequestMapping("libDel")
 	public String libDel(
-			@RequestParam(value="noticeNo") String noticeNo) {
-		libraryDeleteService.libDel(noticeNo);
+			@RequestParam(value="noticeNo") String noticeNo,
+			HttpSession session) {
+		libraryDeleteService.libDel(noticeNo,session);
 		return "redirect:libBoard";
 	}
 	@RequestMapping(value = "libModify", method = RequestMethod.POST)
