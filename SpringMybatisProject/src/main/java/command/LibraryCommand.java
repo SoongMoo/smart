@@ -6,8 +6,16 @@ public class LibraryCommand {
 	String noticeNo;
 	String noticeSub;
 	String noticeCon;
-	
 	MultipartFile [] noticeFile;	
+	
+	String fileDel;
+	public String getFileDel() {
+		return fileDel;
+	}
+	public void setFileDel(String fileDel) {
+		this.fileDel = fileDel;
+	}
+	
 	public MultipartFile[] getNoticeFile() {
 		return noticeFile;
 	}
