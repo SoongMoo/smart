@@ -77,16 +77,15 @@ public class LibraryModifyService {
 				File file = new File(realPath + "/" + store);
 				try {mf.transferTo(file);}catch(Exception e) {}
 			}
-		}	
-		if(fdto.getNoticeOrgFile() != null) {
-			dto.setNoticeOrgFile(original+originalTotal);
-			dto.setNoticeFile(store+storeTotal);
-			dto.setNoticeFileSize(fileSize+fileSizeTotal);
+			dto.setNoticeOrgFile((original+originalTotal).replace("null", ""));
+			dto.setNoticeFile((store+storeTotal).replace("null", ""));
+			dto.setNoticeFileSize((fileSize+fileSizeTotal).replace("null", ""));
 		}else {
 			dto.setNoticeOrgFile(original);
 			dto.setNoticeFile(store);
 			dto.setNoticeFileSize(fileSize);
-		}
+		}	
+		
 		libraryRepository.libModify(dto);
 	}
 }
