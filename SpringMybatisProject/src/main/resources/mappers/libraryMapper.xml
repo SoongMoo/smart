@@ -24,9 +24,15 @@
 <update id="libModify" parameterType="Model.LibraryDTO">
 	update notice
 	set NOTICE_SUB = #{noticeSub}, NOTICE_CON = #{noticeCon},
-	    notice_org_file = #{noticeOrgFile}, 
-		notice_file_size = #{noticeFileSize},
-		NOTICE_FILE = #{noticeFile}
+	    notice_org_file = 
+	    	<if test="noticeOrgFile != null">#{noticeOrgFile}</if>
+			<if test="noticeOrgFile == null">null</if>, 
+		notice_file_size = 
+			<if test="noticeFileSize != null">#{noticeFileSize}</if>
+			<if test="noticeFileSize == null">null</if>,
+		NOTICE_FILE = 
+			<if test="noticeFile != null">#{noticeFile}</if>
+			<if test="noticeFile == null">null</if>
 	where NOTICE_NO = #{noticeNo} and  NOTICE_KIND = '자료실'
 
 </update>

@@ -77,8 +77,8 @@ public class LibraryModifyService {
 				File file = new File(realPath + "/" + store);
 				try {mf.transferTo(file);}catch(Exception e) {}
 			}
-		}
-		if(fdto.getNoticeOrgFile() != null) {	
+		}	
+		if(fdto.getNoticeOrgFile() != null) {
 			dto.setNoticeOrgFile(original+originalTotal);
 			dto.setNoticeFile(store+storeTotal);
 			dto.setNoticeFileSize(fileSize+fileSizeTotal);
