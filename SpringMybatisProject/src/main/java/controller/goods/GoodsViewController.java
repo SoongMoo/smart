@@ -1,5 +1,7 @@
 package controller.goods;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +15,13 @@ import service.goods.GoodsReviewsService;
 public class GoodsViewController {
 	@Autowired
 	GoodsReviewsService goodsReviewsService;
+
 	@RequestMapping("goodsView")
 	public String goodsView(
 			@RequestParam(value="prodNum") String prodNum,
-			Model model) {
-		goodsReviewsService.goodsReviews(prodNum, model);
+			Model model, HttpSession session) {
+		goodsReviewsService.goodsReviews(prodNum, model,
+				session);
 		return "goods/goodsView";
 	}
 }

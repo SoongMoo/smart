@@ -14,12 +14,23 @@ import Model.PaymentDTO;
 import Model.ProductCartDTO;
 import Model.PurchaseDTO;
 import Model.ReviewDTO;
+import Model.WishDTO;
 
 public class GoodsRepository {
 	@Autowired
 	SqlSession sqlSession;
 	String namespace = "mappers.goodsMapper";
 	String statement;
+	public Integer wishCount(WishDTO dto) {
+		statement = namespace + ".wishCount";
+		return sqlSession.selectOne(statement, dto);
+	}
+	public int wishAdd(WishDTO dto) {
+		statement = namespace + ".wishAdd";
+		sqlSession.insert(statement, dto);
+		statement = namespace + ".wishCount";
+		return sqlSession.selectOne(statement, dto);
+	}
 	public void cartRemove(Map<String, Object> condition) {
 		statement = namespace + ".cartRemove";
 		sqlSession.delete(statement, condition);

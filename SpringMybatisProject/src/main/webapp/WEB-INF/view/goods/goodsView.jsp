@@ -32,11 +32,43 @@
 				}
 			});
 		});
+		
+		$("#wishBtn").click(function(){
+			$.ajax({
+				type: "POST",
+				url: "../goods/goodsWishAdd",
+				data : {"prodNum": "${goodsReviews.goods.prodNum}"},
+				dataType : "text",
+				success:function(result){
+					if(result.trim() == "1"){
+						$("#wishBtn").attr("src","../images/right_arrow.png");
+						alert("관심상품에 등록되었습니다.")
+					}else{
+						$("#wishBtn").attr("src","../images/left_arrow.png");
+						alert("관심상품이 해지되었습니다.")
+					}
+				},
+				error: function(){
+					alert('로그인 아웃 되었습니다.\n다시 로그인 해 주세요.');
+					location.href="../main";
+					return;
+				}
+			});
+		});
 	});
 </script>
 </head>
 <body>
-<table>
+<table >
+	<tr><td colspan="6">
+			관심상품
+			<c:if test="${num == 0 }">
+			<img src="../images/left_arrow.png" id = "wishBtn"/>
+			</c:if>
+			<c:if test="${num == 1 }">
+			<img src="../images/right_arrow.png" id = "wishBtn"/>
+			</c:if>
+		</td></tr>
 	<tr><td rowspan="5">
 	<img src= "../goods/upload/${goodsReviews.goods.prodImage.split(',')[0] }" /></td>
 									<td>${goodsReviews.getGoods().getProdName() }</td></tr>
@@ -49,6 +81,7 @@
 									<button id="cart">장바구니</button>
 									&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; 
 									<button id="buy">바로구매</button>
+									
 									</td></tr>
 	<tr>
 	<td colspan="2">

@@ -15,6 +15,7 @@ import service.goods.GoodsDetailService;
 import service.goods.GoodsListService;
 import service.goods.GoodsNumberService;
 import service.goods.GoodsUpdateService;
+import service.goods.GoodsWishService;
 import service.goods.GoodsWriteService;
 import validator.GoodsCommandValidate;
 
@@ -31,6 +32,17 @@ public class GoodsController {
 	GoodsUpdateService goodsUpdateService;
 	@Autowired
 	GoodsDeleteService goodsDeleteService;
+	
+	@Autowired
+	GoodsWishService goodsWishService;
+	@RequestMapping("goodsWishAdd")
+	public String goodsWishAdd(
+			@RequestParam(value="prodNum")String prodNum,
+			HttpSession session, Model model) {
+		goodsWishService.goodsWishAdd(prodNum, session,model);
+		return "goods/wish";
+	}
+	
 	@RequestMapping("goodsDel")
 	public String goodsDel(
 			@RequestParam(value="prodNum")String prodNum,
