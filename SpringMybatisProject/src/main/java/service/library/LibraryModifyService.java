@@ -22,37 +22,40 @@ public class LibraryModifyService {
 		dto.setNoticeSub(libraryCommand.getNoticeSub());
 		dto.setNoticeNo(libraryCommand.getNoticeNo());
 				
-		String [] fileNames = libraryCommand.getFileDel()
-										.split("/");
-		String org = "";
-		String str = "";
-		String fSize = "";
-		for(String s : fileNames) {
-			org += s.split(",")[0] +",";
-			str += s.split(",")[1] +",";
-			fSize += s.split(",")[2] +",";
-		}
+		
 		LibraryDTO fdto = 
 				libraryRepository.libraryInfo(libraryCommand.getNoticeNo());
 		
-		String original = fdto.getNoticeOrgFile();
-		String store = fdto.getNoticeFile();
-		String fileSize = fdto.getNoticeFileSize();
+		String original = fdto.getNoticeOrgFile().replace("null", "");
+		String store = fdto.getNoticeFile().replace("null", "");
+		String fileSize = fdto.getNoticeFileSize().replace("null", "");
 		String realPath = 
 				session.getServletContext()
 				       .getRealPath("WEB-INF/view/library/upload");
-		int i = 0;
+		
+		String [] fileNames = libraryCommand.getFileDel().split("/");
 		if(!fileNames[0].equals("")) {
-			for(String o : org.split(",")) {
-				String or = o + ",";
-				String sr = str.split(",")[i]+",";
-				String fs = fSize.split(",")[i] +",";
-				original = original.replace(or  ,"" );
-				store = store.replace( sr , "");
-				fileSize = fileSize.replace(fs , "");
-				File file = new File(realPath+"/"+str.split(",")[i]);
-				if(file.exists())file.delete();
-				i++;
+			String org = "";
+			String str = "";
+			String fSize = "";
+			for(String s : fileNames) {
+			org += s.split(",")[0] +",";
+			str += s.split(",")[1] +",";
+			fSize += s.split(",")[2] +",";
+			}
+			int i = 0;
+			if(!fileNames[0].equals("")) {
+				for(String o : org.split(",")) {
+					String or = o + ",";
+					String sr = str.split(",")[i]+",";
+					String fs = fSize.split(",")[i] +",";
+					original = original.replace(or  ,"" );
+					store = store.replace( sr , "");
+					fileSize = fileSize.replace(fs , "");
+					File file = new File(realPath+"/"+str.split(",")[i]);
+					if(file.exists())file.delete();
+					i++;
+				}
 			}
 		}
 		//파일 추가
@@ -74,9 +77,9 @@ public class LibraryModifyService {
 				File file = new File(realPath + "/" + store);
 				try {mf.transferTo(file);}catch(Exception e) {}
 			}
-			dto.setNoticeOrgFile(original +","+originalTotal);
-			dto.setNoticeFile(store +","+storeTotal);
-			dto.setNoticeFileSize(fileSize+","+fileSizeTotal);
+			dto.setNoticeOrgFile(original+originalTotal);
+			dto.setNoticeFile(store+storeTotal);
+			dto.setNoticeFileSize(fileSize+fileSizeTotal);
 		}else {
 			dto.setNoticeOrgFile(original);
 			dto.setNoticeFile(store);
