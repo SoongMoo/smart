@@ -73,10 +73,10 @@ public class LibraryModifyService {
 				fileSizeTotal += fileSize1 + ",";
 				File file = new File(realPath + "/" + store);
 				try {mf.transferTo(file);}catch(Exception e) {}
-				dto.setNoticeOrgFile(original +","+originalTotal);
-				dto.setNoticeFile(store1 +","+storeTotal);
-				dto.setNoticeFileSize(fileSize1+","+fileSizeTotal);
 			}
+			dto.setNoticeOrgFile(original +","+originalTotal);
+			dto.setNoticeFile(store +","+storeTotal);
+			dto.setNoticeFileSize(fileSize+","+fileSizeTotal);
 		}else {
 			dto.setNoticeOrgFile(original);
 			dto.setNoticeFile(store);
