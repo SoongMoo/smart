@@ -6,6 +6,9 @@
 			http://www.springframework.org/schema/beans/spring-beans.xsd
 			"
 >
+	<bean class="controller.member.MemberAndroidController" />
+	<bean class="service.member.MemberAndroidService" />
+	
 	<bean class="controller.member.MemberController"></bean>
 	<bean id = "memberJoinService" 
 		class="service.member.MemberJoinService" />
@@ -29,6 +32,5 @@
 		class="service.member.MemberOutService" />
 	<bean id="memberEmailCkService"
 		class="service.member.MemberEmailCkService" />
-	
 	
 </beans>

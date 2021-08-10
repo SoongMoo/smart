@@ -1,5 +1,11 @@
 package controller.member;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import Model.AuthInfoDTO;
+import Model.MemberDTO;
 import command.MemberCommand;
 import service.main.LoginService;
 import service.member.MemberEmailCkService;
 import service.member.MemberJoinService;
+import service.member.MemberListService;
 import validator.MemberCommandValidator;
 
 @Controller
@@ -66,5 +74,4 @@ public class MemberController {
 		memberJoinService.memJoin(memberCommand);
 		return "redirect:/";
 	}
-	
 }
