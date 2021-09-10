@@ -7,11 +7,4 @@
 			"
 >
 	<bean class="controller.library.LibraryController" />
-	<bean class="service.library.LibraryService" />
-	<bean class="repository.LibraryRepository" />
-	<bean class="service.library.LibraryListService" />
-	<bean class="service.library.LibraryInfoService" />
-	<bean class="service.library.LibraryModifyService" />
-	<bean class="service.library.LibraryDeleteService" />
-	
 </beans>

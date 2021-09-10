@@ -6,12 +6,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 
 import Model.AuthInfoDTO;
 import command.LogInCommand;
-import repository.LogInRepository;
-
+import service.repository.LogInRepository;
+@Service
 public class LoginService {
 	@Autowired
 	LogInRepository logInRepository;

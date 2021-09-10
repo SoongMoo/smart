@@ -1,11 +1,12 @@
 package service.notice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Model.NoticeDTO;
 import command.NoticeCommand;
-import repository.NoticeRepository;
-
+import service.repository.NoticeRepository;
+@Service
 public class NoticeModifyService {
 	@Autowired
 	NoticeRepository noticeRepository;

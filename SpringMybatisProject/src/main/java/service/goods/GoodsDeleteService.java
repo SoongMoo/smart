@@ -5,10 +5,11 @@ import java.io.File;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Model.GoodsDTO;
-import repository.GoodsRepository;
-
+import service.repository.GoodsRepository;
+@Service
 public class GoodsDeleteService {
 	@Autowired
 	GoodsRepository goodsRepository; 

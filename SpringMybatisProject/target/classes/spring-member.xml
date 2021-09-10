@@ -7,30 +7,6 @@
 			"
 >
 	<bean class="controller.member.MemberAndroidController" />
-	<bean class="service.member.MemberAndroidService" />
-	
 	<bean class="controller.member.MemberController"></bean>
-	<bean id = "memberJoinService" 
-		class="service.member.MemberJoinService" />
-	<bean id = "memberRepository" class="repository.MemberRepository" />
-	<bean class="controller.member.MemberInfoController" />
-	<bean id = "memberListService" class="service.member.MemberListService" />
-	<bean id = "memberUpdateService" class="service.member.MemberUpdateService" />
-	<bean id = "memberDeleteService" 
-				class="service.member.MemberDeleteService" />
-				
 	<bean class="controller.member.MemberMyPageController" />
-	<bean id = "memberInfoService" 
-				class="service.member.MemberInfoService" />
-	<bean id = "memberModifyService" 
-				class="service.member.MemberModifyService" />
-	<bean id = "memberPwConfirmService" 
-				class="service.member.MemberPwConfirmService" />
-	<bean id = "memberPwUpdateService" 
-				class="service.member.MemberPwUpdateService" />
-	<bean id="memberOutService"
-		class="service.member.MemberOutService" />
-	<bean id="memberEmailCkService"
-		class="service.member.MemberEmailCkService" />
-	
 </beans>

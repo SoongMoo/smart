@@ -1,9 +1,10 @@
 package service.notice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import repository.NoticeRepository;
-
+import service.repository.NoticeRepository;
+@Service
 public class NoticeDeleteService {
 	@Autowired
 	NoticeRepository noticeRepository;

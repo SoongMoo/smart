@@ -1,11 +1,12 @@
 package service.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Model.EmployeeDTO;
 import command.EmployeeCommand;
-import repository.EmployeeRepository;
-
+import service.repository.EmployeeRepository;
+@Service
 public class EmployeeUpdateService {
 	@Autowired
 	EmployeeRepository employeeRepository;

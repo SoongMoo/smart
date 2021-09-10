@@ -4,12 +4,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import Model.AuthInfoDTO;
 import Model.MemberDTO;
-import repository.MemberRepository;
-
+import service.repository.MemberRepository;
+@Service
 public class MemberPwConfirmService {
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;

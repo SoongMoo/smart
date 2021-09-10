@@ -10,24 +10,4 @@
 	<bean class="controller.goods.GoodsCartController"/>
 	<bean class="controller.goods.GoodsViewController"/>
 	<bean class="controller.goods.GoodsController"/>
-	<bean class="repository.GoodsRepository"/>
-	<bean class="service.goods.GoodsNumberService" />
-	<bean class="service.goods.GoodsWriteService" />
-	<bean class="service.goods.GoodsListService" />
-	<bean class="service.goods.GoodsDetailService" />
-	<bean class="service.goods.GoodsUpdateService" />
-	<bean class="service.goods.GoodsDeleteService" />
-	<bean class="service.goods.GoodsCartAddService" />
-	<bean class="service.goods.GoodsCartListService" />
-	<bean class="service.goods.GoodsCartQtyDownService" />
-	<bean class="service.goods.GoodsBuyService" />
-	<bean class="service.goods.GoodsOrderService" />
-	<bean class="service.goods.OrderProcessListService" />
-	<bean class="service.goods.DoPaymentService" />
-	<bean class="service.goods.ReviewWriteService" />
-	<bean class="service.goods.GoodsReviewUpdateService" />
-	<bean class="service.goods.GoodsReviewsService" />
-	<bean class="service.goods.CartProdDeleteService" />
-	<bean class="service.goods.GoodsCartRemoveService" />
-	<bean class="service.goods.GoodsWishService" />
 </beans>

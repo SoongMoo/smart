@@ -1,11 +1,12 @@
 package service.goods;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import Model.GoodsDTO;
-import repository.GoodsRepository;
-
+import service.repository.GoodsRepository;
+@Service
 public class GoodsDetailService {
 	@Autowired
 	GoodsRepository goodsRepository;

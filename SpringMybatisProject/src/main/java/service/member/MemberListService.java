@@ -3,13 +3,14 @@ package service.member;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import Model.MemberDTO;
 import Model.StartEndPageDTO;
 import controller.PageAction;
-import repository.MemberRepository;
-
+import service.repository.MemberRepository;
+@Service
 public class MemberListService {
 	@Autowired
 	MemberRepository memberRepository;

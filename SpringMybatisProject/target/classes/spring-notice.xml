@@ -7,11 +7,5 @@
 			"
 >
 	<bean class="controller.admin.AdminController"/>
-	<bean class="service.notice.NoticeWriteService"/>
-	<bean class="repository.NoticeRepository"/>
-	<bean class="service.notice.NoticeListService"/>
-	<bean class="service.notice.NoticeDetailService" />
-	<bean class="service.notice.NoticeModifyService" />
-	<bean class="service.notice.NoticeDeleteService" />
-	
+
 </beans>

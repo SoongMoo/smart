@@ -5,10 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Model.AuthInfoDTO;
-import repository.LogInRepository;
-
+import service.repository.LogInRepository;
+@Service
 public class CookieService {
 	@Autowired
 	LogInRepository logInRepository;

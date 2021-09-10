@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			"
+>
+	<bean class="controller.employee.EmployeeMypageController" />
+	<bean class="controller.employee.EmployeeController" />
+	<bean class="controller.goods.GoodsCartController"/>
+	<bean class="controller.goods.GoodsViewController"/>
+	<bean class="controller.goods.GoodsController"/>
+	<bean class="controller.library.LibraryController" />
+	<bean class="controller.main.MainController"/>
+	<bean class="controller.main.LogInController" />
+	<bean class="controller.ajax.AjaxController"/>
+	<bean class="controller.member.MemberAndroidController" />
+	<bean class="controller.member.MemberController"></bean>
+	<bean class="controller.member.MemberMyPageController" />
+	<bean class="controller.admin.AdminController"/>
+</beans>

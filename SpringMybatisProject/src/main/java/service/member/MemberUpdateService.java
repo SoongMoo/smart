@@ -1,11 +1,12 @@
 package service.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Model.MemberDTO;
 import command.MemberCommand;
-import repository.MemberRepository;
-
+import service.repository.MemberRepository;
+@Service
 public class MemberUpdateService {
 	@Autowired
 	MemberRepository memberRepository; 

@@ -1,11 +1,12 @@
 package service.library;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import Model.LibraryDTO;
-import repository.LibraryRepository;
-
+import service.repository.LibraryRepository;
+@Service
 public class LibraryInfoService {
 	@Autowired
 	LibraryRepository libraryRepository;

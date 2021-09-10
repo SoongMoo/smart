@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.12.202003180620-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+	</configs>
+	<autoconfigs>
+		<config>src/main/resources/spring-context.xml</config>
+		<config>src/main/resources/spring-member.xml</config>
+		<config>src/main/resources/spring-library.xml</config>
+		<config>src/main/resources/spring-jdbc.xml</config>
+		<config>src/main/resources/spring-main.xml</config>
+		<config>src/main/resources/spring-goods.xml</config>
+		<config>src/main/resources/spring-chatting.xml</config>
+		<config>src/main/resources/spring-notice.xml</config>
+		<config>src/main/resources/spring-mail-config.xml</config>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

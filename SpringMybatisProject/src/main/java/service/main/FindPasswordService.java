@@ -2,14 +2,15 @@ package service.main;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import Model.MemberDTO;
 import command.MemberCommand;
 import controller.MailService;
 import controller.RamdomPassword;
-import repository.MemberRepository;
-
+import service.repository.MemberRepository;
+@Service
 public class FindPasswordService {
 	@Autowired
 	MemberRepository memberRepository;

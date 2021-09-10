@@ -5,10 +5,11 @@ import java.io.File;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Model.LibraryDTO;
-import repository.LibraryRepository;
-
+import service.repository.LibraryRepository;
+@Service
 public class LibraryDeleteService {
 	@Autowired
 	LibraryRepository libraryRepository;

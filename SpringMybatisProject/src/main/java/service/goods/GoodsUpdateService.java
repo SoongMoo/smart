@@ -7,12 +7,13 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import Model.GoodsDTO;
 import command.GoodsCommand;
-import repository.GoodsRepository;
-
+import service.repository.GoodsRepository;
+@Service
 public class GoodsUpdateService {
 	@Autowired
 	GoodsRepository goodsRepository;

@@ -4,13 +4,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 
 import Model.AuthInfoDTO;
 import Model.EmployeeDTO;
 import command.EmployeeCommand;
-import repository.EmployeeRepository;
-
+import service.repository.EmployeeRepository;
+@Service
 public class EmployeeInfoUpdateService {
 	@Autowired
 	EmployeeRepository employeeRepository;

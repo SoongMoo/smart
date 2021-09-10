@@ -6,12 +6,13 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import Model.LibraryDTO;
 import command.LibraryCommand;
-import repository.LibraryRepository;
-
+import service.repository.LibraryRepository;
+@Service
 public class LibraryModifyService {
 	@Autowired
 	LibraryRepository libraryRepository;

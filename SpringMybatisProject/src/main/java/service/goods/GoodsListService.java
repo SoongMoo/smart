@@ -3,13 +3,14 @@ package service.goods;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import Model.GoodsDTO;
 import Model.StartEndPageDTO;
 import controller.PageAction;
-import repository.GoodsRepository;
-
+import service.repository.GoodsRepository;
+@Service
 public class GoodsListService {
 	@Autowired
 	GoodsRepository goodsRepository;

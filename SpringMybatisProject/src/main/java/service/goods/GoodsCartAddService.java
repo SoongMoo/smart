@@ -3,12 +3,13 @@ package service.goods;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import Model.AuthInfoDTO;
 import Model.CartDTO;
-import repository.GoodsRepository;
-
+import service.repository.GoodsRepository;
+@Service
 public class GoodsCartAddService {
 	@Autowired
 	GoodsRepository goodsRepository; 

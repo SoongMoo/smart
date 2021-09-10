@@ -11,6 +11,11 @@
 			http://www.springframework.org/schema/mvc
 			http://www.springframework.org/schema/mvc/spring-mvc.xsd"
 >
+		<!-- @Service, @Repository애노테이션을 붙혀진 클래스를 빈으로 등록 -->
+	<context:component-scan base-package="service">
+	<context:exclude-filter type="annotation" 
+	            expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
 	<!-- 의존 객체 자동 주입 -->
 	<context:annotation-config />
 	<!-- @Controller -->

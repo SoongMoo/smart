@@ -57,6 +57,7 @@ public class WebSocketController {
 	//메시지 수신시
 	@OnMessage
 	public void onMessage(String msg, Session session) {
+		
 		broadCast(msg);
 	}
 	

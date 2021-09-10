@@ -10,6 +10,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#btn3").click(function(){
+		//location.href="ajaxTest1"
 		//$("#frm").submit();
 		$("#frm").ajaxSubmit({
 			type : "post",

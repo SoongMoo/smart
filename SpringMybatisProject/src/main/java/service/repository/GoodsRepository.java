@@ -1,10 +1,11 @@
-package repository;
+package service.repository;
 
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import Model.CartDTO;
 import Model.GoodsDTO;
@@ -15,7 +16,7 @@ import Model.ProductCartDTO;
 import Model.PurchaseDTO;
 import Model.ReviewDTO;
 import Model.WishDTO;
-
+@Repository
 public class GoodsRepository {
 	@Autowired
 	SqlSession sqlSession;

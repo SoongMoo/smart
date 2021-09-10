@@ -26,14 +26,9 @@
   		<param-value>
   			classpath:spring-context.xml
   			classpath:spring-jdbc.xml
-  			classpath:spring-main.xml
-  			classpath:spring-employee.xml
-  			classpath:spring-member.xml
   			classpath:spring-mail-config.xml
-  			classpath:spring-goods.xml
-  			classpath:spring-notice.xml
   			classpath:spring-chatting.xml
-  			classpath:spring-library.xml
+  			classpath:spring-controller.xml
   		</param-value>
   	</init-param>
   </servlet>

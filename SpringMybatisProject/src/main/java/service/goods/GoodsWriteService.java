@@ -7,13 +7,14 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import Model.AuthInfoDTO;
 import Model.GoodsDTO;
 import command.GoodsCommand;
-import repository.GoodsRepository;
-
+import service.repository.GoodsRepository;
+@Service
 public class GoodsWriteService {
 	// dto가 가지고 있는 값은 repository를 통해 디비에 저장한다.
 	@Autowired

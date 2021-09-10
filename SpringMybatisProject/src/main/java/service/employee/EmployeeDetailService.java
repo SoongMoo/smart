@@ -3,12 +3,13 @@ package service.employee;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import Model.AuthInfoDTO;
 import Model.EmployeeDTO;
-import repository.EmployeeRepository;
-
+import service.repository.EmployeeRepository;
+@Service
 public class EmployeeDetailService {
 	@Autowired
 	EmployeeRepository employeeRepository;

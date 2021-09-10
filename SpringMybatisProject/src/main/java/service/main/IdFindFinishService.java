@@ -1,12 +1,13 @@
 package service.main;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import Model.MemberDTO;
 import command.MemberCommand;
-import repository.MemberRepository;
-
+import service.repository.MemberRepository;
+@Service
 public class IdFindFinishService {
 	@Autowired
 	MemberRepository memberRepository;

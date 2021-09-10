@@ -3,11 +3,12 @@ package service.notice;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import Model.NoticeDTO;
-import repository.NoticeRepository;
-
+import service.repository.NoticeRepository;
+@Service
 public class NoticeListService {
 	@Autowired
 	NoticeRepository noticeRepository; 
